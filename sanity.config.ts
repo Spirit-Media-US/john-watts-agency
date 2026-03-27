@@ -7,7 +7,7 @@ import { schemaTypes } from './studio/schemaTypes'
 export default defineConfig({
   name: 'john-watts-agency',
   title: 'Johnny Watts Agency',
-  projectId: 'm97wgkat',
+  projectId: 'ssbenczy',
   dataset: 'production',
   plugins: [structureTool(), visionTool(), media()],
   schema: {
