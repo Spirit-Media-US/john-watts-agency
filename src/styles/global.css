@@ -1,16 +1,70 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ───────────────────────────────────────────
-   Replace these with site-specific values.
-   See existing sites for examples:
-   - artsbyjustin: warm/gallery palette
-   - spirit-media-publishing: brand blues
-   - FHB: parchment/ink palette
-──────────────────────────────────────────────────────────────── */
+/* ─── Design Tokens ─── Johnny Watts Agency ──────────────────────
+   Brand: Insurance agency — trustworthy, family-oriented
+   Primary blue: #3757e1 (from existing site)
+   Dark: #32373c (backgrounds, text)
+────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Merriweather", Georgia, serif;
+
+  --color-primary: #3757e1;
+  --color-primary-dark: #2a42b8;
+  --color-primary-light: #5a7aff;
+  --color-dark: #32373c;
+  --color-dark-light: #4a5058;
+  --color-gray: #6b7280;
+  --color-gray-light: #f3f4f6;
+  --color-white: #ffffff;
+  --color-accent: #3757e1;
+}
+
 :root {
-  --font-sans: system-ui, sans-serif;
-  --font-serif: Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Merriweather", Georgia, serif;
   --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-accent: #2563eb;
+  --color-text: #32373c;
+  --color-accent: #3757e1;
+}
+
+/* ─── Typography Foundation ──────────────────────────────────── */
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+@media (min-width: 768px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.75rem; }
+}
+
+p {
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
 }

@@ -30,9 +30,8 @@
 [context.branch-deploy]
   command = "npm run build"
 
-# TODO: Update domain before going live
 [[redirects]]
-  from = "https://www.REPLACE_DOMAIN.com/*"
-  to = "https://REPLACE_DOMAIN.com/:splat"
+  from = "https://www.johnnywattsagency.com/*"
+  to = "https://johnnywattsagency.com/:splat"
   status = 301
   force = true

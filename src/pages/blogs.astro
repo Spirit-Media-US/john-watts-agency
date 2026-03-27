@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+// Blog posts will be fetched from Sanity in Phase 4
+// import { sanityClient } from '../lib/sanity';
+// const posts = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc)`);
+---
+
+<Layout title="Blog — Johnny Watts Agency" description="Insurance tips, guides, and news from Johnny Watts Agency. Learn about Medicare, health insurance, and life insurance.">
+
+  <section class="bg-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-white mb-3">Blog</h1>
+      <p class="text-gray-300 text-lg">Insurance tips, guides, and industry insights</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Blog posts will be loaded from Sanity CMS in Phase 4 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3, 4, 5, 6].map(i => (
+          <article class="bg-gray-light rounded-lg overflow-hidden">
+            <div class="h-48 bg-gray-300"></div>
+            <div class="p-5">
+              <p class="text-xs text-gray mb-2">September 25, 2024</p>
+              <h3 class="text-lg mb-2">Blog Post Title {i}</h3>
+              <p class="text-sm text-gray">Blog content will be migrated from the existing site and managed through Sanity CMS.</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

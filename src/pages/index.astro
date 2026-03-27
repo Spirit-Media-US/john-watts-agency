@@ -1,20 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
-
-// Example Sanity fetch — replace with real query for this site
-// import { sanityClient } from '../lib/sanity.ts';
-// const items = await sanityClient.fetch(`*[_type == "post"] | order(_createdAt desc)`);
+import SectionHeading from '../components/SectionHeading.astro';
 ---
 
-<Layout title="Site Name — Tagline">
-  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-    <h1 class="text-4xl font-bold mb-4">
-      Site Name
-    </h1>
-    <p class="text-lg max-w-lg">
-      Replace this page with your site content. Connect to Sanity via
-      <code>src/lib/sanity.ts</code> and update the project ID.
-    </p>
-  </main>
+<Layout title="Johnny Watts Agency — Your Trusted Insurance Specialists">
+
+  <!-- Hero -->
+  <section class="bg-dark text-white py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-white mb-4">We Are Your Trusted Specialists</h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        Protecting families and individuals across North Carolina for over 40 years with Medicare, Health Insurance Marketplace, and Life Insurance solutions.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/about/" class="px-6 py-3 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-colors">
+          About Us
+        </a>
+        <a href="/contact-us/" class="px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-dark transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading
+        title="Your Health, Your Future, Your Family, Your Peace Of Mind"
+        subtitle="For over four decades, Johnny Watts Agency has helped families navigate the world of insurance with personal attention and professional expertise."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🛡️</div>
+          <h3 class="mb-2">Medicare</h3>
+          <p class="text-gray">Expert guidance through Medicare options to find the right coverage for your needs.</p>
+          <a href="/medicare/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">🏥</div>
+          <h3 class="mb-2">Health Insurance</h3>
+          <p class="text-gray">Navigate the Health Insurance Marketplace with a specialist who knows the options.</p>
+          <a href="/health-insurance-marketplace/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">❤️</div>
+          <h3 class="mb-2">Life Insurance</h3>
+          <p class="text-gray">Protect what matters most with the right life insurance policy for your family.</p>
+          <a href="/learn-about-life-insurance/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="Our Partners" subtitle="We work with trusted insurance carriers to bring you the best options." />
+      <!-- Partner logos will be added from Sanity/R2 in Phase 3 -->
+      <div class="text-center text-gray text-sm italic">
+        Partner logos coming soon — Fidelity, Foresters, MetLife, Prudential, Lincoln, Transamerica, and more.
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Preview -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="The Faces Behind Our Success" subtitle="Meet the team that's been serving your community for over 40 years." />
+      <!-- Team cards will be populated from Sanity in Phase 3 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {['Johnny Watts', 'Donnie Bost', 'Linsey Stuckey', 'Tiffany Billey'].map(name => (
+          <div class="bg-gray-light rounded-lg p-6 text-center">
+            <div class="w-24 h-24 mx-auto mb-4 bg-gray-300 rounded-full"></div>
+            <h4>{name}</h4>
+            <p class="text-sm text-gray">Agent</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/about/" class="px-6 py-3 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-colors">
+          About Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeading title="What Our Clients Say" subtitle="Over 40 satisfied clients trust Johnny Watts Agency with their insurance needs." />
+      <!-- Testimonials will be populated from Sanity in Phase 3 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[1, 2, 3].map(() => (
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <p class="text-gray italic mb-4">"Testimonial content will be loaded from Sanity CMS."</p>
+            <p class="font-semibold text-dark">— Client Name, NC</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-white mb-4">Ready to Get Started?</h2>
+      <p class="text-lg text-blue-100 mb-8">Get a free quote today — no obligation, just honest advice.</p>
+      <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
+        Get a Life Quote
+      </a>
+    </div>
+  </section>
+
 </Layout>

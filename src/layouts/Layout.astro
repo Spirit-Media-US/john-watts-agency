@@ -1,9 +1,13 @@
 ---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'Spirit Media site' } = Astro.props;
+const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.' } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -13,8 +17,15 @@ const { title, description = 'Spirit Media site' } = Astro.props;
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
   </head>
-  <body style="background-color: var(--color-bg); color: var(--color-text);">
-    <slot />
+  <body class="flex flex-col min-h-screen bg-white text-dark">
+    <Nav />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
