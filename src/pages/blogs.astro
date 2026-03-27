@@ -1,10 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 
-// Blog posts will be fetched from Sanity in Phase 4
-// import { sanityClient } from '../lib/sanity';
-// const posts = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc)`);
+const posts = [
+  {
+    title: 'The Ultimate Guide to Choosing the Right Life Insurance Policy',
+    slug: '/blog/the-ultimate-guide-to-choosing-the-right-life-insurance-policy/',
+    date: 'September 25, 2024',
+    excerpt: 'Learn how to choose the right life insurance policy. Tips on assessing needs, comparing quotes, and avoiding common mistakes.',
+  },
+  {
+    title: 'The Importance of Life Insurance for Young Families',
+    slug: '/blog/the-importance-of-life-insurance-for-young-families/',
+    date: 'September 25, 2024',
+    excerpt: 'Why life insurance is essential for young families. Tips on choosing the right policy and avoiding common mistakes.',
+  },
+  {
+    title: 'Medicare and Long-Term Care: Planning for Future Healthcare Needs',
+    slug: '/blog/medicare-and-long-term-care-planning/',
+    date: 'September 25, 2024',
+    excerpt: 'Plan for future healthcare needs by understanding Medicare and long-term care options.',
+  },
+  {
+    title: "Choosing the Right Plan: A Health Insurance Specialist's Guide",
+    slug: '/blog/choosing-the-right-health-insurance-plan/',
+    date: 'September 25, 2024',
+    excerpt: "A health insurance specialist's guide to choosing the right plan. Assess needs, compare costs, avoid mistakes.",
+  },
+  {
+    title: 'Understanding the Role of a Life Insurance Specialist: Five Things You Need to Know',
+    slug: '/blog/understanding-the-role-of-a-life-insurance-specialist/',
+    date: 'April 24, 2024',
+    excerpt: 'Learn what a life insurance specialist does and how they help you find the right coverage.',
+  },
+  {
+    title: '7 Ways to a Secure and Healthy Retirement',
+    slug: '/blog/7-ways-to-a-secure-and-healthy-retirement/',
+    date: 'April 8, 2024',
+    excerpt: 'Seven practical strategies for a secure retirement, from saving early to understanding Medicare and life insurance.',
+  },
+  {
+    title: 'Six Reasons Why You Need To Review Your Life Insurance Annually',
+    slug: '/blog/six-reasons-to-review-life-insurance-annually/',
+    date: 'February 19, 2024',
+    excerpt: 'Why an annual life insurance review is essential. Six key reasons to keep your coverage aligned with your needs.',
+  },
+  {
+    title: 'Five Overlooked Truths About Health Insurance',
+    slug: '/blog/five-overlooked-truths-about-health-insurance/',
+    date: 'February 8, 2024',
+    excerpt: 'Five essential truths about health insurance that are often overlooked.',
+  },
+  {
+    title: 'Protecting What Matters: Understanding Life Insurance',
+    slug: '/blog/protecting-what-matters-understanding-life-insurance/',
+    date: 'January 11, 2024',
+    excerpt: 'Understand the basics of life insurance, its benefits, coverage needs, and common misconceptions.',
+  },
+];
 ---
 
 <Layout title="Blog — Johnny Watts Agency" description="Insurance tips, guides, and news from Johnny Watts Agency. Learn about Medicare, health insurance, and life insurance.">
@@ -18,15 +70,21 @@ import SectionHeading from '../components/SectionHeading.astro';
 
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <!-- Blog posts will be loaded from Sanity CMS in Phase 4 -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3, 4, 5, 6].map(i => (
-          <article class="bg-gray-light rounded-lg overflow-hidden">
+        {posts.map(post => (
+          <article class="bg-gray-light rounded-lg overflow-hidden hover:shadow-md transition-shadow">
             <div class="h-48 bg-gray-300"></div>
             <div class="p-5">
-              <p class="text-xs text-gray mb-2">September 25, 2024</p>
-              <h3 class="text-lg mb-2">Blog Post Title {i}</h3>
-              <p class="text-sm text-gray">Blog content will be migrated from the existing site and managed through Sanity CMS.</p>
+              <p class="text-xs text-gray mb-2">{post.date}</p>
+              <h3 class="text-lg mb-2">
+                <a href={post.slug} class="text-dark hover:text-primary transition-colors">
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-sm text-gray mb-3">{post.excerpt}</p>
+              <a href={post.slug} class="text-sm text-primary font-semibold hover:text-primary-dark">
+                Read More →
+              </a>
             </div>
           </article>
         ))}
