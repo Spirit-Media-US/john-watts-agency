@@ -71,11 +71,12 @@ const testimonials = [
             About Us
           </a>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex justify-center">
           <img
             src="https://johnnywattsagency.com/wp-content/uploads/2023/10/happy-family-concept-top-view-of-happy-family-of-2022-01-29-00-01-45-utc-scaled.jpg"
             alt="Happy family"
-            class="w-full h-auto rounded-lg"
+            class="w-full h-auto"
+            style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
             loading="eager"
           />
         </div>
@@ -89,46 +90,42 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ═══ WHY CHOOSE — image LEFT circle, text RIGHT ═══ -->
-  <section class="py-16 md:py-24 relative">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <!-- Circular image with decorative ring -->
-        <div class="flex justify-center">
-          <div class="relative">
-            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl">
-              <img
-                src="https://cdn.sanity.io/images/ssbenczy/production/17f6656e1958d23ff03f1d52889993476f1cb7e0-1024x683.jpg?w=640&h=640&fit=crop&auto=format"
-                alt="Couple planning insurance"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <!-- Decorative curved line -->
-            <div class="absolute -bottom-8 -left-8 w-32 h-32 border-4 border-primary/20 rounded-full"></div>
-          </div>
+  <!-- ═══ WHY CHOOSE — image LEFT, text RIGHT ═══ -->
+  <section id="about" class="py-16 md:py-24">
+    <div class="max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <!-- Image -->
+        <div class="md:w-1/2">
+          <img
+            src="https://johnnywattsagency.com/wp-content/uploads/2023/10/family-sitting-together-and-talking-2021-12-16-19-20-34-utc-scaled.jpg"
+            alt="Family sitting together"
+            class="w-full h-auto"
+            style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
+            loading="lazy"
+          />
         </div>
         <!-- Text -->
-        <div>
-          <p class="kicker">Your Health, Your Future, Your Family, Your Peace Of Mind</p>
-          <h2 class="mb-4">Why Choose Johnny Watts Agency?</h2>
-          <p class="text-gray leading-relaxed mb-6">
-            We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over 40 top insurance companies and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
+        <div class="md:w-1/2">
+          <p class="kicker" style="color: var(--color-accent);">Your Health, Your Future, Your Family, Your Peace Of Mind</p>
+          <h2 class="mb-4" style="font-family: 'Varela Round', sans-serif;">Why Choose Johnny Watts Agency?</h2>
+          <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-6">
+            We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over <a href="#our_partners">40 top insurance companies</a> and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
           </p>
-          <a href="/about/" class="btn">Learn More</a>
+          <a href="/about/" class="btn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+            Learn More
+          </a>
         </div>
       </div>
     </div>
-    <!-- Decorative curve -->
-    <div class="absolute -bottom-4 -left-16 w-64 h-64 border-4 border-primary/10 rounded-full hidden md:block"></div>
   </section>
 
   <!-- ═══ COMPANY AFFILIATION / OUR PARTNERS ═══ -->
-  <section class="py-16 md:py-20">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <p class="kicker">Company Affiliation</p>
-      <h2 class="mb-4">Our Partners</h2>
-      <p class="text-gray max-w-2xl mx-auto mb-10">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
+  <section id="our_partners" class="py-16 md:py-20">
+    <div class="max-w-[1250px] mx-auto px-[2%] text-center">
+      <p class="kicker" style="color: var(--color-accent);">Company Affiliation</p>
+      <h2 class="mb-4" style="font-family: 'Varela Round', sans-serif;">Our Partners</h2>
+      <p style="font-family: 'Times New Roman', serif; font-size: medium; color: #000;" class="max-w-2xl mx-auto mb-10">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
       <div class="grid grid-cols-3 sm:grid-cols-5 gap-6 items-center justify-items-center max-w-4xl mx-auto">
         {[
           { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
@@ -154,55 +151,58 @@ const testimonials = [
   </section>
 
   <!-- ═══ TEAM — photos LEFT in row, heading + button RIGHT ═══ -->
-  <section class="py-16 md:py-24 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+  <section class="relative py-16 md:py-24 overflow-hidden" style="min-height: 780px;">
+    <!-- Background pattern overlay -->
+    <div class="absolute inset-0 bg-no-repeat bg-contain bg-bottom opacity-100 pointer-events-none"
+      style="background-image: url('https://johnnywattsagency.com/wp-content/uploads/2023/10/BG-TEAN-Home.png');">
+    </div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col lg:flex-row gap-10 items-center">
         <!-- Photos grid -->
-        <div class="grid grid-cols-4 gap-3">
+        <div class="lg:w-1/2 grid grid-cols-4 gap-4">
           {[
-            { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5369409619f9e4198af805133bb83d135e76bb70-500x500.png' },
-            { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/fb78382b2630258d0b53b830d71fba5bd0b27c6c-500x500.png' },
-            { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/d9e06beb0aaaa3b0232eae49ba9e424e66fd14f2-500x500.png' },
-            { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png' },
+            { name: 'Johnny Watts', img: 'https://johnnywattsagency.com/wp-content/uploads/2023/10/johnnyHeadshot.jpg' },
+            { name: 'Donnie Bost', img: 'https://johnnywattsagency.com/wp-content/uploads/2023/10/donnie-headshot.jpg' },
+            { name: 'Linsey Stuckey', img: 'https://johnnywattsagency.com/wp-content/uploads/2024/02/Linsey-Stuckey-headshot.png' },
+            { name: 'Tiffany Billey', img: 'https://johnnywattsagency.com/wp-content/uploads/2025/03/Subject-e1741790121187.png' },
           ].map(m => (
             <div class="text-center">
-              <div class="rounded-t-full rounded-b-3xl overflow-hidden mb-2">
-                <img src={`${m.img}?w=250&h=300&fit=crop&auto=format`} alt={m.name} class="w-full object-cover aspect-[5/6]" loading="lazy" />
-              </div>
-              <p class="text-sm font-semibold">{m.name}</p>
+              <img src={m.img} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300;">{m.name}</p>
             </div>
           ))}
         </div>
         <!-- Text -->
-        <div>
-          <p class="kicker">Our Work Inspires Smiles</p>
-          <h2 class="mb-6" style="font-size:2.5rem; line-height:1.15;">The Faces Behind Our Success</h2>
-          <a href="/about/" class="btn">About Us</a>
+        <div class="lg:w-1/2">
+          <p class="kicker" style="color: var(--color-accent);">our work inspires smiles</p>
+          <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2;">The Faces Behind Our Success</h2>
+          <a href="/about/" class="btn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+            About Us
+          </a>
         </div>
       </div>
     </div>
-    <!-- Decorative curve -->
-    <div class="absolute -bottom-16 -left-16 w-72 h-72 border-4 border-primary/10 rounded-full hidden lg:block"></div>
   </section>
 
   <!-- ═══ TESTIMONIALS — heading LEFT, carousel RIGHT, two-column ═══ -->
   <section class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    <div class="max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col lg:flex-row gap-10 items-start">
         <!-- Left heading -->
-        <div>
-          <p class="kicker">We Love Them</p>
-          <h2 style="font-size:2.5rem; line-height:1.15;">Client Testimonials</h2>
+        <div class="lg:w-1/3">
+          <p class="kicker" style="color: var(--color-accent);">We Love Them</p>
+          <h2 style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2;">Client Testimonials</h2>
         </div>
         <!-- Right carousel -->
-        <div>
+        <div class="lg:w-2/3">
           <div class="testimonial-carousel" id="testimonial-carousel">
             <div class="testimonial-track" id="testimonial-track">
               {testimonials.map((t, i) => (
                 <div class="testimonial-slide" data-index={i}>
-                  <p class="text-gray leading-relaxed mb-4" style="font-size:1rem;">"{t.quote}"</p>
-                  <p class="font-bold text-dark">{t.name}</p>
-                  <p class="text-sm text-gray">{t.location}</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-4">"{t.quote}"</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; color: #3D4459;">{t.name}</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px; color: #6b7280;">{t.location}</p>
                 </div>
               ))}
             </div>
@@ -213,24 +213,22 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- ═══ GET A QUOTE — dark gradient, left-aligned ═══ -->
-  <section class="relative py-16 md:py-24 text-white" style="background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #0f0f2e 100%);">
-    <!-- Wave top -->
-    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none" style="transform:rotate(180deg);">
-      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-16 md:h-24">
-        <path d="M0,80 C360,120 720,40 1440,80 L1440,120 L0,120 Z" fill="#ffffff"/>
-      </svg>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 pt-8">
-      <h2 class="text-white mb-6" style="font-size:2.5rem;">Get A Quote</h2>
-      <a href="/life-quote/" class="btn btn-outline">Life Quote</a>
+  <!-- ═══ GET A QUOTE — gradient CTA section ═══ -->
+  <section class="relative py-16 md:py-24 text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%);">
+    <div class="max-w-[1250px] mx-auto px-[2%] text-center">
+      <h2 class="text-white mb-6" style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; font-weight: 300;">Get A Quote</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/medicare-quote/" class="btn btn-outline">Medicare Quote</a>
+        <a href="/life-quote/" class="btn btn-outline">Life Quote</a>
+        <a href="/health-insurance-marketplace-services-quote/" class="btn btn-outline">Health Marketplace Quote</a>
+      </div>
     </div>
   </section>
 
 </Layout>
 
 <script>
-  // Testimonial carousel
+  // Testimonial carousel with windowed dot navigation
   const track = document.getElementById('testimonial-track');
   const dotsContainer = document.getElementById('testimonial-dots');
   if (track && dotsContainer) {
@@ -238,27 +236,35 @@ const testimonials = [
     const total = slides.length;
     let current = 0;
     let autoplayTimer: ReturnType<typeof setInterval>;
+    const maxVisibleDots = 7;
 
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
-      dotsContainer.appendChild(dot);
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      // Show a window of dots around current position
+      let start = Math.max(0, current - Math.floor(maxVisibleDots / 2));
+      let end = Math.min(total, start + maxVisibleDots);
+      if (end - start < maxVisibleDots) start = Math.max(0, end - maxVisibleDots);
+
+      for (let i = start; i < end; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (i === current ? ' active' : '');
+        dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
     }
 
     function goTo(index: number) {
       current = index;
       track.style.transform = `translateX(-${current * 100}%)`;
-      dotsContainer.querySelectorAll('.testimonial-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
+      renderDots();
     }
 
     function next() {
       goTo((current + 1) % total);
     }
 
+    renderDots();
     autoplayTimer = setInterval(next, 5000);
     track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
     track.parentElement?.addEventListener('mouseleave', () => {
