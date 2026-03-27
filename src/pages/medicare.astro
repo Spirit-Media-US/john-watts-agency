@@ -1,40 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import QuoteForm from '../components/QuoteForm.astro';
 ---
 
 <Layout title="Medicare — Johnny Watts Agency" description="Learn about Medicare options with Johnny Watts Agency. Expert guidance for Medicare coverage in North Carolina.">
 
-  <section class="bg-dark text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-white mb-3">Medicare</h1>
-      <p class="text-gray-300 text-lg">Expert guidance through your Medicare options</p>
+  <!-- Hero Banner -->
+  <section class="relative text-white py-20 md:py-28 overflow-hidden">
+    <div class="absolute inset-0 bg-dark"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-white">Medicare</h1>
     </div>
   </section>
 
+  <!-- Content -->
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <!-- Hero image placeholder — will be replaced with R2/Sanity image -->
-      <div class="w-full h-64 bg-gray-200 rounded-lg mb-8"></div>
-
-      <p class="text-lg text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-6">
         Medicare is the federally provided healthcare insurance. Original Medicare provides for fundamental doctor and hospital costs. However, Original Medicare might not cover some expenses which can result in out-of-pocket expenses when getting treatment.
       </p>
-      <p class="text-lg text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-6">
         To ensure that you will not be spending too much on these out-of-pocket expenses, you can get additional insurance coverage.
       </p>
-      <p class="text-lg text-gray leading-relaxed">
-        We have extensive experience providing assistance and services to those seeking Medicare plans.
+      <p class="text-gray leading-relaxed mb-8">
+        We have an extensive experience for providing assistance and services to those seeking Medicare plans.
       </p>
+      <div class="text-center">
+        <a href="/medicare-quote/" class="inline-block px-8 py-3 bg-dark text-white font-semibold rounded-full hover:bg-white hover:text-dark border border-dark transition-colors" style="font-size:1.125em;">
+          Get a Quote
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="py-12 bg-primary text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-white mb-4">Ready to Explore Your Medicare Options?</h2>
-      <p class="text-blue-100 mb-6">Call us at <a href="tel:8286354200" class="text-white underline font-semibold">(828) 635-4200</a> or request a quote online.</p>
-      <a href="/medicare-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-        Get a Medicare Quote
-      </a>
+  <!-- Contact Form -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="mb-2">Let's have a chat</h2>
+      </div>
+      <QuoteForm />
     </div>
   </section>
 
