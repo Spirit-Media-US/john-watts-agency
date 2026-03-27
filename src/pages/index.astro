@@ -57,23 +57,25 @@ const testimonials = [
 
 <Layout title="Trusted Insurance Specialist | Johnny Watts Agency">
 
-  <!-- ═══ HERO — gradient bg, text LEFT, image RIGHT ═══ -->
+  <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
   <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
-    <div class="max-w-[1250px] mx-auto px-[2%] py-16 md:py-24">
+    <!-- Decorative background overlay (blob shapes) -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: url('https://johnnywattsagency.com/wp-content/uploads/2023/10/BG-HomePage-High.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: 0.15;"></div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%] py-16 md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
-        <div class="md:w-1/2">
+        <div class="md:w-[45%] shrink-0">
           <h1 class="text-white mb-4" style="font-family: 'Varela Round', sans-serif; font-size: 45px; font-weight: 300; line-height: 1.2; text-transform: capitalize;">We Are Your Trusted Specialists</h1>
           <p class="text-white/90 mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4;">
             We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
           </p>
-          <a href="#about" class="btn">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"/></svg>
+          <a href="#about" class="inline-flex items-center gap-2 px-7 py-3 rounded-full text-white font-medium" style="background: linear-gradient(135deg, #06D9FA 0%, #00e0a0 100%); font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none;">
             About Us
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"/></svg>
           </a>
         </div>
-        <div class="md:w-1/2 flex justify-center">
+        <div class="md:w-[55%]">
           <img
-            src="https://johnnywattsagency.com/wp-content/uploads/2023/10/happy-family-concept-top-view-of-happy-family-of-2022-01-29-00-01-45-utc-scaled.jpg"
+            src="https://cdn.sanity.io/images/ssbenczy/production/0ea061d233b07bc91d306af7b3615e7d9bba7875-2560x1707.jpg?w=900&auto=format"
             alt="Happy family"
             class="w-full h-auto"
             style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
@@ -83,7 +85,7 @@ const testimonials = [
       </div>
     </div>
     <!-- Wave bottom — exact WP Elementor wave shape -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style="z-index: 1;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full h-16 md:h-24">
         <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
@@ -97,7 +99,7 @@ const testimonials = [
         <!-- Image -->
         <div class="md:w-1/2">
           <img
-            src="https://johnnywattsagency.com/wp-content/uploads/2023/10/family-sitting-together-and-talking-2021-12-16-19-20-34-utc-scaled.jpg"
+            src="https://cdn.sanity.io/images/ssbenczy/production/17f6656e1958d23ff03f1d52889993476f1cb7e0-1024x683.jpg?w=600&auto=format"
             alt="Family sitting together"
             class="w-full h-auto"
             style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
@@ -161,10 +163,10 @@ const testimonials = [
         <!-- Photos grid -->
         <div class="lg:w-1/2 grid grid-cols-4 gap-4">
           {[
-            { name: 'Johnny Watts', img: 'https://johnnywattsagency.com/wp-content/uploads/2023/10/johnnyHeadshot.jpg' },
-            { name: 'Donnie Bost', img: 'https://johnnywattsagency.com/wp-content/uploads/2023/10/donnie-headshot.jpg' },
-            { name: 'Linsey Stuckey', img: 'https://johnnywattsagency.com/wp-content/uploads/2024/02/Linsey-Stuckey-headshot.png' },
-            { name: 'Tiffany Billey', img: 'https://johnnywattsagency.com/wp-content/uploads/2025/03/Subject-e1741790121187.png' },
+            { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5369409619f9e4198af805133bb83d135e76bb70-500x500.png?w=250&auto=format' },
+            { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/fb78382b2630258d0b53b830d71fba5bd0b27c6c-500x500.png?w=250&auto=format' },
+            { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/d9e06beb0aaaa3b0232eae49ba9e424e66fd14f2-500x500.png?w=250&auto=format' },
+            { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png?w=250&auto=format' },
           ].map(m => (
             <div class="text-center">
               <img src={m.img} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
