@@ -18,18 +18,18 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="bg-white sticky top-0 z-50 shadow-sm">
-  <nav class="max-w-7xl mx-auto px-4 py-3">
-    <div class="flex items-center justify-between">
+<header class="nav-header sticky top-0 z-50" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 100%); margin-bottom: -60px;">
+  <nav class="max-w-[1250px] mx-auto px-[2%] h-[90px] flex items-center">
+    <div class="flex items-center justify-between w-full">
       <!-- Logo -->
-      <a href="/" class="flex items-center shrink-0">
-        <img src="https://cdn.sanity.io/images/ssbenczy/production/d7e2a7982737ea76f8e7b6bd8f151217526c98a4-2048x852.png?w=200&auto=format" alt="Johnny Watts Agency" class="h-10 md:h-12 w-auto" />
+      <a href="/" class="flex items-center shrink-0" style="width: 20%;">
+        <img src="https://johnnywattsagency.com/wp-content/uploads/2023/10/johnwatts-logo-edited-2048x852.png" alt="Johnny Watts Agency" class="w-[70%] h-auto" />
       </a>
 
       <!-- Mobile toggle -->
       <button
         id="mobile-toggle"
-        class="lg:hidden p-2 rounded-md text-dark hover:bg-gray-light"
+        class="lg:hidden p-2 rounded-md text-white hover:bg-white/20"
         aria-label="Toggle navigation"
         aria-expanded="false"
       >
@@ -40,7 +40,7 @@ function isActive(href: string): boolean {
       </button>
 
       <!-- Desktop nav -->
-      <ul class="hidden lg:flex items-center gap-1">
+      <ul class="hidden lg:flex items-center gap-0">
         <li>
           <a href="/" class:list={['nav-link', { active: isActive('/') }]}>Home</a>
         </li>
@@ -49,14 +49,14 @@ function isActive(href: string): boolean {
         <li class="relative group">
           <button class="nav-link flex items-center gap-1" aria-haspopup="true">
             Services
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <ul class="absolute left-0 top-full mt-1 w-64 bg-white shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-lg rounded-md py-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             {services.map(s => (
-              <li>
-                <a href={s.href} class:list={['block px-4 py-2 text-sm text-dark hover:bg-gray-light hover:text-primary', { 'text-primary font-semibold': isActive(s.href) }]}>
+              <li class="border-b border-gray-100 last:border-0">
+                <a href={s.href} class:list={['block px-4 py-[15px] text-[15px] font-light text-secondary hover:text-primary capitalize', { 'text-primary font-medium': isActive(s.href) }]}>
                   {s.label}
                 </a>
               </li>
@@ -75,14 +75,14 @@ function isActive(href: string): boolean {
         <li class="relative group">
           <button class="nav-link flex items-center gap-1" aria-haspopup="true">
             Get a Quote
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <ul class="absolute left-0 top-full mt-1 w-64 bg-white shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-lg rounded-md py-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             {quotes.map(q => (
-              <li>
-                <a href={q.href} class:list={['block px-4 py-2 text-sm text-dark hover:bg-gray-light hover:text-primary', { 'text-primary font-semibold': isActive(q.href) }]}>
+              <li class="border-b border-gray-100 last:border-0">
+                <a href={q.href} class:list={['block px-4 py-[15px] text-[15px] font-light text-secondary hover:text-primary capitalize', { 'text-primary font-medium': isActive(q.href) }]}>
                   {q.label}
                 </a>
               </li>
@@ -95,8 +95,8 @@ function isActive(href: string): boolean {
         </li>
 
         <!-- Phone -->
-        <li class="ml-2">
-          <a href="tel:8286354200" class="flex items-center gap-1 text-primary font-bold text-sm hover:text-primary-dark">
+        <li class="ml-4 pl-4 border-l border-white/70">
+          <a href="tel:8286354200" class="flex items-center gap-2 text-white font-bold text-[15px] capitalize hover:text-white/80">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             828-635-4200
           </a>
@@ -105,8 +105,8 @@ function isActive(href: string): boolean {
     </div>
 
     <!-- Mobile nav -->
-    <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 border-t border-gray-light pt-4">
-      <ul class="flex flex-col gap-2">
+    <div id="mobile-menu" class="hidden lg:hidden absolute left-0 top-full w-full bg-white shadow-lg">
+      <ul class="flex flex-col py-4">
         <li><a href="/" class:list={['mobile-link', { active: isActive('/') }]}>Home</a></li>
         <li>
           <button class="mobile-link w-full flex justify-between items-center mobile-accordion-toggle" data-target="mobile-services">
@@ -115,7 +115,7 @@ function isActive(href: string): boolean {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <ul id="mobile-services" class="hidden pl-4 mt-1 flex flex-col gap-1">
+          <ul id="mobile-services" class="hidden pl-4 flex flex-col">
             {services.map(s => (
               <li><a href={s.href} class="mobile-link text-sm">{s.label}</a></li>
             ))}
@@ -130,15 +130,15 @@ function isActive(href: string): boolean {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <ul id="mobile-quotes" class="hidden pl-4 mt-1 flex flex-col gap-1">
+          <ul id="mobile-quotes" class="hidden pl-4 flex flex-col">
             {quotes.map(q => (
               <li><a href={q.href} class="mobile-link text-sm">{q.label}</a></li>
             ))}
           </ul>
         </li>
         <li><a href="/contact-us/" class:list={['mobile-link', { active: isActive('/contact-us/') }]}>Contact Us</a></li>
-        <li class="pt-2 border-t border-gray-light">
-          <a href="tel:8286354200" class="flex items-center gap-2 text-primary font-bold">
+        <li class="pt-2 mx-4 border-t border-gray-200">
+          <a href="tel:8286354200" class="flex items-center gap-2 text-primary font-bold py-3">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             828-635-4200
           </a>
@@ -149,32 +149,50 @@ function isActive(href: string): boolean {
 </header>
 
 <style>
+  .nav-header {
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+  }
   .nav-link {
     display: inline-block;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-dark);
-    border-radius: 0.375rem;
+    padding: 35px 25px;
+    font-family: "Varela Round", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #FFFEFE;
     transition: color 0.2s;
+    text-decoration: none;
+    text-transform: capitalize;
   }
   .nav-link:hover,
   .nav-link.active {
-    color: var(--color-primary);
+    color: #FFFEFE;
+  }
+  /* Underline animation on hover */
+  .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #FFFEFE;
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
   }
   .mobile-link {
     display: block;
-    padding: 0.625rem 0.75rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--color-dark);
-    border-radius: 0.375rem;
+    padding: 0.75rem 1.25rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-secondary, #3D4459);
     transition: background-color 0.2s;
   }
   .mobile-link:hover,
   .mobile-link.active {
-    background-color: var(--color-gray-light);
-    color: var(--color-primary);
+    background-color: #f3f4f6;
+    color: var(--color-primary, #4632DA);
   }
 </style>
 

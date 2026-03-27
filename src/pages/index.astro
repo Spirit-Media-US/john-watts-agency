@@ -55,35 +55,36 @@ const testimonials = [
 ];
 ---
 
-<Layout title="Johnny Watts Agency — Your Trusted Insurance Specialists">
+<Layout title="Trusted Insurance Specialist | Johnny Watts Agency">
 
-  <!-- ═══ HERO — gradient bg, text LEFT, circular image RIGHT ═══ -->
-  <section class="relative overflow-hidden text-white" style="background: linear-gradient(135deg, #3757e1 0%, #00b4d8 50%, #7b2ff7 100%);">
-    <div class="max-w-7xl mx-auto px-4 py-16 md:py-24">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h1 class="text-white mb-4" style="font-size:2.5rem; line-height:1.15;">We Are Your Trusted Specialists</h1>
-          <p class="text-white/90 mb-6" style="font-size:1rem; line-height:1.7;">
+  <!-- ═══ HERO — gradient bg, text LEFT, image RIGHT ═══ -->
+  <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
+    <div class="max-w-[1250px] mx-auto px-[2%] py-16 md:py-24">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="md:w-1/2">
+          <h1 class="text-white mb-4" style="font-family: 'Varela Round', sans-serif; font-size: 45px; font-weight: 300; line-height: 1.2; text-transform: capitalize;">We Are Your Trusted Specialists</h1>
+          <p class="text-white/90 mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4;">
             We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
           </p>
-          <a href="/about/" class="btn">About Us</a>
+          <a href="#about" class="btn">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"/></svg>
+            About Us
+          </a>
         </div>
-        <div class="flex justify-center">
-          <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-            <img
-              src="https://cdn.sanity.io/images/ssbenczy/production/0ea061d233b07bc91d306af7b3615e7d9bba7875-2560x1707.jpg?w=800&h=800&fit=crop&auto=format"
-              alt="Happy family"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-          </div>
+        <div class="md:w-1/2">
+          <img
+            src="https://johnnywattsagency.com/wp-content/uploads/2023/10/happy-family-concept-top-view-of-happy-family-of-2022-01-29-00-01-45-utc-scaled.jpg"
+            alt="Happy family"
+            class="w-full h-auto rounded-lg"
+            loading="eager"
+          />
         </div>
       </div>
     </div>
-    <!-- Wave bottom -->
+    <!-- Wave bottom — exact WP Elementor wave shape -->
     <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-16 md:h-24">
-        <path d="M0,80 C360,120 720,40 1440,80 L1440,120 L0,120 Z" fill="#ffffff"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full h-16 md:h-24">
+        <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
     </div>
   </section>
@@ -128,7 +129,7 @@ const testimonials = [
       <p class="kicker">Company Affiliation</p>
       <h2 class="mb-4">Our Partners</h2>
       <p class="text-gray max-w-2xl mx-auto mb-10">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      <div class="grid grid-cols-3 sm:grid-cols-5 gap-6 items-center justify-items-center max-w-4xl mx-auto">
         {[
           { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
           { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
@@ -146,7 +147,7 @@ const testimonials = [
           { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
           { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
         ].map(p => (
-          <img src={p.url} alt={p.name} class="h-10 md:h-14 w-auto object-contain" loading="lazy" />
+          <img src={p.url} alt={p.name} class="h-8 md:h-10 w-auto object-contain" loading="lazy" />
         ))}
       </div>
     </div>
@@ -222,9 +223,7 @@ const testimonials = [
     </div>
     <div class="max-w-7xl mx-auto px-4 pt-8">
       <h2 class="text-white mb-6" style="font-size:2.5rem;">Get A Quote</h2>
-      <a href="/life-quote/" class="btn-outline inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-primary transition-colors" style="font-size:0.9375rem;">
-        Life Quote <span>→</span>
-      </a>
+      <a href="/life-quote/" class="btn btn-outline">Life Quote</a>
     </div>
   </section>
 
