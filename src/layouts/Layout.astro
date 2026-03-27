@@ -20,6 +20,54 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "InsuranceAgency",
+      "name": "Johnny Watts Agency",
+      "url": "https://johnnywattsagency.com",
+      "telephone": "+1-828-635-4200",
+      "email": "johnny@johnnywattsagency.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "351 NC Hwy 16 S",
+        "addressLocality": "Taylorsville",
+        "addressRegion": "NC",
+        "postalCode": "28681",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:30",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/johnnywatts/",
+        "https://www.linkedin.com/in/johnny-watts-687b1719"
+      ],
+      "description": "Your trusted Medicare, Health Insurance Marketplace, and Life Insurance specialists serving North Carolina for over 40 years.",
+      "areaServed": {
+        "@type": "State",
+        "name": "North Carolina"
+      },
+      "foundingDate": "1984",
+      "founder": {
+        "@type": "Person",
+        "name": "Johnny Watts"
+      }
+    })} />
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YRRF97BTZL');
+      gtag('config', 'AW-11481493068');
+    </script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-dark">
     <Nav />
