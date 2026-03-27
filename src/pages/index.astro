@@ -58,68 +58,64 @@ const testimonials = [
 <Layout title="Johnny Watts Agency — Your Trusted Insurance Specialists">
 
   <!-- Hero -->
-  <section class="bg-dark text-white py-20 md:py-28">
-    <div class="max-w-7xl mx-auto px-4 text-center">
+  <section class="relative text-white py-24 md:py-36 overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://cdn.sanity.io/images/ssbenczy/production/0ea061d233b07bc91d306af7b3615e7d9bba7875-2560x1707.jpg?w=1920&q=80&auto=format"
+        alt="Happy family"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-dark/60"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center">
       <h1 class="text-white mb-4">We Are Your Trusted Specialists</h1>
-      <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8" style="font-size:20px;">
         We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
       </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/about/" class="px-6 py-3 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-colors">
-          About Us
-        </a>
-        <a href="/contact-us/" class="px-6 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white hover:text-dark transition-colors">
-          Contact Us
-        </a>
-      </div>
+      <a href="/about/" class="inline-block px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors" style="font-size:1.125em;">
+        about us
+      </a>
     </div>
   </section>
 
   <!-- Why Choose Us -->
   <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="Your Health, Your Future, Your Family, Your Peace Of Mind" />
-      <div class="max-w-3xl mx-auto text-center mb-10">
-        <p class="text-gray leading-relaxed">
-          We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over 40 top insurance companies and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center p-6 bg-gray-light rounded-lg">
-          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-            <span class="text-3xl">🛡️</span>
-          </div>
-          <h3 class="mb-2">Medicare</h3>
-          <p class="text-gray">Expert guidance through Medicare options to find the right coverage for your needs.</p>
-          <a href="/medicare/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
-        </div>
-        <div class="text-center p-6 bg-gray-light rounded-lg">
-          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-            <span class="text-3xl">🏥</span>
-          </div>
-          <h3 class="mb-2">Health Insurance</h3>
-          <p class="text-gray">Navigate the Health Insurance Marketplace with a specialist who knows the options.</p>
-          <a href="/health-insurance-marketplace/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
-        </div>
-        <div class="text-center p-6 bg-gray-light rounded-lg">
-          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-            <span class="text-3xl">❤️</span>
-          </div>
-          <h3 class="mb-2">Life Insurance</h3>
-          <p class="text-gray">Protect what matters most with the right life insurance policy for your family.</p>
-          <a href="/learn-about-life-insurance/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
-        </div>
-      </div>
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="mb-6">Why Choose Johnny Watts Agency?</h2>
+      <p class="text-gray leading-relaxed mb-8" style="font-size:20px;">
+        We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over 40 top insurance companies and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
+      </p>
+      <a href="/about/" class="inline-block px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors" style="font-size:1.125em;">
+        learn more
+      </a>
     </div>
   </section>
 
   <!-- Partners -->
   <section class="py-16 bg-gray-light">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="Company Affiliations" subtitle="We work with over 40 top insurance companies to compare rates and find the plan that fits you best." />
-      <!-- Partner logos will be added from R2 in Phase 3 -->
-      <div class="text-center text-gray text-sm italic">
-        Partner logos coming soon — Fidelity, Foresters, MetLife, Prudential, Lincoln, Transamerica, Protective, ING, Genworth, and more.
+      <SectionHeading title="Company Affiliation" subtitle="The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs." />
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 items-center justify-items-center max-w-4xl mx-auto">
+        {[
+          { name: 'AGLA', url: 'https://cdn.sanity.io/images/ssbenczy/production/b8e0a789d04d62a2fd1e0538799c6831d4a1aac6-185x60.jpg' },
+          { name: 'American National', url: 'https://cdn.sanity.io/images/ssbenczy/production/b3dffa7a7c32262a29ebf26383dcd8f65d4086c3-130x65.jpg' },
+          { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
+          { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
+          { name: 'Genworth', url: 'https://cdn.sanity.io/images/ssbenczy/production/2103612e7019f0d2591ac7d1c69330476ea0b880-307x65.jpg' },
+          { name: 'ING', url: 'https://cdn.sanity.io/images/ssbenczy/production/ca2dc24c25284beab614dd96bead93f99a7c7d59-153x35.jpg' },
+          { name: 'Legal & General', url: 'https://cdn.sanity.io/images/ssbenczy/production/b5565c852b423b27bcc997bad72bfc2cd3afb163-98x82.jpg' },
+          { name: 'Lincoln', url: 'https://cdn.sanity.io/images/ssbenczy/production/76c789e697e046e845e780bcb147487766655a3a-146x57.jpg' },
+          { name: 'MetLife', url: 'https://cdn.sanity.io/images/ssbenczy/production/05d4d77751bc2f81b436a4d872f4aa3495c08638-144x46.jpg' },
+          { name: 'Mutual of Omaha', url: 'https://cdn.sanity.io/images/ssbenczy/production/76fa126d3c4533cf3d911eb37ebad45984f920f9-270x56.jpg' },
+          { name: 'North American', url: 'https://cdn.sanity.io/images/ssbenczy/production/b7e9e82ae195ef9af9e48d6ef3978fe09456ad06-193x109.jpg' },
+          { name: 'Protective', url: 'https://cdn.sanity.io/images/ssbenczy/production/9f786a73c274d11f7734dbb5e96cd0e4eb2d4ef7-184x51.jpg' },
+          { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
+          { name: 'Transamerica', url: 'https://cdn.sanity.io/images/ssbenczy/production/07112f2ba5d3602bd6e8ad2372208f757694e2d3-185x59.jpg' },
+          { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
+        ].map(p => (
+          <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
+        ))}
       </div>
     </div>
   </section>
@@ -127,23 +123,22 @@ const testimonials = [
   <!-- Team Preview -->
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="The Faces Behind Our Success" subtitle="Meet the team that's been serving your community for over 40 years." />
+      <SectionHeading kicker="our work inspires smiles" title="The Faces Behind Our Success" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { name: 'Johnny Watts', role: 'Owner / Agent' },
-          { name: 'Donnie Bost', role: 'Agent' },
-          { name: 'Linsey Stuckey', role: 'Agent' },
-          { name: 'Tiffany Billey', role: 'Agent' },
+          { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5ccfd6e5b2c4320f9e34e9e2c6f2ce32cb9dfb8a-500x500.png' },
+          { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/b1a5cca6b20ddfdffe94f7b4f11eac4e16a2b5c8-500x500.png' },
+          { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/00a64e66e6e20dbe2bde2b3e8d06370e9ed0e8d3-500x500.png' },
+          { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png' },
         ].map(member => (
           <div class="bg-gray-light rounded-lg p-6 text-center">
-            <div class="w-24 h-24 mx-auto mb-4 bg-gray-300 rounded-full"></div>
+            <img src={`${member.img}?w=200&h=200&fit=crop&auto=format`} alt={member.name} class="w-32 h-32 mx-auto mb-4 rounded-full object-cover" loading="lazy" />
             <h4>{member.name}</h4>
-            <p class="text-sm text-gray">{member.role}</p>
           </div>
         ))}
       </div>
       <div class="text-center mt-8">
-        <a href="/about/" class="px-6 py-3 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-colors">
+        <a href="/about/" class="px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors">
           About Us
         </a>
       </div>
@@ -153,7 +148,7 @@ const testimonials = [
   <!-- Testimonials -->
   <section class="py-16 bg-gray-light">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="What Our Clients Say" subtitle="Hear from families across North Carolina, South Carolina, and Georgia who trust Johnny Watts Agency." />
+      <SectionHeading kicker="we love them" title="Client Testimonials" />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="testimonials-grid">
         {testimonials.slice(0, 6).map(t => (
           <div class="bg-white rounded-lg p-6 shadow-sm">
@@ -176,7 +171,7 @@ const testimonials = [
       <div class="text-center mt-8">
         <button
           id="show-more-btn"
-          class="px-6 py-3 bg-white text-primary border-2 border-primary rounded-md font-semibold hover:bg-primary hover:text-white transition-colors"
+          class="px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors"
         >
           Show All {testimonials.length} Testimonials
         </button>
@@ -185,18 +180,12 @@ const testimonials = [
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-primary text-white text-center">
+  <section class="py-16 bg-white text-center">
     <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-white mb-4">Ready to Get Started?</h2>
-      <p class="text-lg text-blue-100 mb-8">Get a free quote today — no obligation, just honest advice from agents who care.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-          Life Quote
-        </a>
-        <a href="/medicare-quote/" class="inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-md hover:bg-white hover:text-primary transition-colors">
-          Medicare Quote
-        </a>
-      </div>
+      <h2 class="mb-6">Get a Quote</h2>
+      <a href="/life-quote/" class="inline-block px-8 py-3 bg-dark text-white font-semibold rounded-full hover:bg-white hover:text-dark border border-dark transition-colors" style="font-size:1.125em;">
+        Life Quote
+      </a>
     </div>
   </section>
 
