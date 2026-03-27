@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'johnnywattsagency',
+  deployment: {
+    appId: 'cb4arw21uwdb1nczgcw1uf84',
+  },
 })
