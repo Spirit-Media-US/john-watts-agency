@@ -3,18 +3,38 @@ import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
 const mainTeam = [
-  { name: 'Johnny Watts', role: 'Owner / Agent', email: 'johnny@johnnywattsagency.com' },
-  { name: 'Donnie Bost', role: 'Agent', email: 'donnie@johnnywattsagency.com' },
-  { name: 'Linsey Stuckey', role: 'Agent', email: 'linsey@johnnywattsagency.com' },
-  { name: 'Tiffany Billey', role: 'Agent', email: 'tiffany@johnnywattsagency.com' },
+  {
+    name: 'Johnny Watts',
+    role: 'Owner / Agent',
+    email: 'johnny@johnnywattsagency.com',
+    bio: 'Johnny Watts entered the insurance business in 1984. He and his wife, Lorie, were married in 1982 and they live in Taylorsville, NC. Johnny and Lorie have three daughters — Linsey, Abbey and Chelsea, and six grandchildren. Johnny is an active member of Stony Point Baptist Church and enjoys teaching Sunday School and singing in the choir. For most of the 80\'s and 90\'s, Johnny worked with agents throughout the Southeast specializing in group voluntary insurance benefits. In 2005, Johnny Watts and Donnie Bost began focusing on life insurance working with agents in all states and working directly with local customers. In 2017, Johnny started focusing on all aspects of Medicare and he has become the go-to for much of Alexander County. In 2020, Johnny moved the agency to Taylorsville and opened up the current office on Hwy 16 S in Taylorsville. It has been a great location for Johnny Watts Agency!',
+  },
+  {
+    name: 'Donnie Bost',
+    role: 'Agent',
+    email: 'donnie@johnnywattsagency.com',
+    bio: 'Donnie Bost has been a licensed real estate broker since 1981. He entered the insurance business in 1986. He and his wife, Teresa, were married in 1982 and live near Statesville, NC. They have three children: Nathan, Aaron, and Brittany and 3 grandchildren. Donnie is an active member of New Life Church and enjoys missions, working with youth, teaching Sunday School, and singing in the choir. After specializing in group voluntary insurance benefits for almost 20 years, Donnie Bost and Johnny Watts began focusing on life insurance, recruiting agents in all states and providing the best life insurance for local customers. He now also helps hundreds of customers each year find health insurance on the Marketplace. Donnie has worked with Johnny for around 40 years and he is invaluable to the agency.',
+  },
+  {
+    name: 'Linsey Stuckey',
+    role: 'Agent',
+    email: 'linsey@johnnywattsagency.com',
+    bio: 'Linsey Stuckey grew up in Alexander County and is Johnny\'s oldest daughter. She graduated from Gardner-Webb University with a bachelor\'s degree in Marketing. After staying at home with her kids, she started working at the agency part time in 2020, answering phones and setting appointments. Linsey later got her Insurance license (for the second time) in Life, Health and Medicare and started working as an agent in 2022. She focuses on ACA and Medicare and loves her customers. She enjoys the beach, reading, shopping, and experiencing new things with her family. Linsey lives in Hickory with her husband Joshua, and daughters Claire and Cora.',
+  },
+  {
+    name: 'Tiffany Billey',
+    role: 'Licensed Insurance Agent (Life, Health & Medicare)',
+    email: 'tiffany@johnnywattsagency.com',
+    bio: 'With more than 10 years of experience in the insurance industry, Tiffany Billey specializes in Health Insurance and Medicare plans. By starting her career during the launch of the Affordable Care Act, she has developed an expertise in simplifying complex policy options for her clients. Tiffany prides herself on building lasting relationships and ensuring her clients\' coverage adapts as their lives change. A proud Hiddenite resident and active member of the Taylorsville Church of God, Tiffany balances her professional expertise with a passion for community service, family time, and travel.',
+  },
 ];
 
 const supportTeam = [
-  'Kyle Russell',
-  'Jim Harmon',
-  'Diane McCoy',
-  'Pam Watts',
-  'Leigh Anne Burke',
+  { name: 'Kyle Russell', role: 'Agent' },
+  { name: 'Jim Harmon', role: 'Agent' },
+  { name: 'Diane McCoy', role: 'Customer Service' },
+  { name: 'Pam Watts', role: 'Customer Service' },
+  { name: 'Leigh Anne Burke', role: 'Customer Service' },
 ];
 ---
 
@@ -24,7 +44,7 @@ const supportTeam = [
   <section class="bg-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h1 class="text-white mb-3">About Us</h1>
-      <p class="text-gray-300 text-lg">Behind the scenes at Johnny Watts Agency</p>
+      <p class="text-gray-300 text-lg">The faces behind our success</p>
     </div>
   </section>
 
@@ -32,16 +52,16 @@ const supportTeam = [
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
       <SectionHeading title="Our Team" subtitle="Dedicated professionals who treat you like family." />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex flex-col gap-10">
         {mainTeam.map(member => (
-          <div class="flex flex-col sm:flex-row gap-6 bg-gray-light rounded-lg p-6">
-            <!-- Headshot placeholder — will be replaced with Sanity images -->
-            <div class="w-32 h-32 shrink-0 bg-gray-300 rounded-lg mx-auto sm:mx-0"></div>
+          <div class="flex flex-col md:flex-row gap-6 bg-gray-light rounded-lg p-6 md:p-8">
+            <!-- Headshot placeholder — will be replaced with Sanity/R2 images -->
+            <div class="w-40 h-40 shrink-0 bg-gray-300 rounded-lg mx-auto md:mx-0"></div>
             <div>
               <h3 class="mb-1">{member.name}</h3>
-              <p class="text-primary font-medium mb-2">{member.role}</p>
-              <p class="text-gray text-sm mb-2">Bio will be loaded from Sanity CMS.</p>
-              <a href={`mailto:${member.email}`} class="text-sm text-primary hover:text-primary-dark">
+              <p class="text-primary font-medium mb-3">{member.role}</p>
+              <p class="text-gray leading-relaxed mb-3">{member.bio}</p>
+              <a href={`mailto:${member.email}`} class="text-sm text-primary hover:text-primary-dark font-medium">
                 {member.email}
               </a>
             </div>
@@ -56,10 +76,11 @@ const supportTeam = [
     <div class="max-w-7xl mx-auto px-4">
       <SectionHeading title="Extended Team" />
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {supportTeam.map(name => (
-          <div class="bg-white rounded-lg p-4 text-center">
-            <div class="w-16 h-16 mx-auto mb-3 bg-gray-300 rounded-full"></div>
-            <p class="font-medium text-sm">{name}</p>
+        {supportTeam.map(person => (
+          <div class="bg-white rounded-lg p-5 text-center">
+            <div class="w-20 h-20 mx-auto mb-3 bg-gray-300 rounded-full"></div>
+            <p class="font-semibold">{person.name}</p>
+            <p class="text-sm text-gray">{person.role}</p>
           </div>
         ))}
       </div>
@@ -69,7 +90,8 @@ const supportTeam = [
   <!-- Partners -->
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="Our Partners" subtitle="We work with the nation's top insurance carriers." />
+      <SectionHeading title="Company Affiliations" subtitle="We work with over 40 top insurance companies to bring you the best options." />
+      <!-- Partner logos will be added from R2 in Phase 3 -->
       <div class="text-center text-gray text-sm italic">
         Partner logos coming soon.
       </div>
@@ -80,6 +102,7 @@ const supportTeam = [
   <section class="py-12 bg-primary text-white text-center">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-white mb-4">Get a Life Insurance Quote</h2>
+      <p class="text-blue-100 mb-6">Let our experienced team find the best coverage for your family.</p>
       <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
         Get a Quote
       </a>

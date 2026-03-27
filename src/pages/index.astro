@@ -1,6 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+
+const testimonials = [
+  { quote: "It is without hesitation that we would recommend Johnny Watts and Donnie Bost to anyone looking for life insurance.", name: "Randy & Judy B", location: "Willow Spring, NC" },
+  { quote: "My experience with Johnny Watts was really good. He listened to all my concerns and addressed them.", name: "Linda H. Chavis", location: "Raleigh, NC" },
+  { quote: "Johnny Watts reached out to me and I am glad he did. He was very detailed, presented options.", name: "Richard L. Moore", location: "Mebane, NC" },
+  { quote: "Working with Johnny was quick, painless and even saved me dollars.", name: "John G", location: "Creston, NC" },
+  { quote: "Johnny and Donnie found my wife and me coverage we needed at good price.", name: "Barry & Jan H", location: "Ferguson, NC" },
+  { quote: "Working with Johnny Watts replacing my coverage was the absolute best experience.", name: "Glenda K", location: "Greensboro, NC" },
+  { quote: "Johnny Watts & agency helped me realize the importance of having life insurance.", name: "Bob S", location: "Atlanta, GA" },
+  { quote: "I would highly recommend Johnny Watts Life Insurance Agency for life insurance.", name: "Jeannie C", location: "Highlands, NC" },
+  { quote: "Johnny Watts was the only person to call me in person to discuss my needs.", name: "Russell W", location: "Hendersonville, NC" },
+  { quote: "I was dropped by my current insurance co. Johnny Watts helped me find coverage.", name: "Gwen", location: "Parkton, NC" },
+  { quote: "It was a pleasure doing business with you. I got the Life Insurance I need.", name: "Kathy B", location: "Marion, NC" },
+  { quote: "Johnny was there for me with the best possible term life insurance rate.", name: "Michael K", location: "Walkertown, NC" },
+  { quote: "I would like to thank Johnny Watts for helping me with my life insurance.", name: "Charlie S", location: "Anderson, SC" },
+  { quote: "Johnny Watts provided exactly what I needed at the best affordable price.", name: "Mark B", location: "Rutherford College, NC" },
+  { quote: "We were very pleased working with you and your office.", name: "Lee & Mike S", location: "Murphy, NC" },
+  { quote: "Johnny and Donnie were great working with me and my schedule.", name: "Mike P", location: "Mooresville, NC" },
+  { quote: "Johnny Watts was great to work with on our life insurance policy.", name: "Lisa & Michael W", location: "Yanceyville, NC" },
+  { quote: "Johnny Watts and Donnie Bost were a pleasure to work with.", name: "Maureen L", location: "Raleigh, NC" },
+  { quote: "Johnny was fantastic to work with. He helped me determine the best type.", name: "Jeff R", location: "Raleigh, NC" },
+  { quote: "Johnny Watts Insurance Agency was very professional, knowledgeable and courteous.", name: "Deneice E", location: "Salisbury, NC" },
+  { quote: "I was needing help making decisions about my life insurance.", name: "Susan J", location: "High Point, NC" },
+  { quote: "Buying Life Insurance can be very confusing, Johnny Watts made me feel confident.", name: "Gary P", location: "Denver, NC" },
+  { quote: "My wife and I would recommend Johnny Watts and Donnie Bost to anyone.", name: "Bob & Judy B", location: "Statesville, NC" },
+  { quote: "Johnny Watts and Donnie Bost started out as agents, but quickly became friends.", name: "April T", location: "Taylorsville, NC" },
+  { quote: "Johnny Watts Insurance made my shopping experience the best.", name: "Jason P", location: "Mooresville, NC" },
+  { quote: "We didn't know who to go to for life insurance. Johnny was great.", name: "Timothy & Stacey V", location: "Denver, NC" },
+  { quote: "Johnny, the world would be better if people conducted business as you do.", name: "Beda Wray", location: "Catawba, NC" },
+  { quote: "Thanks for all your help in finding the right policy.", name: "Charlie & Jeong A", location: "Lexington, NC" },
+  { quote: "I would just like to say Johnny has been very helpful.", name: "Gary G", location: "Winston Salem, NC" },
+  { quote: "After talking with you, both put me at ease while we looked at options.", name: "Miss Sara H", location: "Asheville, NC" },
+  { quote: "I had a very special need and Johnny Watts was working with us.", name: "Tommy T", location: "Marshville, NC" },
+  { quote: "Johnny Watts was a great help in finding a policy I could afford.", name: "Roland H", location: "West Jefferson, NC" },
+  { quote: "My wife and I recently engaged Johnny Watts and Donnie Bost for policies.", name: "Stefan S", location: "Black Mountain, NC" },
+  { quote: "It was a pleasure doing business with Johnny and Donnie.", name: "Robert & Patricia S", location: "Silva, NC" },
+  { quote: "Johnny Watts did his homework before finding life insurance for my wife and me.", name: "Neil H", location: "Lincolnton, NC" },
+  { quote: "Johnny Watts did a wonderful job finding me the lowest rates possible.", name: "Vickie I", location: "Elon, NC" },
+  { quote: "Johnny Watts and Donnie Bost helped me find a policy doubling my coverage.", name: "Len P", location: "Mooresville, NC" },
+  { quote: "Johnny Watts is a pleasure to do business with and I recommend him.", name: "Dan A", location: "Hendersonville, NC" },
+  { quote: "Johnny Watts earned my trust and confidence from the first phone call.", name: "Tommy M", location: "NC" },
+  { quote: "My wife and I were really amazed at the customer service.", name: "Reggie & Tanya D", location: "Charlotte, NC" },
+  { quote: "Johnny Watts has been a great guy. He has helped me plenty.", name: "Shaun S", location: "Gastonia, NC" },
+  { quote: "Johnny Watts earned my trust from the first phone call.", name: "Tommy M", location: "Halifax, NC" },
+  { quote: "Thanks for keeping check on us and the great policy.", name: "Ken & Anita E", location: "Spruce Pine, NC" },
+  { quote: "Johnny Watts helped me pick out a life insurance policy.", name: "Gary G", location: "Forest City, NC" },
+  { quote: "Johnny, you were very helpful in finding the cheapest life insurance.", name: "Debbie S", location: "Yadkinville, NC" },
+  { quote: "Johnny Watts and Donnie Bost take the guess work out of buying insurance.", name: "Billy C", location: "Cherryville, NC" },
+  { quote: "Johnny Watts and his office were helpful in finding life insurance.", name: "Wayne M", location: "Hayesville, NC" },
+  { quote: "Johnny Watts found me the best life insurance for my needs.", name: "Connie S", location: "Statesville, NC" },
+  { quote: "After the loss of my husband, Johnny Watts helped me get insurance.", name: "Christine N", location: "Bessimer City, NC" },
+];
 ---
 
 <Layout title="Johnny Watts Agency — Your Trusted Insurance Specialists">
@@ -9,8 +61,8 @@ import SectionHeading from '../components/SectionHeading.astro';
   <section class="bg-dark text-white py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h1 class="text-white mb-4">We Are Your Trusted Specialists</h1>
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-        Protecting families and individuals across North Carolina for over 40 years with Medicare, Health Insurance Marketplace, and Life Insurance solutions.
+      <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+        We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="/about/" class="px-6 py-3 bg-primary text-white rounded-md font-semibold hover:bg-primary-dark transition-colors">
@@ -26,25 +78,33 @@ import SectionHeading from '../components/SectionHeading.astro';
   <!-- Why Choose Us -->
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading
-        title="Your Health, Your Future, Your Family, Your Peace Of Mind"
-        subtitle="For over four decades, Johnny Watts Agency has helped families navigate the world of insurance with personal attention and professional expertise."
-      />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-        <div class="text-center p-6">
-          <div class="text-4xl mb-4">🛡️</div>
+      <SectionHeading title="Your Health, Your Future, Your Family, Your Peace Of Mind" />
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <p class="text-gray leading-relaxed">
+          We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over 40 top insurance companies and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-gray-light rounded-lg">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl">🛡️</span>
+          </div>
           <h3 class="mb-2">Medicare</h3>
           <p class="text-gray">Expert guidance through Medicare options to find the right coverage for your needs.</p>
           <a href="/medicare/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
         </div>
-        <div class="text-center p-6">
-          <div class="text-4xl mb-4">🏥</div>
+        <div class="text-center p-6 bg-gray-light rounded-lg">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl">🏥</span>
+          </div>
           <h3 class="mb-2">Health Insurance</h3>
           <p class="text-gray">Navigate the Health Insurance Marketplace with a specialist who knows the options.</p>
           <a href="/health-insurance-marketplace/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
         </div>
-        <div class="text-center p-6">
-          <div class="text-4xl mb-4">❤️</div>
+        <div class="text-center p-6 bg-gray-light rounded-lg">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+            <span class="text-3xl">❤️</span>
+          </div>
           <h3 class="mb-2">Life Insurance</h3>
           <p class="text-gray">Protect what matters most with the right life insurance policy for your family.</p>
           <a href="/learn-about-life-insurance/" class="inline-block mt-4 text-primary font-semibold hover:text-primary-dark">Learn More →</a>
@@ -56,10 +116,10 @@ import SectionHeading from '../components/SectionHeading.astro';
   <!-- Partners -->
   <section class="py-16 bg-gray-light">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="Our Partners" subtitle="We work with trusted insurance carriers to bring you the best options." />
-      <!-- Partner logos will be added from Sanity/R2 in Phase 3 -->
+      <SectionHeading title="Company Affiliations" subtitle="We work with over 40 top insurance companies to compare rates and find the plan that fits you best." />
+      <!-- Partner logos will be added from R2 in Phase 3 -->
       <div class="text-center text-gray text-sm italic">
-        Partner logos coming soon — Fidelity, Foresters, MetLife, Prudential, Lincoln, Transamerica, and more.
+        Partner logos coming soon — Fidelity, Foresters, MetLife, Prudential, Lincoln, Transamerica, Protective, ING, Genworth, and more.
       </div>
     </div>
   </section>
@@ -68,13 +128,17 @@ import SectionHeading from '../components/SectionHeading.astro';
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
       <SectionHeading title="The Faces Behind Our Success" subtitle="Meet the team that's been serving your community for over 40 years." />
-      <!-- Team cards will be populated from Sanity in Phase 3 -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {['Johnny Watts', 'Donnie Bost', 'Linsey Stuckey', 'Tiffany Billey'].map(name => (
+        {[
+          { name: 'Johnny Watts', role: 'Owner / Agent' },
+          { name: 'Donnie Bost', role: 'Agent' },
+          { name: 'Linsey Stuckey', role: 'Agent' },
+          { name: 'Tiffany Billey', role: 'Agent' },
+        ].map(member => (
           <div class="bg-gray-light rounded-lg p-6 text-center">
             <div class="w-24 h-24 mx-auto mb-4 bg-gray-300 rounded-full"></div>
-            <h4>{name}</h4>
-            <p class="text-sm text-gray">Agent</p>
+            <h4>{member.name}</h4>
+            <p class="text-sm text-gray">{member.role}</p>
           </div>
         ))}
       </div>
@@ -89,15 +153,33 @@ import SectionHeading from '../components/SectionHeading.astro';
   <!-- Testimonials -->
   <section class="py-16 bg-gray-light">
     <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="What Our Clients Say" subtitle="Over 40 satisfied clients trust Johnny Watts Agency with their insurance needs." />
-      <!-- Testimonials will be populated from Sanity in Phase 3 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[1, 2, 3].map(() => (
+      <SectionHeading title="What Our Clients Say" subtitle="Hear from families across North Carolina, South Carolina, and Georgia who trust Johnny Watts Agency." />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="testimonials-grid">
+        {testimonials.slice(0, 6).map(t => (
           <div class="bg-white rounded-lg p-6 shadow-sm">
-            <p class="text-gray italic mb-4">"Testimonial content will be loaded from Sanity CMS."</p>
-            <p class="font-semibold text-dark">— Client Name, NC</p>
+            <p class="text-gray italic mb-4">"{t.quote}"</p>
+            <p class="font-semibold text-dark">— {t.name}, {t.location}</p>
           </div>
         ))}
+      </div>
+
+      <!-- Hidden testimonials revealed by button -->
+      <div id="more-testimonials" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {testimonials.slice(6).map(t => (
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <p class="text-gray italic mb-4">"{t.quote}"</p>
+            <p class="font-semibold text-dark">— {t.name}, {t.location}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <button
+          id="show-more-btn"
+          class="px-6 py-3 bg-white text-primary border-2 border-primary rounded-md font-semibold hover:bg-primary hover:text-white transition-colors"
+        >
+          Show All {testimonials.length} Testimonials
+        </button>
       </div>
     </div>
   </section>
@@ -106,11 +188,29 @@ import SectionHeading from '../components/SectionHeading.astro';
   <section class="py-16 bg-primary text-white text-center">
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-white mb-4">Ready to Get Started?</h2>
-      <p class="text-lg text-blue-100 mb-8">Get a free quote today — no obligation, just honest advice.</p>
-      <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-        Get a Life Quote
-      </a>
+      <p class="text-lg text-blue-100 mb-8">Get a free quote today — no obligation, just honest advice from agents who care.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
+          Life Quote
+        </a>
+        <a href="/medicare-quote/" class="inline-block px-8 py-3 border-2 border-white text-white font-semibold rounded-md hover:bg-white hover:text-primary transition-colors">
+          Medicare Quote
+        </a>
+      </div>
     </div>
   </section>
 
 </Layout>
+
+<script>
+  const btn = document.getElementById('show-more-btn');
+  const more = document.getElementById('more-testimonials');
+  btn?.addEventListener('click', () => {
+    more?.classList.toggle('hidden');
+    if (more?.classList.contains('hidden')) {
+      btn.textContent = `Show All Testimonials`;
+    } else {
+      btn.textContent = 'Show Fewer';
+    }
+  });
+</script>

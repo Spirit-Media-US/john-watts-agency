@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import QuoteForm from '../components/QuoteForm.astro';
 ---
 
 <Layout title="Contact Us — Johnny Watts Agency" description="Contact Johnny Watts Agency in Taylorsville, NC. Call (828) 635-4200 or fill out our contact form.">
@@ -8,53 +7,68 @@ import QuoteForm from '../components/QuoteForm.astro';
   <section class="bg-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h1 class="text-white mb-3">Contact Us</h1>
-      <p class="text-gray-300 text-lg">We'd love to hear from you</p>
+      <p class="text-gray-300 text-lg">We would be happy to assist you</p>
     </div>
   </section>
 
   <section class="py-16">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Contact Info -->
         <div>
-          <h2 class="mb-6">Get In Touch</h2>
-          <ul class="flex flex-col gap-4 text-dark">
-            <li class="flex gap-3">
-              <span class="text-xl">📍</span>
-              <div>
-                <p class="font-semibold">Address</p>
-                <p class="text-gray">351 NC Hwy 16 S, Taylorsville, NC 28681</p>
+          <h2 class="mb-6">Call Us, Write Us, or Knock on Our Door</h2>
+          <p class="text-gray leading-relaxed mb-8">
+            Get life insurance expertise to secure your future. Our team is here to help you navigate Medicare, Health Insurance Marketplace, and Life Insurance options.
+          </p>
+
+          <div class="flex flex-col gap-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-xl">📞</span>
               </div>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-xl">📞</span>
               <div>
-                <p class="font-semibold">Phone</p>
-                <a href="tel:8286354200" class="text-primary hover:text-primary-dark">(828) 635-4200</a>
+                <h4 class="mb-1">Give Us A Call</h4>
+                <a href="tel:8286354200" class="text-primary font-semibold hover:text-primary-dark text-lg">(828) 635-4200</a>
               </div>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-xl">✉️</span>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-xl">✉️</span>
+              </div>
               <div>
-                <p class="font-semibold">Email</p>
+                <h4 class="mb-1">Write Us</h4>
                 <a href="mailto:johnny@johnnywattsagency.com" class="text-primary hover:text-primary-dark">johnny@johnnywattsagency.com</a>
               </div>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-xl">🕐</span>
-              <div>
-                <p class="font-semibold">Hours</p>
-                <p class="text-gray">Monday – Friday: 9:30 AM – 5:00 PM</p>
-                <p class="text-gray">Saturday – Sunday: Closed</p>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-xl">📍</span>
               </div>
-            </li>
-          </ul>
+              <div>
+                <h4 class="mb-1">Let's Meet</h4>
+                <p class="text-gray">351 NC Hwy 16 S<br />Taylorsville, NC 28681</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-xl">🕐</span>
+              </div>
+              <div>
+                <h4 class="mb-1">Office Hours</h4>
+                <p class="text-gray">Monday – Friday: 9:30 AM – 5:00 PM</p>
+                <p class="text-gray">Saturday & Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Contact Form -->
         <div>
           <h2 class="mb-6">Send Us a Message</h2>
-          <form class="flex flex-col gap-4">
+          <form class="bg-gray-light rounded-lg p-8 flex flex-col gap-4">
             <div>
               <label for="name" class="block text-sm font-medium text-dark mb-1">Full Name</label>
               <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your full name" />
@@ -79,9 +93,9 @@ import QuoteForm from '../components/QuoteForm.astro';
   <!-- CTA -->
   <section class="py-12 bg-primary text-white text-center">
     <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-white mb-4">Get a Life Insurance Quote</h2>
+      <h2 class="text-white mb-4">Secure Your Future Today</h2>
       <a href="/life-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-        Get a Quote
+        Get a Life Quote
       </a>
     </div>
   </section>
