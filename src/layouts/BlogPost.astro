@@ -145,10 +145,15 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
     </section>
   </article>
 
-  <!-- CTA Section — sloped gradient band, no whitespace -->
+  <!-- CTA Section — curved top, flat bottom -->
   <div class="relative" style="margin: 0; padding: 0;">
-    <!-- The gradient band with clip-path for sloped edges -->
-    <div class="relative overflow-visible" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%); clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%); padding: 100px 0 80px;">
+    <div class="relative overflow-hidden" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%); padding: 120px 0 60px;">
+      <!-- Curved top edge -->
+      <div class="absolute left-0 w-full overflow-hidden leading-none" style="top: -1px; z-index: 2;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%); height: 100px;">
+          <path d="M0,100 C480,100 960,0 1440,0 L1440,0 L0,0 Z" fill="#ffffff"/>
+        </svg>
+      </div>
       <!-- Decorative blob — left -->
       <svg class="absolute pointer-events-none" style="left: -60px; top: 0; width: 200px; height: 100%; opacity: 0.45;" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
         <path d="M80,-30 C170,10 220,130 190,250 C160,370 60,380 0,300 C-60,220 -50,80 10,10 C40,-20 50,-40 80,-30 Z" fill="rgba(70,50,218,0.6)" />
