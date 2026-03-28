@@ -147,7 +147,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 
   <!-- CTA Section — curved top, flat bottom -->
   <div class="relative" style="margin: 0; padding: 0;">
-    <div class="relative overflow-hidden" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%); padding: 120px 0 60px;">
+    <div class="relative overflow-clip" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%); padding: 120px 0 60px; overflow-x: clip; overflow-y: visible;">
       <!-- Curved top edge -->
       <div class="absolute left-0 w-full overflow-hidden leading-none" style="top: -1px; z-index: 2;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%); height: 100px;">
@@ -173,13 +173,12 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
         </div>
-        <!-- Image -->
-        <div class="md:w-[55%] flex justify-end">
+        <!-- Image — floating above the gradient (shape baked into PNG) -->
+        <div class="md:w-[55%] flex justify-end" style="margin-top: -80px;">
           <img
-            src="https://cdn.sanity.io/images/ssbenczy/production/17f6656e1958d23ff03f1d52889993476f1cb7e0-1024x683.jpg?w=550&auto=format"
-            alt="Johnny Watts Agency team"
-            class="shadow-xl"
-            style="border-radius: 30px; width: 100%; max-width: 480px; object-fit: cover;"
+            src="/cta-post.png"
+            alt="Business team meeting"
+            style="width: 100%; max-width: 480px; display: block;"
             loading="lazy"
           />
         </div>
