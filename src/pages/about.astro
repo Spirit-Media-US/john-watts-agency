@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import PageHero from '../components/PageHero.astro';
 
 const mainTeam = [
   {
@@ -62,14 +63,7 @@ const partners = [
 
 <Layout title="About Us — Johnny Watts Agency" description="Meet the team at Johnny Watts Agency. Over 40 years of trusted insurance service in Taylorsville, NC.">
 
-  <!-- Hero Banner -->
-  <section class="relative text-white py-20 md:py-28 overflow-hidden">
-    <div class="absolute inset-0 bg-dark"></div>
-    <div class="relative max-w-7xl mx-auto px-4 text-center">
-      <p class="text-sm uppercase tracking-widest text-gray-400 mb-2">behind the scenes at beyond</p>
-      <h1 class="text-white">About Us</h1>
-    </div>
-  </section>
+  <PageHero title="About Us" subtitle="Behind The Scenes At Beyond" />
 
   <!-- Main Team — full bios -->
   <section class="py-16">
