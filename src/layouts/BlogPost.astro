@@ -145,15 +145,47 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
     </section>
   </article>
 
-  <!-- CTA Section -->
-  <section class="relative overflow-hidden text-white" style="background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #1a1a3e 100%); padding: 80px 0;">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="mb-3" style="font-family: 'Varela Round', sans-serif; font-size: 32px; font-weight: 300; color: #ffffff;">Do You Want To Boost Your Business?</h2>
-      <p class="mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8);">Drop Us A Line And Keep In Touch</p>
-      <a href="/contact-us/" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
-        Contact Us
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
-      </a>
+  <!-- CTA Section — diagonal gradient band with overlapping image -->
+  <section class="relative" style="padding: 0; margin-top: 60px; margin-bottom: 0;">
+    <!-- Wrapper for the angled gradient band -->
+    <div class="cta-band">
+      <!-- Diagonal gradient background -->
+      <div class="cta-bg"></div>
+
+      <!-- Decorative blob — left -->
+      <svg class="absolute pointer-events-none" style="left: -80px; top: 0; z-index: 1; width: 220px; height: 350px;" viewBox="0 0 220 350" xmlns="http://www.w3.org/2000/svg">
+        <path d="M80,-30 C170,10 220,130 190,250 C160,370 60,380 0,300 C-60,220 -50,80 10,10 C40,-20 50,-40 80,-30 Z" fill="rgba(70,50,218,0.45)" />
+      </svg>
+
+      <!-- Decorative blob — right -->
+      <svg class="absolute pointer-events-none" style="right: -50px; bottom: -30px; z-index: 1; width: 200px; height: 260px;" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+        <path d="M120,-20 C180,20 220,100 190,180 C160,260 80,280 30,230 C-20,180 -10,80 40,20 C70,-10 90,-35 120,-20 Z" fill="rgba(6,217,250,0.35)" />
+      </svg>
+
+      <!-- Bottom-right light triangle accent -->
+      <div class="absolute pointer-events-none" style="right: 0; bottom: 0; width: 120px; height: 80px; background: rgba(200,230,255,0.3); clip-path: polygon(100% 0%, 100% 100%, 0% 100%); z-index: 1;"></div>
+
+      <div class="relative max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center gap-8" style="z-index: 2; padding: 60px 24px 50px;">
+        <!-- Text -->
+        <div class="md:w-[45%] text-white">
+          <h2 class="mb-3" style="font-family: 'Varela Round', sans-serif; font-size: 36px; font-weight: 300; color: #ffffff; font-style: italic; line-height: 1.2;">Do You Want To Boost Your Business?</h2>
+          <p class="mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.85); font-style: italic;">Drop Us A Line And Keep In Touch</p>
+          <a href="/contact-us/" class="inline-flex items-center gap-2 px-7 py-3 transition-all hover:shadow-lg" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+            Contact Us
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+          </a>
+        </div>
+        <!-- Image — extends above the gradient band -->
+        <div class="md:w-[55%] flex justify-end" style="margin-top: -120px; margin-bottom: -20px;">
+          <img
+            src="https://cdn.sanity.io/images/ssbenczy/production/17f6656e1958d23ff03f1d52889993476f1cb7e0-1024x683.jpg?w=550&auto=format"
+            alt="Johnny Watts Agency team"
+            class="shadow-xl"
+            style="border-radius: 30px; width: 100%; max-width: 480px; object-fit: cover;"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -218,5 +250,26 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
     width: 100%;
     border-radius: 8px;
     margin: 1.5rem 0;
+  }
+
+  /* CTA diagonal band */
+  .cta-band {
+    position: relative;
+    overflow: visible;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%);
+    transform: skewY(-3deg);
+    transform-origin: top left;
+    top: 50px;
+    bottom: -30px;
+  }
+
+  @media (max-width: 767px) {
+    .cta-band :global(.md\:w-\[55\%\]) {
+      margin-top: 0 !important;
+    }
   }
 </style>
