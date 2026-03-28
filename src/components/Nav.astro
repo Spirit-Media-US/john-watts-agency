@@ -47,9 +47,9 @@ function isActive(href: string): boolean {
 
         <!-- Services dropdown -->
         <li class="relative group">
-          <button class="nav-link flex items-center gap-1" aria-haspopup="true">
+          <button class="nav-link !inline-flex items-center gap-1" aria-haspopup="true">
             Services
-            <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3 h-3 shrink-0 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
@@ -73,9 +73,9 @@ function isActive(href: string): boolean {
 
         <!-- Get a Quote dropdown -->
         <li class="relative group">
-          <button class="nav-link flex items-center gap-1" aria-haspopup="true">
+          <button class="nav-link !inline-flex items-center gap-1" aria-haspopup="true">
             Get a Quote
-            <svg class="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3 h-3 shrink-0 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
@@ -153,8 +153,10 @@ function isActive(href: string): boolean {
     box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
   }
   .nav-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 35px 25px;
+    white-space: nowrap;
     font-family: "Varela Round", sans-serif;
     font-size: 15px;
     font-weight: 300;
