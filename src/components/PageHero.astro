@@ -17,13 +17,13 @@ const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
   </svg>
 
   <div class="relative max-w-[1250px] mx-auto px-[2%]" style="z-index: 2;">
-    <h1 style="font-family: 'Varela Round', sans-serif; font-size: 45px; font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
-    {subtitle && <p class="mt-3" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
+    <h1 style="font-family: 'Varela Round', sans-serif; font-size: 55px; font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
+    {subtitle && <p class="mt-4" style="font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
   </div>
 
   <!-- Wave bottom (exact WP Elementor technique: slightly wider SVG, centered, rotated) -->
   <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 3; direction: ltr;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg); height: 100px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg); height: 100px;">
       <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill={waveFill}/>
     </svg>
   </div>
