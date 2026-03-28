@@ -2,22 +2,33 @@
 interface Props {
   title: string;
   subtitle?: string;
+  waveFill?: string;
 }
-const { title, subtitle } = Astro.props;
+const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
 ---
 
-<section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: 120px; padding-bottom: 80px;">
-  <!-- Decorative circles -->
-  <div class="absolute top-[-40px] left-[-40px] w-[250px] h-[250px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.1);"></div>
-  <div class="absolute top-[-20px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.08);"></div>
+<section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: 120px; padding-bottom: 140px;">
+  <!-- Decorative organic curves (matching WP Elementor overlay) -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;">
+    <!-- Large sweeping curve from top-left -->
+    <path d="M0,0 C200,0 400,100 500,250 C600,400 400,500 200,500 L0,500 Z" fill="rgba(255,255,255,0.08)" />
+    <!-- Wide arc from top-right — more visible -->
+    <path d="M850,0 C1050,80 1250,250 1440,450 L1440,0 Z" fill="rgba(255,255,255,0.08)" />
+    <!-- Mid curve overlay spanning right -->
+    <path d="M500,0 C750,0 1050,120 1200,300 C1350,480 1440,400 1440,250 L1440,0 Z" fill="rgba(255,255,255,0.06)" />
+    <!-- Lower right sweep -->
+    <path d="M1000,200 C1100,250 1300,350 1440,500 L1440,200 Z" fill="rgba(255,255,255,0.07)" />
+  </svg>
+
   <div class="relative max-w-[1250px] mx-auto px-[2%]" style="z-index: 2;">
     <h1 style="font-family: 'Varela Round', sans-serif; font-size: 45px; font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
     {subtitle && <p class="mt-3" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
   </div>
-  <!-- Wave bottom -->
-  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 1;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full" style="height: 80px;">
-      <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V100H0V30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
+
+  <!-- Wave bottom (exact WP Elementor technique: slightly wider SVG, centered, rotated) -->
+  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 3; direction: ltr;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg); height: 100px;">
+      <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill={waveFill}/>
     </svg>
   </div>
 </section>
