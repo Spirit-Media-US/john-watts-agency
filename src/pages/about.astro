@@ -94,7 +94,7 @@ const partners = [
                 src={member.img}
                 alt={member.name}
                 class="relative w-[200px] h-[200px] object-cover object-top bg-white"
-                style="border-radius: 250px 50px 50px 50px;"
+                style="border-radius: 250px 50px 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"
                 loading={i === 0 ? 'eager' : 'lazy'}
               />
             </div>
@@ -124,7 +124,7 @@ const partners = [
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {supportTeam.map(person => (
           <div class="text-center">
-            <img src={person.img} alt={person.name} class="w-[120px] h-[120px] mx-auto mb-3 object-cover object-top bg-white" style="border-radius: 250px 50px 50px 50px;" loading="lazy" />
+            <img src={person.img} alt={person.name} class="w-[120px] h-[120px] mx-auto mb-3 object-cover object-top bg-white" style="border-radius: 250px 50px 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="lazy" />
             <h3 style="font-family: 'Varela Round', sans-serif; font-size: 1rem; font-weight: 400; color: #353535;">{person.name}</h3>
             <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: #6b7280;">{person.role}</p>
           </div>
