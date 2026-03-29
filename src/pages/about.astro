@@ -87,13 +87,13 @@ const partners = [
     <div class="max-w-[1100px] mx-auto px-4">
       <div class="flex flex-col gap-20">
         {mainTeam.map((member, i) => (
-          <div class="relative flex flex-col md:flex-row gap-10 items-start">
-            <!-- Decorative circle behind photo -->
+          <div class="relative flex flex-col md:flex-row gap-10 items-start animate-on-scroll fade-up">
+            <!-- Photo -->
             <div class="relative shrink-0 mx-auto md:mx-0">
               <img
                 src={member.img}
                 alt={member.name}
-                class="relative w-[250px] h-[250px] object-cover object-top bg-white"
+                class="relative w-[180px] h-[180px] md:w-[250px] md:h-[250px] object-cover object-top bg-white"
                 style="border-radius: 150px 50px 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"
                 loading={i === 0 ? 'eager' : 'lazy'}
               />
@@ -138,7 +138,7 @@ const partners = [
     <div class="max-w-[1100px] mx-auto px-4">
       <SectionHeading kicker="we work with them" title="Company Affiliation" subtitle="The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs." />
       <div class="about-logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
-        <div class="about-logo-track flex items-center gap-16" id="about-logo-track">
+        <div class="about-logo-track flex items-center gap-6 md:gap-16" id="about-logo-track">
           {partners.map(p => (
             <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" />
           ))}

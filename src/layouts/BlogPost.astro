@@ -30,7 +30,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
         <path d="M1200,-50 C1350,0 1480,120 1500,280 C1520,440 1450,550 1320,520 C1190,490 1100,350 1100,200 C1100,50 1150,-50 1200,-50 Z" fill="rgba(255,255,255,0.08)" />
       </svg>
       <div class="relative max-w-3xl mx-auto px-4" style="z-index: 2;">
-        <h1 class="mb-4" style="font-family: 'Varela Round', sans-serif; font-size: 40px; font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
+        <h1 class="mb-4" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 5vw, 40px); font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.8);">
           <span>kevin</span>
           <span class="mx-2">·</span>
@@ -47,7 +47,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 
     <!-- Featured Image (overlapping hero) -->
     {img && (
-      <div class="relative max-w-3xl mx-auto px-4" style="margin-top: -100px; z-index: 4;">
+      <div class="relative max-w-3xl mx-auto px-4" style="margin-top: clamp(-60px, -8vw, -100px); z-index: 4;">
         <img src={img} alt={title} class="w-full rounded-lg shadow-lg" style="aspect-ratio: 16/9; object-fit: cover;" />
       </div>
     )}
@@ -83,7 +83,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
     <!-- Newsletter -->
     <div class="max-w-2xl mx-auto px-4 mb-16">
       <div class="rounded-xl shadow-lg overflow-hidden" style="border-bottom: 4px solid transparent; border-image: linear-gradient(90deg, #4632DA, #06D9FA) 1;">
-        <div class="p-8 text-center">
+        <div class="p-5 md:p-8 text-center">
           <h3 class="mb-2" style="font-family: 'Varela Round', sans-serif; font-size: 24px; font-weight: 300; color: #3D4459;">Subscribe To Our Newsletter</h3>
           <p class="mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300; color: #6b7280;">Get updates and learn from the best</p>
           <form class="flex gap-3 max-w-md mx-auto">
@@ -125,7 +125,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
       <h2 class="text-center mb-8" style="font-family: 'Varela Round', sans-serif; font-size: 28px; font-weight: 300; color: #3D4459;">More To Explore</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {relatedPosts.map(post => (
-          <a href={post.slug} class="block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow" style="text-decoration: none;">
+          <a href={post.slug} class="block bg-white rounded-lg overflow-hidden hover-lift hover-zoom animate-on-scroll fade-up" style="text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
             <div class="relative">
               <img src={post.img} alt={post.title} class="w-full h-48 object-cover" loading="lazy" />
               <span class="absolute top-3 left-3 px-3 py-1 text-white text-xs font-medium rounded-full" style="background: #4632DA; font-family: 'Montserrat', sans-serif;">Insurance Expert</span>
@@ -166,7 +166,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
       <div class="relative max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center gap-8" style="z-index: 2;">
         <!-- Text -->
         <div class="md:w-[45%] text-white">
-          <h2 class="mb-3" style="font-family: 'Varela Round', sans-serif; font-size: 36px; font-weight: 300; color: #ffffff; line-height: 1.2;">Do You Want To Boost Your Business?</h2>
+          <h2 class="mb-3" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #ffffff; line-height: 1.2;">Do You Want To Boost Your Business?</h2>
           <p class="mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.85);">Drop Us A Line And Keep In Touch</p>
           <a href="/contact-us/" class="inline-flex items-center gap-2 px-7 py-3 transition-all hover:shadow-lg" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
             Contact Us
@@ -174,7 +174,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
           </a>
         </div>
         <!-- Image — floating above the gradient (shape baked into PNG) -->
-        <div class="md:w-[55%] flex justify-end" style="margin-top: -80px;">
+        <div class="md:w-[55%] flex justify-center md:justify-end" style="margin-top: clamp(-40px, -6vw, -80px);">
           <img
             src="/cta-post.png"
             alt="Business team meeting"

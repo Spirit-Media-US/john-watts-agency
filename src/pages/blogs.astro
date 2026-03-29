@@ -12,7 +12,7 @@ import { posts } from '../data/posts';
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-grid">
         {posts.map((post, i) => (
-          <article class:list={['blog-card bg-gray-light rounded-lg overflow-hidden hover:shadow-md transition-shadow', { hidden: i >= 6 }]}>
+          <article class:list={['blog-card bg-gray-light rounded-lg overflow-hidden hover-lift hover-zoom animate-on-scroll fade-up', { hidden: i >= 6 }]}>
             <img src={post.img} alt={post.title} class="w-full h-48 object-cover" loading="lazy" />
             <div class="p-5">
               <p class="text-xs text-gray mb-2">{post.date}</p>

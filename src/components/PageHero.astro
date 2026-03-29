@@ -7,7 +7,7 @@ interface Props {
 const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
 ---
 
-<section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: 120px; padding-bottom: 140px;">
+<section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: clamp(70px, 10vw, 120px); padding-bottom: clamp(90px, 12vw, 140px);">
   <!-- Decorative blob shapes — one left, one right -->
   <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;">
     <!-- Left blob -->
@@ -17,8 +17,8 @@ const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
   </svg>
 
   <div class="relative max-w-[1250px] mx-auto px-[2%]" style="z-index: 2;">
-    <h1 style="font-family: 'Varela Round', sans-serif; font-size: 55px; font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
-    {subtitle && <p class="mt-4" style="font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
+    <h1 style="font-family: 'Varela Round', sans-serif; font-size: clamp(28px, 5vw, 55px); font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
+    {subtitle && <p class="mt-4" style="font-family: 'Montserrat', sans-serif; font-size: clamp(15px, 2vw, 19px); font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
   </div>
 
   <!-- Wave bottom (exact WP Elementor technique: slightly wider SVG, centered, rotated) -->

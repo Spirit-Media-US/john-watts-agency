@@ -75,5 +75,16 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
       <slot />
     </main>
     <Footer />
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>
