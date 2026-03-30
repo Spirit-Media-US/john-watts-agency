@@ -3,80 +3,28 @@ import Layout from '../layouts/Layout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import PageHero from '../components/PageHero.astro';
+import { sanityClient, urlFor } from '../lib/sanity';
 
-const mainTeam = [
-  {
-    name: 'Johnny Watts',
-    role: 'Agent, Owner',
-    email: 'johnny@johnnywattsagency.com',
-    img: 'https://cdn.sanity.io/images/ssbenczy/production/5369409619f9e4198af805133bb83d135e76bb70-500x500.png?w=300&auto=format',
-    bio: [
-      'Johnny Watts entered the insurance business in 1984. He and his wife, Lorie, were married in 1982 and they live in Taylorsville, NC. Johnny and Lorie have three daughters – Linsey, Abbey and Chelsea, and six grandchildren.',
-      'Johnny is an active member of Stony Point Baptist Church and enjoys teaching Sunday School and singing in the choir.',
-      'For most of the 80\'s and 90\'s, Johnny worked with agents throughout the Southeast specializing in group voluntary insurance benefits. In 2005, Johnny Watts and Donnie Bost began focusing on life insurance working with agents in all states and working directly with local customers.',
-      'In 2017, Johnny started focusing on all aspects of Medicare and he has become the go-to for much of Alexander County. In 2020, Johnny moved the agency to Taylorsville and opened up the current office on Hwy 16 S in Taylorsville.  It has been a great location for Johnny Watts Agency!',
-    ],
-  },
-  {
-    name: 'Donnie Bost',
-    role: 'Agent',
-    email: 'donnie@johnnywattsagency.com',
-    img: 'https://cdn.sanity.io/images/ssbenczy/production/fb78382b2630258d0b53b830d71fba5bd0b27c6c-500x500.png?w=300&auto=format',
-    bio: [
-      'Donnie Bost has been a licensed real estate broker since 1981. He entered the insurance business in 1986. He and his wife, Teresa, were married in 1982 and live near Statesville, NC. They have three children: Nathan, Aaron, and Brittany and 3 grandchildren.',
-      'Donnie is an active member of New Life Church and enjoys missions, working with youth, teaching Sunday School, and singing in the choir.',
-      'After specializing in group voluntary insurance benefits for almost 20 years, Donnie Bost and Johnny Watts began focusing on life insurance, recruiting agents in all states and providing the best life insurance for local customers. He now also helps hundreds of customers each year find health insurance on the Marketplace.',
-      'Donnie has worked with Johnny for around 40 years and he is invaluable to the agency.',
-    ],
-  },
-  {
-    name: 'Linsey Stuckey',
-    role: 'Agent',
-    email: 'linsey@johnnywattsagency.com',
-    img: 'https://cdn.sanity.io/images/ssbenczy/production/d9e06beb0aaaa3b0232eae49ba9e424e66fd14f2-500x500.png?w=300&auto=format',
-    bio: [
-      'Linsey Stuckey grew up in Alexander County and is Johnny\'s oldest daughter. She graduated from Gardner-Webb University with a bachelor\'s degree in Marketing.',
-      'After staying at home with her kids, she started working at the agency part time in 2020, answering phones and setting appointments. Linsey later got her Insurance license (for the second time) in Life, Health and Medicare and started working as an agent in 2022.',
-      'She focuses on ACA and Medicare and loves her customers. She enjoys the beach, reading, shopping, and experiencing new things with her family. Linsey lives in Hickory with her husband Joshua, and daughters Claire and Cora.',
-    ],
-  },
-  {
-    name: 'Tiffany Billey',
-    role: 'Licensed Insurance Agent (Life, Health & Medicare)',
-    email: 'tiffany@johnnywattsagency.com',
-    img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png?w=300&auto=format',
-    bio: [
-      'With more than 10 years of experience in the insurance industry, Tiffany Billey specializes in Health Insurance and Medicare plans. By starting her career during the launch of the Affordable Care Act, she has developed an expertise in simplifying complex policy options for her clients.',
-      'Tiffany prides herself on building lasting relationships and ensuring her clients\' coverage adapts as their lives change. A proud Hiddenite resident and active member of the Taylorsville Church of God, Tiffany balances her professional expertise with a passion for community service, family time, and travel.',
-    ],
-  },
-];
+// Fetch team from Sanity
+const allTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) { name, role, email, bio, featured, headshot }`);
+const mainTeam = allTeam.filter((t: any) => t.featured).map((t: any) => ({
+  name: t.name,
+  role: t.role,
+  email: t.email || '',
+  img: t.headshot ? urlFor(t.headshot).width(300).auto('format').url() : '',
+  bio: (t.bio || '').split('\n').filter((p: string) => p.trim()),
+}));
+const supportTeam = allTeam.filter((t: any) => !t.featured).map((t: any) => ({
+  name: t.name,
+  role: t.role,
+  img: t.headshot ? urlFor(t.headshot).width(250).auto('format').url() : '',
+}));
 
-const supportTeam = [
-  { name: 'Kyle Russell', role: 'Agent', img: 'https://cdn.sanity.io/images/ssbenczy/production/e6716abca3b9c47f48ba27407839e37e4f36d880-500x500.png?w=250&auto=format' },
-  { name: 'Jim Harmon', role: 'Agent', img: 'https://cdn.sanity.io/images/ssbenczy/production/79b0d39a065ef838f9b0417a8b63641f7d18418e-500x500.png?w=250&auto=format' },
-  { name: 'Diane McCoy', role: 'Customer Service', img: 'https://cdn.sanity.io/images/ssbenczy/production/6fa7ebd3247973ef3fb0f198d546c1bc502c1671-500x500.png?w=250&auto=format' },
-  { name: 'Pam Watts', role: 'Customer Service', img: 'https://cdn.sanity.io/images/ssbenczy/production/c95702a8e1a99a171fb815bfd9ce568ca6a130af-500x500.png?w=250&auto=format' },
-  { name: 'Leigh Anne Burke', role: 'Customer Service', img: 'https://cdn.sanity.io/images/ssbenczy/production/1df8aa6b94c035b79fd8c407be7c0aa9aa9897dd-500x500.png?w=250&auto=format' },
-];
-
-const partners = [
-  { name: 'AGLA', url: 'https://cdn.sanity.io/images/ssbenczy/production/b8e0a789d04d62a2fd1e0538799c6831d4a1aac6-185x60.jpg' },
-  { name: 'American National', url: 'https://cdn.sanity.io/images/ssbenczy/production/b3dffa7a7c32262a29ebf26383dcd8f65d4086c3-130x65.jpg' },
-  { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
-  { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
-  { name: 'Genworth', url: 'https://cdn.sanity.io/images/ssbenczy/production/2103612e7019f0d2591ac7d1c69330476ea0b880-307x65.jpg' },
-  { name: 'ING', url: 'https://cdn.sanity.io/images/ssbenczy/production/ca2dc24c25284beab614dd96bead93f99a7c7d59-153x35.jpg' },
-  { name: 'Legal & General', url: 'https://cdn.sanity.io/images/ssbenczy/production/b5565c852b423b27bcc997bad72bfc2cd3afb163-98x82.jpg' },
-  { name: 'Lincoln', url: 'https://cdn.sanity.io/images/ssbenczy/production/76c789e697e046e845e780bcb147487766655a3a-146x57.jpg' },
-  { name: 'MetLife', url: 'https://cdn.sanity.io/images/ssbenczy/production/05d4d77751bc2f81b436a4d872f4aa3495c08638-144x46.jpg' },
-  { name: 'Mutual of Omaha', url: 'https://cdn.sanity.io/images/ssbenczy/production/76fa126d3c4533cf3d911eb37ebad45984f920f9-270x56.jpg' },
-  { name: 'North American', url: 'https://cdn.sanity.io/images/ssbenczy/production/b7e9e82ae195ef9af9e48d6ef3978fe09456ad06-193x109.jpg' },
-  { name: 'Protective', url: 'https://cdn.sanity.io/images/ssbenczy/production/9f786a73c274d11f7734dbb5e96cd0e4eb2d4ef7-184x51.jpg' },
-  { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
-  { name: 'Transamerica', url: 'https://cdn.sanity.io/images/ssbenczy/production/07112f2ba5d3602bd6e8ad2372208f757694e2d3-185x59.jpg' },
-  { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
-];
+// Fetch partners from Sanity
+const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`)).map((p: any) => ({
+  name: p.name,
+  url: p.logo ? urlFor(p.logo).height(65).auto('format').url() : '',
+}));
 ---
 
 <Layout title="About Us — Johnny Watts Agency" description="Meet the team at Johnny Watts Agency. Over 40 years of trusted insurance service in Taylorsville, NC.">
