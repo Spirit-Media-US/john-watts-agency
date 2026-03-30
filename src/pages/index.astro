@@ -1,58 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import { sanityClient, urlFor } from '../lib/sanity';
 
-const testimonials = [
-  { quote: "It is without hesitation that we would recommend Johnny Watts and Donnie Bost to anyone looking for life insurance.", name: "Randy & Judy B", location: "Willow Spring, NC" },
-  { quote: "My experience with Johnny Watts was really good. He listened to all my concerns and addressed them.", name: "Linda H. Chavis", location: "Raleigh, NC" },
-  { quote: "Johnny Watts reached out to me and I am glad he did. He was very detailed, presented options.", name: "Richard L. Moore", location: "Mebane, NC" },
-  { quote: "Working with Johnny was quick, painless and even saved me dollars.", name: "John G", location: "Creston, NC" },
-  { quote: "Johnny and Donnie found my wife and me coverage we needed at good price.", name: "Barry & Jan H", location: "Ferguson, NC" },
-  { quote: "Working with Johnny Watts replacing my coverage was the absolute best experience.", name: "Glenda K", location: "Greensboro, NC" },
-  { quote: "Johnny Watts & agency helped me realize the importance of having life insurance.", name: "Bob S", location: "Atlanta, GA" },
-  { quote: "I would highly recommend Johnny Watts Life Insurance Agency for life insurance.", name: "Jeannie C", location: "Highlands, NC" },
-  { quote: "Johnny Watts was the only person to call me in person to discuss my needs.", name: "Russell W", location: "Hendersonville, NC" },
-  { quote: "I was dropped by my current insurance co. Johnny Watts helped me find coverage.", name: "Gwen", location: "Parkton, NC" },
-  { quote: "It was a pleasure doing business with you. I got the Life Insurance I need.", name: "Kathy B", location: "Marion, NC" },
-  { quote: "Johnny was there for me with the best possible term life insurance rate.", name: "Michael K", location: "Walkertown, NC" },
-  { quote: "I would like to thank Johnny Watts for helping me with my life insurance.", name: "Charlie S", location: "Anderson, SC" },
-  { quote: "Johnny Watts provided exactly what I needed at the best affordable price.", name: "Mark B", location: "Rutherford College, NC" },
-  { quote: "We were very pleased working with you and your office.", name: "Lee & Mike S", location: "Murphy, NC" },
-  { quote: "Johnny and Donnie were great working with me and my schedule.", name: "Mike P", location: "Mooresville, NC" },
-  { quote: "Johnny Watts was great to work with on our life insurance policy.", name: "Lisa & Michael W", location: "Yanceyville, NC" },
-  { quote: "Johnny Watts and Donnie Bost were a pleasure to work with.", name: "Maureen L", location: "Raleigh, NC" },
-  { quote: "Johnny was fantastic to work with. He helped me determine the best type.", name: "Jeff R", location: "Raleigh, NC" },
-  { quote: "Johnny Watts Insurance Agency was very professional, knowledgeable and courteous.", name: "Deneice E", location: "Salisbury, NC" },
-  { quote: "I was needing help making decisions about my life insurance.", name: "Susan J", location: "High Point, NC" },
-  { quote: "Buying Life Insurance can be very confusing, Johnny Watts made me feel confident.", name: "Gary P", location: "Denver, NC" },
-  { quote: "My wife and I would recommend Johnny Watts and Donnie Bost to anyone.", name: "Bob & Judy B", location: "Statesville, NC" },
-  { quote: "Johnny Watts and Donnie Bost started out as agents, but quickly became friends.", name: "April T", location: "Taylorsville, NC" },
-  { quote: "Johnny Watts Insurance made my shopping experience the best.", name: "Jason P", location: "Mooresville, NC" },
-  { quote: "We didn't know who to go to for life insurance. Johnny was great.", name: "Timothy & Stacey V", location: "Denver, NC" },
-  { quote: "Johnny, the world would be better if people conducted business as you do.", name: "Beda Wray", location: "Catawba, NC" },
-  { quote: "Thanks for all your help in finding the right policy.", name: "Charlie & Jeong A", location: "Lexington, NC" },
-  { quote: "I would just like to say Johnny has been very helpful.", name: "Gary G", location: "Winston Salem, NC" },
-  { quote: "After talking with you, both put me at ease while we looked at options.", name: "Miss Sara H", location: "Asheville, NC" },
-  { quote: "I had a very special need and Johnny Watts was working with us.", name: "Tommy T", location: "Marshville, NC" },
-  { quote: "Johnny Watts was a great help in finding a policy I could afford.", name: "Roland H", location: "West Jefferson, NC" },
-  { quote: "My wife and I recently engaged Johnny Watts and Donnie Bost for policies.", name: "Stefan S", location: "Black Mountain, NC" },
-  { quote: "It was a pleasure doing business with Johnny and Donnie.", name: "Robert & Patricia S", location: "Silva, NC" },
-  { quote: "Johnny Watts did his homework before finding life insurance for my wife and me.", name: "Neil H", location: "Lincolnton, NC" },
-  { quote: "Johnny Watts did a wonderful job finding me the lowest rates possible.", name: "Vickie I", location: "Elon, NC" },
-  { quote: "Johnny Watts and Donnie Bost helped me find a policy doubling my coverage.", name: "Len P", location: "Mooresville, NC" },
-  { quote: "Johnny Watts is a pleasure to do business with and I recommend him.", name: "Dan A", location: "Hendersonville, NC" },
-  { quote: "Johnny Watts earned my trust and confidence from the first phone call.", name: "Tommy M", location: "NC" },
-  { quote: "My wife and I were really amazed at the customer service.", name: "Reggie & Tanya D", location: "Charlotte, NC" },
-  { quote: "Johnny Watts has been a great guy. He has helped me plenty.", name: "Shaun S", location: "Gastonia, NC" },
-  { quote: "Johnny Watts earned my trust from the first phone call.", name: "Tommy M", location: "Halifax, NC" },
-  { quote: "Thanks for keeping check on us and the great policy.", name: "Ken & Anita E", location: "Spruce Pine, NC" },
-  { quote: "Johnny Watts helped me pick out a life insurance policy.", name: "Gary G", location: "Forest City, NC" },
-  { quote: "Johnny, you were very helpful in finding the cheapest life insurance.", name: "Debbie S", location: "Yadkinville, NC" },
-  { quote: "Johnny Watts and Donnie Bost take the guess work out of buying insurance.", name: "Billy C", location: "Cherryville, NC" },
-  { quote: "Johnny Watts and his office were helpful in finding life insurance.", name: "Wayne M", location: "Hayesville, NC" },
-  { quote: "Johnny Watts found me the best life insurance for my needs.", name: "Connie S", location: "Statesville, NC" },
-  { quote: "After the loss of my husband, Johnny Watts helped me get insurance.", name: "Christine N", location: "Bessimer City, NC" },
-];
+// Fetch testimonials from Sanity
+const sanityTestimonials = await sanityClient.fetch(`*[_type == "testimonial"] | order(order asc) { clientName, quote, location }`);
+const testimonials = sanityTestimonials.map((t: any) => ({
+  quote: t.quote,
+  name: t.clientName,
+  location: t.location || '',
+}));
+
+// Fetch team members from Sanity (first 4 for homepage)
+const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) [0...4] { name, role, photo }`);
+
+// Fetch partners from Sanity
+const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`);
+
 ---
 
 <Layout title="Trusted Insurance Specialist | Johnny Watts Agency">
@@ -134,24 +98,8 @@ const testimonials = [
       <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4; color: #353535;" class="max-w-2xl mx-auto mb-10 " data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
       <div class="logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
-          {[
-            { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
-            { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
-            { name: 'MetLife', url: 'https://cdn.sanity.io/images/ssbenczy/production/05d4d77751bc2f81b436a4d872f4aa3495c08638-144x46.jpg' },
-            { name: 'Mutual of Omaha', url: 'https://cdn.sanity.io/images/ssbenczy/production/76fa126d3c4533cf3d911eb37ebad45984f920f9-270x56.jpg' },
-            { name: 'North American', url: 'https://cdn.sanity.io/images/ssbenczy/production/b7e9e82ae195ef9af9e48d6ef3978fe09456ad06-193x109.jpg' },
-            { name: 'AGLA', url: 'https://cdn.sanity.io/images/ssbenczy/production/b8e0a789d04d62a2fd1e0538799c6831d4a1aac6-185x60.jpg' },
-            { name: 'American National', url: 'https://cdn.sanity.io/images/ssbenczy/production/b3dffa7a7c32262a29ebf26383dcd8f65d4086c3-130x65.jpg' },
-            { name: 'Genworth', url: 'https://cdn.sanity.io/images/ssbenczy/production/2103612e7019f0d2591ac7d1c69330476ea0b880-307x65.jpg' },
-            { name: 'ING', url: 'https://cdn.sanity.io/images/ssbenczy/production/ca2dc24c25284beab614dd96bead93f99a7c7d59-153x35.jpg' },
-            { name: 'Legal & General', url: 'https://cdn.sanity.io/images/ssbenczy/production/b5565c852b423b27bcc997bad72bfc2cd3afb163-98x82.jpg' },
-            { name: 'Lincoln', url: 'https://cdn.sanity.io/images/ssbenczy/production/76c789e697e046e845e780bcb147487766655a3a-146x57.jpg' },
-            { name: 'Transamerica', url: 'https://cdn.sanity.io/images/ssbenczy/production/07112f2ba5d3602bd6e8ad2372208f757694e2d3-185x59.jpg' },
-            { name: 'Protective', url: 'https://cdn.sanity.io/images/ssbenczy/production/9f786a73c274d11f7734dbb5e96cd0e4eb2d4ef7-184x51.jpg' },
-            { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
-            { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
-          ].map(p => (
-            <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" />
+          {sanityPartners.map((p: any) => (
+            <img src={p.logo ? urlFor(p.logo).height(65).auto('format').url() : ''} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" />
           ))}
         </div>
       </div>
@@ -172,14 +120,9 @@ const testimonials = [
       <div class="flex flex-col lg:flex-row gap-10 items-center">
         <!-- Photos grid -->
         <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5369409619f9e4198af805133bb83d135e76bb70-500x500.png?w=250&auto=format' },
-            { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/fb78382b2630258d0b53b830d71fba5bd0b27c6c-500x500.png?w=250&auto=format' },
-            { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/d9e06beb0aaaa3b0232eae49ba9e424e66fd14f2-500x500.png?w=250&auto=format' },
-            { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png?w=250&auto=format' },
-          ].map(m => (
+          {sanityTeam.map((m: any) => (
             <div class="text-center">
-              <img src={m.img} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
+              <img src={m.photo ? urlFor(m.photo).width(250).auto('format').url() : ''} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
               <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300;">{m.name}</p>
             </div>
           ))}
