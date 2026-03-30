@@ -1,6 +1,9 @@
 ---
 import Layout from './Layout.astro';
 import { posts } from '../data/posts';
+import { sanityClient, urlFor } from '../lib/sanity';
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ ctaImage }`);
+const ctaImgUrl = settings?.ctaImage ? urlFor(settings.ctaImage).width(480).auto('format').url() : '/cta-post.png';
 
 interface Props {
   title: string;
@@ -176,7 +179,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
         <!-- Image — floating above the gradient (shape baked into PNG) -->
         <div class="md:w-[55%] flex justify-center md:justify-end" style="margin-top: clamp(-40px, -6vw, -80px);">
           <img
-            src="/cta-post.png"
+            src={ctaImgUrl}
             alt="Business team meeting"
             style="width: 100%; max-width: 480px; display: block; border-radius: 200px 50px 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"
             loading="lazy"

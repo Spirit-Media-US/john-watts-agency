@@ -12,11 +12,17 @@ const testimonials = sanityTestimonials.map((t: any) => ({
 }));
 
 // Fetch team members from Sanity (first 4 for homepage)
-const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) [0...4] { name, role, photo }`);
+const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) [0...4] { name, role, headshot }`);
 
 // Fetch partners from Sanity
 const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`);
 
+// Fetch site settings for images
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ heroImage, aboutImage, bgHero, bgTeam }`);
+const heroImgUrl = settings?.heroImage ? urlFor(settings.heroImage).width(1200).auto('format').url() : '/happy-family.jpg';
+const aboutImgUrl = settings?.aboutImage ? urlFor(settings.aboutImage).width(800).auto('format').url() : '/family-sitting.jpg';
+const bgHeroUrl = settings?.bgHero ? urlFor(settings.bgHero).width(1920).auto('format').url() : '/bg-homepage-high.png';
+const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('format').url() : '/bg-team-home.png';
 ---
 
 <Layout title="Trusted Insurance Specialist | Johnny Watts Agency">
@@ -24,7 +30,7 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
   <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
   <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
     <!-- Decorative background overlay (blob shapes) -->
-    <div class="absolute inset-0 pointer-events-none" style="background-image: url('/bg-homepage-high.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: 0.15;"></div>
+    <div class="absolute inset-0 pointer-events-none" style={`background-image: url('${bgHeroUrl}'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: 0.15;`}></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-[45%] shrink-0 " data-aos="fade-up">
@@ -39,7 +45,7 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
         </div>
         <div class="md:w-[55%] " data-aos="fade-left" data-aos-delay="200">
           <img
-            src="/happy-family.jpg"
+            src={heroImgUrl}
             alt="Happy family lying together"
             class="w-full h-auto hover-tilt"
             style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
@@ -67,7 +73,7 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
         <!-- Image -->
         <div class="md:w-1/2 " data-aos="fade-right">
           <img
-            src="/family-sitting.jpg"
+            src={aboutImgUrl}
             alt="Family sitting together and talking"
             class="w-full h-auto"
             style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
@@ -110,7 +116,7 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
   <section class="relative py-16 md:py-24 overflow-hidden" style="min-height: 780px;">
     <!-- Background pattern overlay -->
     <div class="absolute inset-0 bg-no-repeat bg-contain bg-bottom opacity-100 pointer-events-none"
-      style="background-image: url('/bg-team-home.png');">
+      style={`background-image: url('${bgTeamUrl}');`}>
     </div>
     <!-- Decorative circles -->
     <div class="absolute top-16 right-[8%] w-[150px] h-[150px] rounded-full opacity-10 pointer-events-none animate-float" style="background: #06D9FA;"></div>
@@ -122,7 +128,7 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
         <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
           {sanityTeam.map((m: any) => (
             <div class="text-center">
-              <img src={m.photo ? urlFor(m.photo).width(250).auto('format').url() : ''} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
+              <img src={m.headshot ? urlFor(m.headshot).width(250).auto('format').url() : ''} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
               <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300;">{m.name}</p>
             </div>
           ))}
