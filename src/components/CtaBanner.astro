@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative overflow-hidden" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding: 140px 0 60px;">
+<section class="relative overflow-hidden animate-gradient" style="background: linear-gradient(130deg, #4632DA 0%, #2a7de8 33%, #06D9FA 66%, #4632DA 100%); background-size: 200% 200%; padding: 140px 0 60px;">
   <!-- Wave top -->
   <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 2;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) scaleX(-1); height: 100px;">
@@ -22,8 +22,8 @@ const {
   <div class="absolute top-[-40px] left-[-40px] w-[200px] h-[200px] rounded-full pointer-events-none animate-pulse-soft" style="background: rgba(255,255,255,0.1);"></div>
   <div class="absolute bottom-[-50px] right-[-50px] w-[250px] h-[250px] rounded-full pointer-events-none animate-float" style="background: rgba(255,255,255,0.08);"></div>
   <div class="relative max-w-7xl mx-auto px-4 text-left" style="z-index: 3;">
-    <h2 class="mb-6 animate-on-scroll fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #ffffff;">{heading}</h2>
-    <a href={buttonHref} class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg animate-on-scroll fade-up stagger-2" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+    <h2 class="mb-6 " data-aos="fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #ffffff;">{heading}</h2>
+    <a href={buttonHref} class="btn-shine inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg " data-aos="fade-up" data-aos-delay="200" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
       {buttonText}
       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
     </a>

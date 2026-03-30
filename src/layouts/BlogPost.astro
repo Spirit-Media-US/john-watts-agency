@@ -125,7 +125,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
       <h2 class="text-center mb-8" style="font-family: 'Varela Round', sans-serif; font-size: 28px; font-weight: 300; color: #3D4459;">More To Explore</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {relatedPosts.map(post => (
-          <a href={post.slug} class="block bg-white rounded-lg overflow-hidden hover-lift hover-zoom animate-on-scroll fade-up" style="text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+          <a href={post.slug} class="block bg-white rounded-lg overflow-hidden hover-lift hover-zoom " data-aos="fade-up" style="text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
             <div class="relative">
               <img src={post.img} alt={post.title} class="w-full h-48 object-cover" loading="lazy" />
               <span class="absolute top-3 left-3 px-3 py-1 text-white text-xs font-medium rounded-full" style="background: #4632DA; font-family: 'Montserrat', sans-serif;">Insurance Expert</span>

@@ -88,7 +88,7 @@ const partners = [
     <div class="max-w-[1100px] mx-auto px-4">
       <div class="flex flex-col gap-20">
         {mainTeam.map((member, i) => (
-          <div class="relative flex flex-col md:flex-row gap-10 items-start animate-on-scroll fade-up">
+          <div class="relative flex flex-col md:flex-row gap-10 items-start " data-aos="fade-up">
             <!-- Photo -->
             <div class="relative shrink-0 mx-auto md:mx-0">
               <img
@@ -124,8 +124,8 @@ const partners = [
     <div class="max-w-[1100px] mx-auto px-4">
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {supportTeam.map(person => (
-          <div class="text-center">
-            <img src={person.img} alt={person.name} class="w-[150px] h-[150px] mx-auto mb-3 rounded-full object-cover object-top bg-white" style="box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="lazy" />
+          <div class="text-center " data-aos="zoom-in">
+            <img src={person.img} alt={person.name} class="w-[150px] h-[150px] mx-auto mb-3 rounded-full object-cover object-top bg-white hover-tilt" style="box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="lazy" />
             <h3 style="font-family: 'Varela Round', sans-serif; font-size: 1rem; font-weight: 400; color: #353535;">{person.name}</h3>
             <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: #6b7280;">{person.role}</p>
           </div>
