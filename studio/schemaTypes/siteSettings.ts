@@ -40,6 +40,13 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+      group: 'identity',
+      description: 'Square icon shown in browser tabs and bookmarks (180x180px recommended)',
+    }),
+    defineField({
       name: 'heroImage',
       title: 'Homepage Hero Image',
       type: 'image',

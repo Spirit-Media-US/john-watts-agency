@@ -5,18 +5,85 @@ import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
-<Layout title="Health Insurance Marketplace — Johnny Watts Agency" description="Navigate the Health Insurance Marketplace with a specialist. Johnny Watts Agency helps you find affordable health coverage.">
+<Layout title="Health Insurance Marketplace — Johnny Watts Agency" description="Navigate the Health Insurance Marketplace with a specialist. Johnny Watts Agency helps you find affordable ACA health coverage in North Carolina.">
 
-  <PageHero title="Health Insurance Marketplace" />
+  <PageHero title="Health Insurance Marketplace" subtitle="Finding The Right Health Coverage For You And Your Family" />
 
-  <!-- Content -->
+  <!-- Intro -->
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <p class="text-gray leading-relaxed mb-8">
-        Here at Johnny Watts Agency, you can be sure that we will give you the options that give you the most benefits. We will consider all of your needs and find the provider that best matches those.
+      <p class="mb-6" data-aos="fade-up" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        Here at Johnny Watts Agency, you can be sure that we will give you the options that give you the most benefits. We will consider all of your needs and find the provider that best matches those. Our platform is a top-tier health insurance marketplace that offers services tailored to your needs.
       </p>
-      <div class="text-center">
-        <a href="/health-insurance-marketplace-services-quote/" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+      <p class="mb-6" data-aos="fade-up" data-aos-delay="100" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        The Affordable Care Act (ACA) Health Insurance Marketplace allows individuals and families to compare and purchase health insurance plans. Whether you're self-employed, between jobs, or your employer doesn't offer coverage, we help you navigate the options and find the plan that fits your budget and healthcare needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- What We Help With -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-center mb-4" data-aos="fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #4632DA;">How We Help</h2>
+      <p class="text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; color: #6b7280;">We guide you through every step of the enrollment process.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Plan Comparison</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">We compare plans across multiple carriers to find the coverage that matches your doctors, medications, and budget.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="200" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Subsidy Assistance</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">We help determine if you qualify for premium tax credits or cost-sharing reductions that can significantly lower your monthly costs.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="300" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Enrollment Support</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">We walk you through the entire enrollment process — from application to confirmation — so nothing gets missed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Types -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="mb-4" data-aos="fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 300; color: #4632DA;">Marketplace Plan Types</h2>
+      <p class="mb-8" data-aos="fade-up" data-aos-delay="100" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        ACA Marketplace plans come in four metal tiers. Each tier covers the same essential health benefits, but they differ in how costs are shared between you and the insurance company.
+      </p>
+
+      <div class="space-y-4">
+        <div class="bg-gray-light rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 18px; font-weight: 300; color: #3D4459; margin-bottom: 6px;">Bronze Plans</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Lowest monthly premium, highest out-of-pocket costs. Best if you're healthy and want protection against worst-case scenarios.</p>
+        </div>
+        <div class="bg-gray-light rounded-xl p-6" data-aos="fade-up" data-aos-delay="150">
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 18px; font-weight: 300; color: #3D4459; margin-bottom: 6px;">Silver Plans</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Moderate premiums and out-of-pocket costs. Eligible for extra savings if your income qualifies. Most popular choice.</p>
+        </div>
+        <div class="bg-gray-light rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 18px; font-weight: 300; color: #3D4459; margin-bottom: 6px;">Gold Plans</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Higher monthly premium, lower costs when you get care. Good if you use a lot of healthcare services.</p>
+        </div>
+        <div class="bg-gray-light rounded-xl p-6" data-aos="fade-up" data-aos-delay="250">
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 18px; font-weight: 300; color: #3D4459; margin-bottom: 6px;">Platinum Plans</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Highest monthly premium, lowest out-of-pocket costs. Best if you expect significant medical expenses.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10" data-aos="fade-up">
+        <a href="/health-insurance-marketplace-services-quote/" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 30px;">
           Get a Quote
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
         </a>
@@ -25,15 +92,17 @@ import PageHero from '../components/PageHero.astro';
   </section>
 
   <!-- Contact Form -->
-  <section class="py-16 bg-gray-light">
+  <section class="pt-16 pb-16 bg-gray-light">
     <div class="max-w-xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="mb-2">Let's have a chat</h2>
+      <div class="text-center mb-8" data-aos="fade-up">
+        <h2 style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #3D4459;">Let's Have A Chat</h2>
       </div>
-      <QuoteForm />
+      <div data-aos="fade-up" data-aos-delay="100">
+        <QuoteForm />
+      </div>
     </div>
   </section>
 
-  <CtaBanner />
+  <CtaBanner waveFill="#f3f4f6" />
 
 </Layout>
