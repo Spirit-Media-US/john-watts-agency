@@ -1,41 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Medicare — Johnny Watts Agency" description="Learn about Medicare options with Johnny Watts Agency. Expert guidance for Medicare coverage in North Carolina.">
 
-  <section class="bg-dark text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-white mb-3">Medicare</h1>
-      <p class="text-gray-300 text-lg">Expert guidance through your Medicare options</p>
-    </div>
-  </section>
+  <PageHero title="Medicare" />
 
+  <!-- Content -->
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <!-- Hero image placeholder — will be replaced with R2/Sanity image -->
-      <div class="w-full h-64 bg-gray-200 rounded-lg mb-8"></div>
-
-      <p class="text-lg text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-6">
         Medicare is the federally provided healthcare insurance. Original Medicare provides for fundamental doctor and hospital costs. However, Original Medicare might not cover some expenses which can result in out-of-pocket expenses when getting treatment.
       </p>
-      <p class="text-lg text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-6">
         To ensure that you will not be spending too much on these out-of-pocket expenses, you can get additional insurance coverage.
       </p>
-      <p class="text-lg text-gray leading-relaxed">
-        We have extensive experience providing assistance and services to those seeking Medicare plans.
+      <p class="text-gray leading-relaxed mb-8">
+        We have an extensive experience for providing assistance and services to those seeking Medicare plans.
       </p>
+      <div class="text-center">
+        <a href="/medicare-quote/" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+          Get a Quote
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="py-12 bg-primary text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-white mb-4">Ready to Explore Your Medicare Options?</h2>
-      <p class="text-blue-100 mb-6">Call us at <a href="tel:8286354200" class="text-white underline font-semibold">(828) 635-4200</a> or request a quote online.</p>
-      <a href="/medicare-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-        Get a Medicare Quote
-      </a>
+  <!-- Contact Form -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="mb-2">Let's have a chat</h2>
+      </div>
+      <QuoteForm />
     </div>
   </section>
+
+  <CtaBanner />
 
 </Layout>

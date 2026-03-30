@@ -1,38 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Health Insurance Marketplace — Johnny Watts Agency" description="Navigate the Health Insurance Marketplace with a specialist. Johnny Watts Agency helps you find affordable health coverage.">
 
-  <section class="bg-dark text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-white mb-3">Health Insurance Marketplace</h1>
-      <p class="text-gray-300 text-lg">Navigate your health coverage options with expert guidance</p>
-    </div>
-  </section>
+  <PageHero title="Health Insurance Marketplace" />
 
+  <!-- Content -->
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <!-- Hero image placeholder — will be replaced with R2/Sanity image -->
-      <div class="w-full h-64 bg-gray-200 rounded-lg mb-8"></div>
-
-      <p class="text-lg text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-8">
         Here at Johnny Watts Agency, you can be sure that we will give you the options that give you the most benefits. We will consider all of your needs and find the provider that best matches those.
       </p>
-      <p class="text-lg text-gray leading-relaxed">
-        Call us at <a href="tel:8286354200" class="text-primary font-semibold hover:text-primary-dark">(828) 635-4200</a> to speak with a specialist today.
-      </p>
+      <div class="text-center">
+        <a href="/health-insurance-marketplace-services-quote/" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+          Get a Quote
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="py-12 bg-primary text-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="text-white mb-4">Find Your Health Insurance Plan</h2>
-      <p class="text-blue-100 mb-6">Let us help you navigate the marketplace and find the right coverage.</p>
-      <a href="/health-insurance-marketplace-services-quote/" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-md hover:bg-gray-light transition-colors">
-        Get a Quote
-      </a>
+  <!-- Contact Form -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="mb-2">Let's have a chat</h2>
+      </div>
+      <QuoteForm />
     </div>
   </section>
+
+  <CtaBanner />
 
 </Layout>

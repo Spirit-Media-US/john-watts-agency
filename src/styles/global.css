@@ -1,35 +1,38 @@
 @import "tailwindcss";
 
 /* ─── Design Tokens ─── Johnny Watts Agency ──────────────────────
-   Brand: Insurance agency — trustworthy, family-oriented
-   Primary blue: #3757e1 (from existing site)
-   Dark: #32373c (backgrounds, text)
+   Extracted from live WordPress Elementor site (post-12 kit CSS)
+   Primary: #4632DA (purple)  Accent: #06D9FA (cyan)
+   Fonts: Varela Round (headings) + Montserrat (body)
 ────────────────────────────────────────────────────────────────── */
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "Merriweather", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-heading: "Varela Round", system-ui, sans-serif;
 
-  --color-primary: #3757e1;
-  --color-primary-dark: #2a42b8;
-  --color-primary-light: #5a7aff;
-  --color-dark: #32373c;
+  --color-primary: #4632DA;
+  --color-primary-dark: #3526b0;
+  --color-primary-light: #5a4de6;
+  --color-accent: #06D9FA;
+  --color-secondary: #3D4459;
+  --color-dark: #353535;
   --color-dark-light: #4a5058;
   --color-gray: #6b7280;
   --color-gray-light: #f3f4f6;
   --color-white: #ffffff;
-  --color-accent: #3757e1;
+  --color-light-bg: #F9F9F9;
 }
 
 :root {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "Merriweather", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-heading: "Varela Round", system-ui, sans-serif;
   --color-bg: #ffffff;
-  --color-text: #32373c;
-  --color-accent: #3757e1;
+  --color-text: #353535;
+  --gradient-primary: linear-gradient(130deg, #4632DA 0%, #06D9FA 100%);
+  --gradient-dark: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #1a1a3e 100%);
 }
 
-/* ─── Typography Foundation ──────────────────────────────────── */
+/* ─── Typography — matches WP Elementor kit ──────────────────── */
 html {
   font-family: var(--font-sans);
   color: var(--color-text);
@@ -37,35 +40,420 @@ html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-dark);
+/* Global mobile padding for all sections */
+@media (max-width: 767px) {
+  section > div,
+  article > div {
+    padding-left: max(var(--tw-px, 0px), 20px);
+    padding-right: max(var(--tw-px, 0px), 20px);
+  }
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 2rem; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-secondary);
+  text-transform: capitalize;
+}
+
+h1 { font-size: 2.8125rem; } /* 45px */
+h2 { font-size: 2.25rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 
 @media (min-width: 768px) {
-  h1 { font-size: 2.625rem; }  /* 42px */
-  h2 { font-size: 2.25rem; }   /* 36px */
+  h1 { font-size: 2.8125rem; }
+  h2 { font-size: 2.25rem; }
   h3 { font-size: 1.75rem; }
 }
 
 p {
-  font-size: 1.25rem;  /* 20px — matches WordPress */
-  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--color-primary-dark);
+}
+
+/* ─── Buttons — gradient pill matching WP Elementor ──────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  border-radius: 30px;
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.hero-btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-btn:hover {
+  background-color: #4632da !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+/* ─── Kicker text (small label above headings) ───────────────── */
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+/* ─── Section wave decorations ───────────────────────────────── */
+.wave-top,
+.wave-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-top {
+  top: -1px;
+}
+
+.wave-bottom {
+  bottom: -1px;
+}
+
+.wave-top svg,
+.wave-bottom svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+@media (min-width: 768px) {
+  .wave-top svg,
+  .wave-bottom svg {
+    height: 100px;
+  }
+}
+
+/* ─── Circular image frame ───────────────────────────────────── */
+.img-circle-frame {
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+/* ─── Testimonial carousel ───────────────────────────────────── */
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial-slide {
+  min-width: 100%;
+}
+
+.testimonial-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.testimonial-dot.active {
+  background-color: var(--color-primary);
+}
+
+/* ─── Scroll Animations ─────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Elements waiting to animate */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animated {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+}
+
+.animate-on-scroll.animated.fade-up { animation-name: fadeUp; }
+.animate-on-scroll.animated.fade-in { animation-name: fadeIn; }
+.animate-on-scroll.animated.slide-left { animation-name: slideInLeft; }
+.animate-on-scroll.animated.slide-right { animation-name: slideInRight; }
+.animate-on-scroll.animated.scale-in { animation-name: scaleIn; }
+
+/* Stagger delays for child elements */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* ─── Hover Effects ─────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(70, 50, 218, 0.2);
+}
+
+/* Image zoom on hover */
+.hover-zoom {
+  overflow: hidden;
+}
+.hover-zoom img {
+  transition: transform 0.5s ease;
+}
+.hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* ─── Floating / pulse decorations ──────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.07; transform: scale(1); }
+  50% { opacity: 0.12; transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 5s ease-in-out infinite;
+}
+
+/* ─── Premium Animations ────────────────────────────────────── */
+
+/* Counter / number count-up effect */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-on-scroll.animated.count-up { animation-name: countUp; animation-duration: 0.6s; }
+
+/* Reveal with blur */
+@keyframes blurIn {
+  from { opacity: 0; filter: blur(8px); transform: translateY(15px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+.animate-on-scroll.animated.blur-in { animation-name: blurIn; animation-duration: 0.8s; }
+
+/* Rotate in subtle */
+@keyframes rotateIn {
+  from { opacity: 0; transform: rotate(-3deg) translateY(20px); }
+  to { opacity: 1; transform: rotate(0) translateY(0); }
+}
+.animate-on-scroll.animated.rotate-in { animation-name: rotateIn; }
+
+/* Stagger delays extended */
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+
+/* ─── Premium Hover Effects ─────────────────────────────────── */
+
+/* Button shine sweep */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::after {
+  left: 120%;
+}
+
+/* Card gradient border on hover */
+.hover-gradient-border {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.hover-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(130deg, #4632DA, #06D9FA);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.hover-gradient-border:hover::before {
+  opacity: 1;
+}
+.hover-gradient-border:hover {
+  transform: translateY(-4px);
+}
+
+/* Image tilt on hover */
+.hover-tilt {
+  transition: transform 0.4s ease;
+}
+.hover-tilt:hover {
+  transform: perspective(800px) rotateY(-3deg) rotateX(2deg) scale(1.02);
+}
+
+/* Text gradient on hover */
+.hover-text-gradient:hover {
+  background: linear-gradient(130deg, #4632DA, #06D9FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Ambient Animations ────────────────────────────────────── */
+
+/* Slow drift for decorative elements */
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10px, -10px) rotate(1deg); }
+  66% { transform: translate(-5px, 5px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+/* Shimmer for partner logos */
+@keyframes shimmer {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+  100% { filter: brightness(1); }
+}
+.animate-shimmer:hover {
+  animation: shimmer 1.5s ease-in-out;
+}
+
+/* Gradient background shift */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Smooth underline reveal for links */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4632DA, #06D9FA);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Parallax-lite (CSS only) ──────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .parallax-slow {
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
 }

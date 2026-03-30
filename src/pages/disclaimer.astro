@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="Disclaimer — Johnny Watts Agency" description="Legal disclaimer for johnnywattsagency.com.">
 
+  <PageHero title="Disclaimer" />
+
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <h1 class="mb-2">Disclaimer</h1>
       <p class="text-sm text-gray mb-8">Last updated: November 09, 2023</p>
 
       <h2 class="text-xl mb-3">Interpretation</h2>
@@ -96,5 +99,7 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
   </section>
+
+  <CtaBanner />
 
 </Layout>

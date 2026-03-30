@@ -5,9 +5,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://johnnywattsagency.com',
   integrations: [sitemap()],
+  server: {
+    port: 4331,
+    host: true,
+  },
   vite: {
     server: {
-      host: true,
       allowedHosts: true,
     },
     plugins: [tailwindcss()],

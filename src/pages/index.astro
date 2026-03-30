@@ -55,136 +55,195 @@ const testimonials = [
 ];
 ---
 
-<Layout title="Johnny Watts Agency — Your Trusted Insurance Specialists">
+<Layout title="Trusted Insurance Specialist | Johnny Watts Agency">
 
-  <!-- Hero -->
-  <section class="relative text-white py-24 md:py-36 overflow-hidden">
-    <div class="absolute inset-0">
-      <img
-        src="https://cdn.sanity.io/images/ssbenczy/production/0ea061d233b07bc91d306af7b3615e7d9bba7875-2560x1707.jpg?w=1920&q=80&auto=format"
-        alt="Happy family"
-        class="w-full h-full object-cover"
-        loading="eager"
-      />
-      <div class="absolute inset-0 bg-dark/60"></div>
+  <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
+  <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
+    <!-- Decorative background overlay (blob shapes) -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: url('/bg-homepage-high.png'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: 0.15;"></div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="md:w-[45%] shrink-0 " data-aos="fade-up">
+          <h1 class="mb-4" style="font-family: 'Varela Round', sans-serif; font-size: clamp(28px, 5vw, 45px); font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">We Are Your Trusted Specialists</h1>
+          <p class="text-white/90 mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4;">
+            We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
+          </p>
+          <a href="#about" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+            About Us
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+          </a>
+        </div>
+        <div class="md:w-[55%] " data-aos="fade-left" data-aos-delay="200">
+          <img
+            src="/happy-family.jpg"
+            alt="Happy family lying together"
+            class="w-full h-auto hover-tilt"
+            style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
+            loading="eager"
+          />
+        </div>
+      </div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-white mb-4">We Are Your Trusted Specialists</h1>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8" style="font-size:20px;">
-        We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
-      </p>
-      <a href="/about/" class="inline-block px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors" style="font-size:1.125em;">
-        about us
-      </a>
+    <!-- Wave bottom — exact WP Elementor technique -->
+    <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 1; direction: ltr;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg) scaleX(-1); height: 100px;">
+        <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
+      </svg>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="mb-6">Why Choose Johnny Watts Agency?</h2>
-      <p class="text-gray leading-relaxed mb-8" style="font-size:20px;">
-        We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over 40 top insurance companies and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
-      </p>
-      <a href="/about/" class="inline-block px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors" style="font-size:1.125em;">
-        learn more
-      </a>
-    </div>
-  </section>
-
-  <!-- Partners -->
-  <section class="py-16 bg-gray-light">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading title="Company Affiliation" subtitle="The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs." />
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 items-center justify-items-center max-w-4xl mx-auto">
-        {[
-          { name: 'AGLA', url: 'https://cdn.sanity.io/images/ssbenczy/production/b8e0a789d04d62a2fd1e0538799c6831d4a1aac6-185x60.jpg' },
-          { name: 'American National', url: 'https://cdn.sanity.io/images/ssbenczy/production/b3dffa7a7c32262a29ebf26383dcd8f65d4086c3-130x65.jpg' },
-          { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
-          { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
-          { name: 'Genworth', url: 'https://cdn.sanity.io/images/ssbenczy/production/2103612e7019f0d2591ac7d1c69330476ea0b880-307x65.jpg' },
-          { name: 'ING', url: 'https://cdn.sanity.io/images/ssbenczy/production/ca2dc24c25284beab614dd96bead93f99a7c7d59-153x35.jpg' },
-          { name: 'Legal & General', url: 'https://cdn.sanity.io/images/ssbenczy/production/b5565c852b423b27bcc997bad72bfc2cd3afb163-98x82.jpg' },
-          { name: 'Lincoln', url: 'https://cdn.sanity.io/images/ssbenczy/production/76c789e697e046e845e780bcb147487766655a3a-146x57.jpg' },
-          { name: 'MetLife', url: 'https://cdn.sanity.io/images/ssbenczy/production/05d4d77751bc2f81b436a4d872f4aa3495c08638-144x46.jpg' },
-          { name: 'Mutual of Omaha', url: 'https://cdn.sanity.io/images/ssbenczy/production/76fa126d3c4533cf3d911eb37ebad45984f920f9-270x56.jpg' },
-          { name: 'North American', url: 'https://cdn.sanity.io/images/ssbenczy/production/b7e9e82ae195ef9af9e48d6ef3978fe09456ad06-193x109.jpg' },
-          { name: 'Protective', url: 'https://cdn.sanity.io/images/ssbenczy/production/9f786a73c274d11f7734dbb5e96cd0e4eb2d4ef7-184x51.jpg' },
-          { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
-          { name: 'Transamerica', url: 'https://cdn.sanity.io/images/ssbenczy/production/07112f2ba5d3602bd6e8ad2372208f757694e2d3-185x59.jpg' },
-          { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
-        ].map(p => (
-          <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
-        ))}
+  <!-- ═══ WHY CHOOSE — image LEFT, text RIGHT ═══ -->
+  <section id="about" class="relative py-16 md:py-24 overflow-hidden">
+    <!-- Decorative circles -->
+    <div class="absolute top-10 left-[5%] w-[120px] h-[120px] rounded-full opacity-10 pointer-events-none animate-pulse-soft" style="background: #06D9FA;"></div>
+    <div class="absolute bottom-20 left-[15%] w-[80px] h-[80px] rounded-full opacity-8 pointer-events-none animate-float" style="background: #4632DA;"></div>
+    <div class="absolute top-1/3 right-[3%] w-[60px] h-[60px] rounded-full opacity-10 pointer-events-none animate-pulse-soft" style="background: #06D9FA;"></div>
+    <div class="max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <!-- Image -->
+        <div class="md:w-1/2 " data-aos="fade-right">
+          <img
+            src="/family-sitting.jpg"
+            alt="Family sitting together and talking"
+            class="w-full h-auto"
+            style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
+            loading="lazy"
+          />
+        </div>
+        <!-- Text -->
+        <div class="md:w-1/2 " data-aos="fade-up" data-aos-delay="200">
+          <p class="kicker" style="color: #000000;">Your Health, Your Future, Your Family, Your Peace Of Mind</p>
+          <h2 class="mb-4" style="font-family: 'Varela Round', sans-serif; color: #4632DA;">Why Choose Johnny Watts Agency?</h2>
+          <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-6">
+            We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over <a href="#our_partners">40 top insurance companies</a> and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
+          </p>
+          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+            Learn More
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Team Preview -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading kicker="our work inspires smiles" title="The Faces Behind Our Success" />
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5ccfd6e5b2c4320f9e34e9e2c6f2ce32cb9dfb8a-500x500.png' },
-          { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/b1a5cca6b20ddfdffe94f7b4f11eac4e16a2b5c8-500x500.png' },
-          { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/00a64e66e6e20dbe2bde2b3e8d06370e9ed0e8d3-500x500.png' },
-          { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png' },
-        ].map(member => (
-          <div class="bg-gray-light rounded-lg p-6 text-center">
-            <img src={`${member.img}?w=200&h=200&fit=crop&auto=format`} alt={member.name} class="w-32 h-32 mx-auto mb-4 rounded-full object-cover" loading="lazy" />
-            <h4>{member.name}</h4>
+  <!-- ═══ COMPANY AFFILIATION / OUR PARTNERS ═══ -->
+  <section id="our_partners" class="py-16 md:py-20">
+    <div class="max-w-[1250px] mx-auto px-[2%] text-center">
+      <p class="kicker " data-aos="fade-up" style="color: #000000;">Company Affiliation</p>
+      <h2 class="mb-4 " data-aos="fade-up" data-aos-delay="100" style="font-family: 'Varela Round', sans-serif; color: #4632DA;">Our Partners</h2>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4; color: #353535;" class="max-w-2xl mx-auto mb-10 " data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
+      <div class="logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+        <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
+          {[
+            { name: 'Fidelity', url: 'https://cdn.sanity.io/images/ssbenczy/production/dd090850bf552966e65cd52e952e605ef7eb9223-247x65.jpg' },
+            { name: 'Foresters', url: 'https://cdn.sanity.io/images/ssbenczy/production/7686f230344bdd7f8974ea2c72f977c8471c40be-200x65.jpg' },
+            { name: 'MetLife', url: 'https://cdn.sanity.io/images/ssbenczy/production/05d4d77751bc2f81b436a4d872f4aa3495c08638-144x46.jpg' },
+            { name: 'Mutual of Omaha', url: 'https://cdn.sanity.io/images/ssbenczy/production/76fa126d3c4533cf3d911eb37ebad45984f920f9-270x56.jpg' },
+            { name: 'North American', url: 'https://cdn.sanity.io/images/ssbenczy/production/b7e9e82ae195ef9af9e48d6ef3978fe09456ad06-193x109.jpg' },
+            { name: 'AGLA', url: 'https://cdn.sanity.io/images/ssbenczy/production/b8e0a789d04d62a2fd1e0538799c6831d4a1aac6-185x60.jpg' },
+            { name: 'American National', url: 'https://cdn.sanity.io/images/ssbenczy/production/b3dffa7a7c32262a29ebf26383dcd8f65d4086c3-130x65.jpg' },
+            { name: 'Genworth', url: 'https://cdn.sanity.io/images/ssbenczy/production/2103612e7019f0d2591ac7d1c69330476ea0b880-307x65.jpg' },
+            { name: 'ING', url: 'https://cdn.sanity.io/images/ssbenczy/production/ca2dc24c25284beab614dd96bead93f99a7c7d59-153x35.jpg' },
+            { name: 'Legal & General', url: 'https://cdn.sanity.io/images/ssbenczy/production/b5565c852b423b27bcc997bad72bfc2cd3afb163-98x82.jpg' },
+            { name: 'Lincoln', url: 'https://cdn.sanity.io/images/ssbenczy/production/76c789e697e046e845e780bcb147487766655a3a-146x57.jpg' },
+            { name: 'Transamerica', url: 'https://cdn.sanity.io/images/ssbenczy/production/07112f2ba5d3602bd6e8ad2372208f757694e2d3-185x59.jpg' },
+            { name: 'Protective', url: 'https://cdn.sanity.io/images/ssbenczy/production/9f786a73c274d11f7734dbb5e96cd0e4eb2d4ef7-184x51.jpg' },
+            { name: 'Prudential', url: 'https://cdn.sanity.io/images/ssbenczy/production/04f871ccac0d7f2a3bc7059bc6e3740ef751883f-231x68.jpg' },
+            { name: 'United Home Life', url: 'https://cdn.sanity.io/images/ssbenczy/production/fd35eec45f6b99e3039ee12f21b88cccd3219cd8-118x64.jpg' },
+          ].map(p => (
+            <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM — photos LEFT in row, heading + button RIGHT ═══ -->
+  <section class="relative py-16 md:py-24 overflow-hidden" style="min-height: 780px;">
+    <!-- Background pattern overlay -->
+    <div class="absolute inset-0 bg-no-repeat bg-contain bg-bottom opacity-100 pointer-events-none"
+      style="background-image: url('/bg-team-home.png');">
+    </div>
+    <!-- Decorative circles -->
+    <div class="absolute top-16 right-[8%] w-[150px] h-[150px] rounded-full opacity-10 pointer-events-none animate-float" style="background: #06D9FA;"></div>
+    <div class="absolute bottom-24 left-[2%] w-[200px] h-[200px] rounded-full opacity-8 pointer-events-none animate-pulse-soft" style="background: #4632DA;"></div>
+    <div class="absolute top-1/2 right-[2%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float" style="background: #06D9FA;"></div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col lg:flex-row gap-10 items-center">
+        <!-- Photos grid -->
+        <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { name: 'Johnny Watts', img: 'https://cdn.sanity.io/images/ssbenczy/production/5369409619f9e4198af805133bb83d135e76bb70-500x500.png?w=250&auto=format' },
+            { name: 'Donnie Bost', img: 'https://cdn.sanity.io/images/ssbenczy/production/fb78382b2630258d0b53b830d71fba5bd0b27c6c-500x500.png?w=250&auto=format' },
+            { name: 'Linsey Stuckey', img: 'https://cdn.sanity.io/images/ssbenczy/production/d9e06beb0aaaa3b0232eae49ba9e424e66fd14f2-500x500.png?w=250&auto=format' },
+            { name: 'Tiffany Billey', img: 'https://cdn.sanity.io/images/ssbenczy/production/bd02becb1446c960bae66fde9f137ec9e501dfff-1499x1405.png?w=250&auto=format' },
+          ].map(m => (
+            <div class="text-center">
+              <img src={m.img} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300;">{m.name}</p>
+            </div>
+          ))}
+        </div>
+        <!-- Text -->
+        <div class="lg:w-[30%]">
+          <p class="kicker" style="color: #000000;">our work inspires smiles</p>
+          <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2; color: #4632DA;">The Faces Behind Our Success</h2>
+          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+            About Us
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS — heading LEFT, carousel RIGHT, two-column ═══ -->
+  <section class="relative py-16 md:py-24 overflow-hidden">
+    <!-- Decorative circles -->
+    <div class="absolute top-10 right-[5%] w-[140px] h-[140px] rounded-full opacity-8 pointer-events-none animate-drift" style="background: #06D9FA;"></div>
+    <div class="absolute bottom-16 left-[8%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float" style="background: #4632DA;"></div>
+    <div class="max-w-[1250px] mx-auto px-[2%]">
+      <div class="flex flex-col lg:flex-row gap-10 items-start">
+        <!-- Left heading -->
+        <div class="lg:w-1/3 " data-aos="fade-up">
+          <p class="kicker" style="color: #000000;">We Love Them</p>
+          <h2 style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2; color: #4632DA;">Client Testimonials</h2>
+        </div>
+        <!-- Right carousel -->
+        <div class="lg:w-2/3">
+          <div class="testimonial-carousel" id="testimonial-carousel">
+            <div class="testimonial-track" id="testimonial-track">
+              {testimonials.map((t, i) => (
+                <div class="testimonial-slide" data-index={i}>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-4">"{t.quote}"</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; color: #3D4459;">{t.name}</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px; color: #6b7280;">{t.location}</p>
+                </div>
+              ))}
+            </div>
+            <div class="testimonial-dots" id="testimonial-dots"></div>
           </div>
-        ))}
-      </div>
-      <div class="text-center mt-8">
-        <a href="/about/" class="px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors">
-          About Us
-        </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="py-16 bg-gray-light">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeading kicker="we love them" title="Client Testimonials" />
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="testimonials-grid">
-        {testimonials.slice(0, 6).map(t => (
-          <div class="bg-white rounded-lg p-6 shadow-sm">
-            <p class="text-gray italic mb-4">"{t.quote}"</p>
-            <p class="font-semibold text-dark">— {t.name}, {t.location}</p>
-          </div>
-        ))}
-      </div>
-
-      <!-- Hidden testimonials revealed by button -->
-      <div id="more-testimonials" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {testimonials.slice(6).map(t => (
-          <div class="bg-white rounded-lg p-6 shadow-sm">
-            <p class="text-gray italic mb-4">"{t.quote}"</p>
-            <p class="font-semibold text-dark">— {t.name}, {t.location}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-8">
-        <button
-          id="show-more-btn"
-          class="px-8 py-3 bg-dark text-white rounded-full font-semibold hover:bg-white hover:text-dark transition-colors"
-        >
-          Show All {testimonials.length} Testimonials
-        </button>
-      </div>
+  <!-- ═══ GET A QUOTE — gradient CTA section ═══ -->
+  <section class="relative py-16 md:py-24 text-white overflow-hidden" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%);">
+    <!-- Wave top -->
+    <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 1; direction: ltr;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) scaleX(-1); height: 100px;">
+        <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
+      </svg>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-16 bg-white text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2 class="mb-6">Get a Quote</h2>
-      <a href="/life-quote/" class="inline-block px-8 py-3 bg-dark text-white font-semibold rounded-full hover:bg-white hover:text-dark border border-dark transition-colors" style="font-size:1.125em;">
+    <!-- Decorative background circles -->
+    <div class="absolute top-[-40px] left-[-40px] w-[250px] h-[250px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.1);"></div>
+    <div class="absolute bottom-[-60px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.1);"></div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%] text-left" style="z-index: 2; padding-top: 30px; padding-bottom: 30px;">
+      <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 300; color: #ffffff;">Get A Quote</h2>
+      <a href="/life-quote/" class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 30px;">
         Life Quote
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
       </a>
     </div>
   </section>
@@ -192,14 +251,73 @@ const testimonials = [
 </Layout>
 
 <script>
-  const btn = document.getElementById('show-more-btn');
-  const more = document.getElementById('more-testimonials');
-  btn?.addEventListener('click', () => {
-    more?.classList.toggle('hidden');
-    if (more?.classList.contains('hidden')) {
-      btn.textContent = `Show All Testimonials`;
-    } else {
-      btn.textContent = 'Show Fewer';
+  // Testimonial carousel with windowed dot navigation
+  const track = document.getElementById('testimonial-track');
+  const dotsContainer = document.getElementById('testimonial-dots');
+  if (track && dotsContainer) {
+    const slides = track.querySelectorAll('.testimonial-slide');
+    const total = slides.length;
+    let current = 0;
+    let autoplayTimer: ReturnType<typeof setInterval>;
+    const maxVisibleDots = 7;
+
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      // Show a window of dots around current position
+      let start = Math.max(0, current - Math.floor(maxVisibleDots / 2));
+      let end = Math.min(total, start + maxVisibleDots);
+      if (end - start < maxVisibleDots) start = Math.max(0, end - maxVisibleDots);
+
+      for (let i = start; i < end; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (i === current ? ' active' : '');
+        dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
     }
-  });
+
+    function goTo(index: number) {
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      renderDots();
+    }
+
+    function next() {
+      goTo((current + 1) % total);
+    }
+
+    renderDots();
+    autoplayTimer = setInterval(next, 5000);
+    track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+    track.parentElement?.addEventListener('mouseleave', () => {
+      autoplayTimer = setInterval(next, 5000);
+    });
+  }
+</script>
+
+<style>
+  .hero-btn:hover {
+    background-color: #4632da !important;
+  }
+  @keyframes logo-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .logo-track {
+    animation: logo-scroll 30s linear infinite;
+    width: max-content;
+  }
+  .logo-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<script>
+  // Duplicate logo items for seamless infinite loop
+  const logoTrack = document.getElementById('logo-track');
+  if (logoTrack) {
+    const items = logoTrack.innerHTML;
+    logoTrack.innerHTML = items + items;
+  }
 </script>
