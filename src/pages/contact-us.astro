@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 ---
 
 <Layout title="Contact Us — Johnny Watts Agency" description="Contact Johnny Watts Agency in Taylorsville, NC. Call (828) 635-4200 or fill out our contact form.">
@@ -90,21 +91,6 @@ import PageHero from '../components/PageHero.astro';
     </div>
   </section>
 
-  <!-- CTA — Secure Your Future -->
-  <section class="relative overflow-hidden" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%); padding: 60px 0;">
-    <!-- Curved top -->
-    <div class="absolute left-0 w-full overflow-hidden leading-none" style="top: -1px; z-index: 2;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none" style="display: block; width: calc(150% + 10px); position: relative; left: 50%; transform: translateX(-50%); height: 60px;">
-        <path d="M0,60 C480,60 960,0 1440,0 L1440,0 L0,0 Z" fill="#ffffff"/>
-      </svg>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-4" style="z-index: 2;">
-      <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #ffffff;">Secure Your Future Today!</h2>
-      <a href="/life-quote/" class="inline-flex items-center gap-2 px-7 py-3 transition-all hover:shadow-lg" style="background-color: #ffffff; color: #06D9FA; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
-        Life Quote
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
-      </a>
-    </div>
-  </section>
+  <CtaBanner />
 
 </Layout>

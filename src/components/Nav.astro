@@ -22,8 +22,8 @@ function isActive(href: string): boolean {
   <nav class="max-w-[1250px] mx-auto px-[2%] h-[90px] flex items-center">
     <div class="flex items-center justify-between w-full">
       <!-- Logo -->
-      <a href="/" class="flex items-center shrink-0" style="width: 20%;">
-        <img src="https://cdn.sanity.io/images/ssbenczy/production/d7e2a7982737ea76f8e7b6bd8f151217526c98a4-2048x852.png?w=400&auto=format" alt="Johnny Watts Agency" class="w-[70%] h-auto" />
+      <a href="/" class="flex items-center shrink-0 w-[140px] lg:w-[20%]">
+        <img src="https://cdn.sanity.io/images/ssbenczy/production/d7e2a7982737ea76f8e7b6bd8f151217526c98a4-2048x852.png?w=400&auto=format" alt="Johnny Watts Agency" class="w-full lg:w-[70%] h-auto" />
       </a>
 
       <!-- Mobile toggle -->
@@ -35,7 +35,6 @@ function isActive(href: string): boolean {
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
@@ -103,50 +102,85 @@ function isActive(href: string): boolean {
         </li>
       </ul>
     </div>
-
-    <!-- Mobile nav -->
-    <div id="mobile-menu" class="hidden lg:hidden absolute left-0 top-full w-full bg-white shadow-lg">
-      <ul class="flex flex-col py-4">
-        <li><a href="/" class:list={['mobile-link', { active: isActive('/') }]}>Home</a></li>
-        <li>
-          <button class="mobile-link w-full flex justify-between items-center mobile-accordion-toggle" data-target="mobile-services">
-            Services
-            <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <ul id="mobile-services" class="hidden pl-4 flex flex-col">
-            {services.map(s => (
-              <li><a href={s.href} class="mobile-link text-sm">{s.label}</a></li>
-            ))}
-          </ul>
-        </li>
-        <li><a href="/blogs/" class:list={['mobile-link', { active: isActive('/blogs/') }]}>Blogs</a></li>
-        <li><a href="/about/" class:list={['mobile-link', { active: isActive('/about/') }]}>About</a></li>
-        <li>
-          <button class="mobile-link w-full flex justify-between items-center mobile-accordion-toggle" data-target="mobile-quotes">
-            Get a Quote
-            <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <ul id="mobile-quotes" class="hidden pl-4 flex flex-col">
-            {quotes.map(q => (
-              <li><a href={q.href} class="mobile-link text-sm">{q.label}</a></li>
-            ))}
-          </ul>
-        </li>
-        <li><a href="/contact-us/" class:list={['mobile-link', { active: isActive('/contact-us/') }]}>Contact Us</a></li>
-        <li class="pt-2 mx-4 border-t border-gray-200">
-          <a href="tel:8286354200" class="flex items-center gap-2 text-primary font-bold py-3">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            828-635-4200
-          </a>
-        </li>
-      </ul>
-    </div>
   </nav>
 </header>
+
+<!-- Mobile Drawer Overlay -->
+<div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+
+<!-- Mobile App Drawer — slides from left -->
+<div id="drawer" class="fixed top-0 left-0 h-full w-[280px] z-[70] lg:hidden flex flex-col" style="background: linear-gradient(180deg, #4632DA 0%, #2a5de0 50%, #06D9FA 100%); transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);">
+
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between p-5 border-b border-white/15">
+    <a href="/">
+      <img src="https://cdn.sanity.io/images/ssbenczy/production/d7e2a7982737ea76f8e7b6bd8f151217526c98a4-2048x852.png?w=300&auto=format" alt="Johnny Watts Agency" class="h-10 w-auto" />
+    </a>
+    <button id="drawer-close" class="p-1.5 rounded-md text-white/80 hover:bg-white/15" aria-label="Close menu">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Drawer nav links -->
+  <nav class="flex-1 overflow-y-auto py-4">
+    <a href="/" class:list={['drawer-link', { 'drawer-active': isActive('/') }]}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+      Home
+    </a>
+
+    <!-- Services accordion -->
+    <button class="drawer-link w-full flex justify-between items-center" id="drawer-services-toggle">
+      <span class="flex items-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+        Services
+      </span>
+      <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+    </button>
+    <div id="drawer-services" class="hidden pl-12 flex flex-col">
+      {services.map(s => (
+        <a href={s.href} class:list={['drawer-sub-link', { 'drawer-active': isActive(s.href) }]}>{s.label}</a>
+      ))}
+    </div>
+
+    <a href="/blogs/" class:list={['drawer-link', { 'drawer-active': isActive('/blogs/') }]}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" /></svg>
+      Blogs
+    </a>
+    <a href="/about/" class:list={['drawer-link', { 'drawer-active': isActive('/about/') }]}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+      About
+    </a>
+
+    <!-- Quote accordion -->
+    <button class="drawer-link w-full flex justify-between items-center" id="drawer-quotes-toggle">
+      <span class="flex items-center gap-3">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+        Get a Quote
+      </span>
+      <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+    </button>
+    <div id="drawer-quotes" class="hidden pl-12 flex flex-col">
+      {quotes.map(q => (
+        <a href={q.href} class:list={['drawer-sub-link', { 'drawer-active': isActive(q.href) }]}>{q.label}</a>
+      ))}
+    </div>
+
+    <a href="/contact-us/" class:list={['drawer-link', { 'drawer-active': isActive('/contact-us/') }]}>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+      Contact Us
+    </a>
+  </nav>
+
+  <!-- Drawer CTA — Phone -->
+  <div class="p-5 border-t border-white/15">
+    <a href="tel:8286354200" class="flex items-center justify-center gap-2 w-full py-3 font-bold text-base" style="background: #ffffff; color: #4632DA; border-radius: 30px; font-family: 'Montserrat', sans-serif; text-decoration: none;">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      828-635-4200
+    </a>
+  </div>
+</div>
 
 <style>
   .nav-header {
@@ -169,7 +203,6 @@ function isActive(href: string): boolean {
   .nav-link.active {
     color: #FFFEFE;
   }
-  /* Underline animation on hover */
   .nav-link::after {
     content: '';
     display: block;
@@ -182,42 +215,92 @@ function isActive(href: string): boolean {
   .nav-link.active::after {
     width: 100%;
   }
-  .mobile-link {
-    display: block;
-    padding: 0.75rem 1.25rem;
+
+  /* Drawer links */
+  .drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
-    font-weight: 300;
-    color: var(--color-secondary, #3D4459);
-    transition: background-color 0.2s;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
   }
-  .mobile-link:hover,
-  .mobile-link.active {
-    background-color: #f3f4f6;
-    color: var(--color-primary, #4632DA);
+  .drawer-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  .drawer-link.drawer-active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-weight: 500;
+  }
+  .drawer-sub-link {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .drawer-sub-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .drawer-sub-link.drawer-active {
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* Drawer open state */
+  .drawer-open {
+    transform: translateX(0) !important;
+  }
+  .overlay-visible {
+    opacity: 1 !important;
   }
 </style>
 
 <script>
   const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const closeBtn = document.getElementById('drawer-close');
 
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    hamburger?.classList.toggle('hidden');
-    closeIcon?.classList.toggle('hidden');
-    toggle.setAttribute('aria-expanded', String(!menu?.classList.contains('hidden')));
-  });
+  function openDrawer() {
+    drawer?.classList.add('drawer-open');
+    overlay?.classList.remove('hidden');
+    requestAnimationFrame(() => overlay?.classList.add('overlay-visible'));
+    document.body.style.overflow = 'hidden';
+  }
 
-  document.querySelectorAll('.mobile-accordion-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = (btn as HTMLElement).dataset.target;
-      if (!targetId) return;
-      const target = document.getElementById(targetId);
-      target?.classList.toggle('hidden');
-      const svg = btn.querySelector('svg');
+  function closeDrawer() {
+    drawer?.classList.remove('drawer-open');
+    overlay?.classList.remove('overlay-visible');
+    setTimeout(() => overlay?.classList.add('hidden'), 300);
+    document.body.style.overflow = '';
+  }
+
+  toggle?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+
+  // Accordion toggles
+  ['drawer-services', 'drawer-quotes'].forEach(id => {
+    const btn = document.getElementById(`${id}-toggle`);
+    const panel = document.getElementById(id);
+    btn?.addEventListener('click', () => {
+      panel?.classList.toggle('hidden');
+      const svg = btn.querySelector('svg:last-child');
       svg?.classList.toggle('rotate-180');
     });
   });
