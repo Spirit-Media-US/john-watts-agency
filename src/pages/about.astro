@@ -3,17 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import PageHero from '../components/PageHero.astro';
+import MailtoLink from '../components/MailtoLink.astro';
 import { sanityClient, urlFor } from '../lib/sanity';
 
 // Fetch team from Sanity
 const allTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) { name, role, email, bio, featured, headshot }`);
-const mainTeam = allTeam.filter((t: any) => t.featured).map((t: any) => ({
-  name: t.name,
-  role: t.role,
-  email: t.email || '',
-  img: t.headshot ? urlFor(t.headshot).width(300).auto('format').url() : '',
-  bio: (t.bio || '').split('\n').filter((p: string) => p.trim()),
-}));
+const mainTeam = allTeam.filter((t: any) => t.featured).map((t: any) => {
+  const email = t.email || '';
+  const [emailUser = '', emailDomain = ''] = email.includes('@') ? email.split('@') : ['', ''];
+  return {
+    name: t.name,
+    role: t.role,
+    emailUser,
+    emailDomain,
+    img: t.headshot ? urlFor(t.headshot).width(300).auto('format').url() : '',
+    bio: (t.bio || '').split('\n').filter((p: string) => p.trim()),
+  };
+});
 const supportTeam = allTeam.filter((t: any) => !t.featured).map((t: any) => ({
   name: t.name,
   role: t.role,
@@ -29,7 +35,7 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
 
 <Layout title="About Us — Johnny Watts Agency" description="Meet the team at Johnny Watts Agency. Over 40 years of trusted insurance service in Taylorsville, NC.">
 
-  <PageHero title="About Us" subtitle="Behind The Scenes At Beyond" />
+  <PageHero title="About Us" subtitle="Behind The Scenes At Johnny Watts Agency" />
 
   <!-- Main Team — full bios (matching WP Elementor layout) -->
   <section class="py-16 md:py-24">
@@ -54,10 +60,12 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
               {member.bio.map(paragraph => (
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.6; color: #353535; margin-bottom: 0.75rem;">{paragraph}</p>
               ))}
-              <a href={`mailto:${member.email}`} class="hero-btn inline-flex items-center gap-2 px-7 py-3 mt-4" style="background-color: #4632DA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
-                Email {member.name}
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
-              </a>
+              {member.emailUser && member.emailDomain && (
+                <MailtoLink user={member.emailUser} domain={member.emailDomain} label={`Email ${member.name}`} class="hero-btn inline-flex items-center gap-2 px-7 py-3 mt-4" style="background-color: #4632DA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+                  Email {member.name}
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+                </MailtoLink>
+              )}
             </div>
             <!-- Decorative circle on right (faint) -->
             <div class="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full pointer-events-none" style="background: rgba(6,217,250,0.06);"></div>

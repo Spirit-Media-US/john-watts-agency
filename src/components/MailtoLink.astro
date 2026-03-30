@@ -1,0 +1,34 @@
+---
+interface Props {
+  user: string;
+  domain: string;
+  label: string;
+  class?: string;
+  style?: string;
+}
+const { user, domain, label, class: className = '', style: inlineStyle = '' } = Astro.props;
+---
+
+<a
+  href="#"
+  data-u={user}
+  data-d={domain}
+  class={className}
+  style={inlineStyle}
+  role="link"
+>
+  <slot>{label}</slot>
+</a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('a[data-u][data-d]').forEach(el => {
+    const u = el.getAttribute('data-u');
+    const d = el.getAttribute('data-d');
+    if (u && d) {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = `mailto:${u}@${d}`;
+      });
+    }
+  });
+</script>
