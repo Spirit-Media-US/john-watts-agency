@@ -5,25 +5,82 @@ import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
-<Layout title="Medicare — Johnny Watts Agency" description="Learn about Medicare options with Johnny Watts Agency. Expert guidance for Medicare coverage in North Carolina.">
+<Layout title="Medicare — Johnny Watts Agency" description="Learn about Medicare options with Johnny Watts Agency. Expert guidance for Original Medicare, Medicare Advantage, Supplement, and Part D plans in North Carolina.">
 
-  <PageHero title="Medicare" />
+  <PageHero title="Medicare" subtitle="Navigating Your Medicare Options With Confidence" />
 
-  <!-- Content -->
+  <!-- Intro -->
   <section class="py-16">
     <div class="max-w-3xl mx-auto px-4">
-      <p class="text-gray leading-relaxed mb-6">
+      <p class="text-gray leading-relaxed mb-6" data-aos="fade-up" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
         Medicare is the federally provided healthcare insurance. Original Medicare provides for fundamental doctor and hospital costs. However, Original Medicare might not cover some expenses which can result in out-of-pocket expenses when getting treatment.
       </p>
-      <p class="text-gray leading-relaxed mb-6">
-        To ensure that you will not be spending too much on these out-of-pocket expenses, you can get additional insurance coverage.
+      <p class="text-gray leading-relaxed mb-6" data-aos="fade-up" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        To ensure that you will not be spending too much on these out-of-pocket expenses, you can get additional insurance coverage. We have extensive experience providing assistance and services to those seeking Medicare plans.
       </p>
-      <p class="text-gray leading-relaxed mb-8">
-        We have an extensive experience for providing assistance and services to those seeking Medicare plans.
+    </div>
+  </section>
+
+  <!-- Medicare Parts -->
+  <section class="py-16 bg-gray-light">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-center mb-4" data-aos="fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #4632DA;">Understanding Medicare</h2>
+      <p class="text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; color: #6b7280;">Medicare has several parts, each covering different healthcare needs. Here's what you need to know.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Part A -->
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <span class="text-white font-bold text-lg" style="font-family: 'Varela Round', sans-serif;">A</span>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Hospital Insurance</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Covers inpatient hospital stays, skilled nursing facility care, hospice care, and some home health care. Most people don't pay a premium for Part A.</p>
+        </div>
+
+        <!-- Part B -->
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="200" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <span class="text-white font-bold text-lg" style="font-family: 'Varela Round', sans-serif;">B</span>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Medical Insurance</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Covers doctor visits, outpatient care, preventive services, medical equipment, and some home health care. Part B has a monthly premium.</p>
+        </div>
+
+        <!-- Part C -->
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="100" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <span class="text-white font-bold text-lg" style="font-family: 'Varela Round', sans-serif;">C</span>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Medicare Advantage</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">An all-in-one alternative to Original Medicare offered by private insurers. Includes Part A, Part B, and usually Part D. Often includes extra benefits like vision, dental, and hearing.</p>
+        </div>
+
+        <!-- Part D -->
+        <div class="bg-white rounded-2xl p-8 hover-lift" data-aos="fade-up" data-aos-delay="200" style="box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4" style="background: linear-gradient(130deg, #4632DA, #06D9FA);">
+            <span class="text-white font-bold text-lg" style="font-family: 'Varela Round', sans-serif;">D</span>
+          </div>
+          <h3 style="font-family: 'Varela Round', sans-serif; font-size: 20px; font-weight: 300; color: #3D4459; margin-bottom: 12px;">Prescription Drug Coverage</h3>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; color: #6b7280; line-height: 1.7;">Helps cover the cost of prescription medications. Available as a standalone plan or included in Medicare Advantage. Each plan has its own formulary of covered drugs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medicare Supplement -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="mb-4" data-aos="fade-up" style="font-family: 'Varela Round', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 300; color: #4632DA;">Medicare Supplement (Medigap)</h2>
+      <p class="mb-6" data-aos="fade-up" data-aos-delay="100" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        Medicare Supplement Insurance, also known as Medigap, helps fill the "gaps" in Original Medicare. These policies can help pay for copayments, coinsurance, and deductibles that Original Medicare doesn't fully cover.
       </p>
-      <div class="text-center">
-        <a href="/medicare-quote/" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
-          Get a Quote
+      <p class="mb-6" data-aos="fade-up" data-aos-delay="200" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.8; color: #353535;">
+        With over 40 top insurance companies in our network, we compare rates and benefits to find the Medigap plan that fits your healthcare needs and budget. Our experienced agents walk you through every option so you can make a confident decision.
+      </p>
+
+      <div class="text-center mt-8" data-aos="fade-up">
+        <a href="/medicare-quote/" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 30px;">
+          Get a Medicare Quote
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
         </a>
       </div>
@@ -33,10 +90,12 @@ import PageHero from '../components/PageHero.astro';
   <!-- Contact Form -->
   <section class="py-16 bg-gray-light">
     <div class="max-w-xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h2 class="mb-2">Let's have a chat</h2>
+      <div class="text-center mb-8" data-aos="fade-up">
+        <h2 style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #3D4459;">Let's Have A Chat</h2>
       </div>
-      <QuoteForm />
+      <div data-aos="fade-up" data-aos-delay="100">
+        <QuoteForm />
+      </div>
     </div>
   </section>
 
