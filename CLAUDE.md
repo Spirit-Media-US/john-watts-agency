@@ -2,7 +2,7 @@
 
 > **CLAUDE.md belongs in version control — NEVER add it to .gitignore. This file is the shared source of truth for all developers and all Claude Code sessions.**
 
-This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-agency | Domain: johnnywattsagency.com | Sanity ID: m97wgkat
+This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-agency | Domain: johnnywattsagency.com | Sanity ID: ssbenczy
 
 ## Business Info
 
@@ -11,7 +11,8 @@ This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-age
 - **Phone:** (828) 635-4200
 - **Email:** johnny@johnnywattsagency.com
 - **Hours:** Mon–Fri 9:30 AM – 5:00 PM
-- **Brand colors:** Primary blue #3757e1, dark #32373c
+- **Brand colors:** Primary `#4632DA`, Accent `#06D9FA`, Secondary `#3D4459`, Dark `#353535`
+- **Fonts:** Varela Round (headings), Montserrat (body)
 - **Social:** Facebook (johnnywatts), LinkedIn (johnny-watts-687b1719)
 - **Google Analytics:** G-YRRF97BTZL | Google Ads: AW-11481493068
 
@@ -23,80 +24,91 @@ This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-age
 ## Stack
 
 - Astro 5 + Tailwind CSS v4 (@tailwindcss/vite)
-- Sanity CMS (projectId: m97wgkat)
-- Netlify hosting
+- Sanity CMS (projectId: ssbenczy, dataset: production)
+- Sanity Studio embedded in repo (`sanity.config.ts` + `studio/`)
+- Netlify hosting (auto-deploy on push to main)
 - Cloudflare DNS/CDN
-- Google Fonts: Inter + Merriweather
+- AOS (Animate On Scroll) for scroll animations
+- Biome + Lefthook for linting/pre-commit
 
-## Pages (11 + 404)
+## Pages (11 + 9 blog + 404)
 
 | Page | File | Status |
 |------|------|--------|
-| Home | index.astro | Skeleton |
-| About | about.astro | Skeleton |
-| Medicare | medicare.astro | Skeleton |
-| Health Insurance Marketplace | health-insurance-marketplace.astro | Skeleton |
-| Life Insurance | learn-about-life-insurance.astro | Skeleton |
-| Blog | blogs.astro | Skeleton |
-| Contact | contact-us.astro | Skeleton |
-| Medicare Quote | medicare-quote.astro | Skeleton |
-| Life Quote | life-quote.astro | Skeleton |
-| Health Marketplace Quote | health-insurance-marketplace-services-quote.astro | Skeleton |
-| Disclaimer | disclaimer.astro | Skeleton |
+| Home | index.astro | Done |
+| About | about.astro | Done |
+| Medicare | medicare.astro | Content thin |
+| Health Insurance Marketplace | health-insurance-marketplace.astro | Content thin |
+| Life Insurance | learn-about-life-insurance.astro | Done |
+| Blog listing | blogs.astro | Done (6/page pagination) |
+| 9 Blog posts | blog/*.astro | Done (full template) |
+| Contact | contact-us.astro | Done |
+| Medicare Quote | medicare-quote.astro | Done |
+| Life Quote | life-quote.astro | Done |
+| Health Marketplace Quote | health-insurance-marketplace-services-quote.astro | Done |
+| Disclaimer | disclaimer.astro | Done |
 | 404 | 404.astro | Done |
 
 ## Components
 
 | Component | Purpose |
 |-----------|---------|
-| Nav.astro | Sticky header with phone bar, desktop dropdowns, mobile accordion |
-| Footer.astro | 3-column footer with nav, contact, social |
+| Nav.astro | Sticky header, desktop dropdowns, mobile left-side app drawer |
+| Footer.astro | Logo, nav links, social, copyright |
+| PageHero.astro | Gradient hero with blobs, wave bottom, waveFill prop |
 | QuoteForm.astro | Reusable 3-field lead capture form |
+| CtaBanner.astro | "Secure Your Future" CTA with wave, gradient, button |
 | SectionHeading.astro | Centered section title + optional subtitle |
 
-## Status — as of 2026-03-27
+## Sanity Content (project: ssbenczy)
 
-### Completed (Phase 1 + Phase 2)
-- Astro 5 + Tailwind v4 initialized
-- Sanity client wired (m97wgkat)
-- Netlify + GitHub workflow scaffolding
-- Typography foundation (Inter + Merriweather, responsive sizes)
-- Design tokens (brand colors, spacing)
-- Nav component (sticky, mobile responsive, dropdown menus)
-- Footer component (3-column, social links, contact info)
-- All 11 page skeletons + 404
-- QuoteForm reusable component
+| Type | Count | Notes |
+|------|-------|-------|
+| siteSettings | 1 | Logo, phone, email, address, SEO, social, hours |
+| teamMember | 9 | All team with headshots |
+| partner | 15 | All insurance carrier logos |
+| post | 9 | All blog posts with body content |
+| testimonial | 49 | All client testimonials |
+| Image assets | 43 | Headshots, logos, blog, hero, backgrounds |
 
-### Phase 3 — Next (Design & Content)
-- Migrate content from existing WordPress site (clean copy only — site is compromised with spam)
-- Team headshots and bios → Sanity
-- 40+ testimonials → Sanity
-- 15+ partner logos → R2
-- 9 blog posts → Sanity
-- Life insurance educational content (most content-heavy page)
-- Disclaimer text
-- Welcome audio file → R2
-- Google Analytics + Ads tracking codes
-- Forms → GHL integration
-- InsuranceAgency JSON-LD structured data
+## Status — as of 2026-03-30
 
-### Still Pending (Phase 4+)
-- Sanity schema definitions (siteSettings, teamMember, testimonial, post, partner)
-- Sanity → page wiring (dynamic content fetching)
-- Sanity → Netlify webhook
+### Phase 1 — Infrastructure (Done)
+- GitHub repo: Spirit-Media-US/john-watts-agency
+- Netlify site: connected, auto-deploy on main
+- Sanity project: ssbenczy (5 schemas, 83 docs, 43 images)
+- CLAUDE.md in repo root
+- Cloudflare domain: **pending**
+
+### Phase 2 — Structure (Done)
+- Astro 5 + Tailwind v4 + @tailwindcss/vite
+- All 11 pages + 9 blog posts + 404
+- Nav (desktop dropdowns + mobile app drawer)
+- Footer, PageHero, QuoteForm, CtaBanner, SectionHeading
+- Typography: Varela Round + Montserrat, responsive with clamp()
+- Mobile/tablet responsive verified
+- AOS scroll animations + premium hover effects
+
+### Phase 3 — Design & Content (85%)
+- All WP content migrated (zero wp-content URLs remaining)
+- All media in Sanity (43 images) + local public/ for BG patterns
+- SEO meta on all pages + JSON-LD InsuranceAgency schema
+- Google Analytics + Google Ads tracking
+- Design cloned from WP Elementor (waves, blobs, gradients, cards)
+- **Pending:** Forms → GHL integration
+- **Pending:** Medicare + Health Marketplace pages need more content
+
+### Phase 4 — Sanity CMS Wiring (40%)
+- Schemas defined: siteSettings, teamMember, partner, post, testimonial
+- All content uploaded to Sanity
+- **Pending:** Wire Astro pages to fetch from Sanity
+- **Pending:** Sanity → Netlify deploy webhook
+
+### Still Pending (Phase 5+)
+- Audit Gate scans
 - Custom domain connection (Cloudflare)
-- DMARC record
 - UptimeRobot monitoring
-- SEO optimization
-- Google Maps embed on contact page
-
-## Migration Notes
-
-- **Source:** WordPress + Elementor (johnnywattsagency.com)
-- **WARNING:** Current site is compromised with Polish gambling spam injection. Only migrate clean content.
-- **Team:** 4 main agents (Johnny, Donnie, Linsey, Tiffany) + 5 support staff
-- **Testimonials:** 40+ client testimonials — major trust asset, migrate carefully
-- **Partner logos:** 15+ insurance carrier logos (Fidelity, Foresters, MetLife, Prudential, Lincoln, etc.)
+- Sanity → Netlify webhook
 
 ## Rules
 
