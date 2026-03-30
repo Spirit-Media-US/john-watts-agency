@@ -30,6 +30,15 @@
 [context.branch-deploy]
   command = "npm run build"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.googletagmanager.com www.google-analytics.com www.googleadservices.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: cdn.sanity.io www.google-analytics.com www.googletagmanager.com; font-src 'self' fonts.gstatic.com; connect-src 'self' ssbenczy.api.sanity.io www.google-analytics.com www.googletagmanager.com; frame-src www.google.com; base-uri 'self'; form-action 'self'"
+
 [[redirects]]
   from = "https://www.johnnywattsagency.com/*"
   to = "https://johnnywattsagency.com/:splat"

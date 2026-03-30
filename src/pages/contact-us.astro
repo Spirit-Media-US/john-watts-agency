@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import MailtoLink from '../components/MailtoLink.astro';
 ---
 
 <Layout title="Contact Us — Johnny Watts Agency" description="Contact Johnny Watts Agency in Taylorsville, NC. Call (828) 635-4200 or fill out our contact form.">
@@ -83,9 +84,7 @@ import CtaBanner from '../components/CtaBanner.astro';
             </svg>
           </div>
           <h3 style="font-family: 'Varela Round', sans-serif; font-size: 22px; font-weight: 300; color: #3D4459; margin-bottom: 16px;">Write Us</h3>
-          <a href="mailto:johnny@johnnywattsagency.com" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 30px;">
-            Email Me Now!
-          </a>
+          <MailtoLink user="johnny" domain="johnnywattsagency.com" label="Email Me Now!" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #06D9FA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 30px;" />
         </div>
       </div>
     </div>
