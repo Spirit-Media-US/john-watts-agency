@@ -2,7 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import PageHero from '../components/PageHero.astro';
-import { posts } from '../data/posts';
+import { sanityClient, urlFor } from '../lib/sanity';
+
+const sanityPosts = await sanityClient.fetch(`*[_type == "post"] | order(publishDate desc) {
+  _id, title, excerpt, publishDate, author,
+  "slug": slug.current,
+  heroImage
+}`);
+
+const posts = sanityPosts.map((p: any) => ({
+  title: p.title,
+  slug: `/blog/${p.slug}/`,
+  date: new Date(p.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+  excerpt: p.excerpt || '',
+  img: p.heroImage ? urlFor(p.heroImage).width(600).auto('format').url() : '',
+}));
 ---
 
 <Layout title="Blog — Johnny Watts Agency" description="Insurance tips, guides, and news from Johnny Watts Agency. Learn about Medicare, health insurance, and life insurance.">
