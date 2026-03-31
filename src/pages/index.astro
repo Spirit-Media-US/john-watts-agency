@@ -128,7 +128,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('f
         <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
           {sanityTeam.map((m: any) => (
             <div class="text-center">
-              <img src={m.headshot ? urlFor(m.headshot).width(250).auto('format').url() : ''} alt={m.name} class="w-full object-cover object-center rounded-sm mb-2" style="height: 230px; max-width: 190px;" loading="lazy" />
+              <img src={m.headshot ? urlFor(m.headshot).width(300).height(300).fit('crop').auto('format').url() : ''} alt={m.name} class="w-full aspect-square object-cover object-top rounded-sm mb-2" style="max-width: 230px;" loading="lazy" />
               <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 300;">{m.name}</p>
             </div>
           ))}
