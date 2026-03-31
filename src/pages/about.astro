@@ -16,7 +16,7 @@ const mainTeam = allTeam.filter((t: any) => t.featured).map((t: any) => {
     role: t.role,
     emailUser,
     emailDomain,
-    img: t.headshot ? urlFor(t.headshot).width(300).auto('format').url() : '',
+    img: t.headshot ? urlFor(t.headshot).width(400).height(400).fit('crop').auto('format').url() : '',
     bio: (t.bio || '').split('\n').filter((p: string) => p.trim()),
   };
 });
