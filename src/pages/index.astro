@@ -19,13 +19,14 @@ const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(n
 
 // Fetch site settings for images
 const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ heroImage, aboutImage, bgHero, bgTeam }`);
-const heroImgUrl = settings?.heroImage ? urlFor(settings.heroImage).width(1200).auto('format').url() : '/happy-family.jpg';
-const aboutImgUrl = settings?.aboutImage ? urlFor(settings.aboutImage).width(800).auto('format').url() : '/family-sitting.jpg';
-const bgHeroUrl = settings?.bgHero ? urlFor(settings.bgHero).width(1920).auto('format').url() : '/bg-homepage-high.png';
-const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('format').url() : '/bg-team-home.png';
+const heroImgUrl = settings?.heroImage ? urlFor(settings.heroImage).width(600).format('webp').quality(80).url() : '/happy-family.jpg';
+const heroImgUrlLg = settings?.heroImage ? urlFor(settings.heroImage).width(900).format('webp').quality(80).url() : '/happy-family.jpg';
+const aboutImgUrl = settings?.aboutImage ? urlFor(settings.aboutImage).width(600).format('webp').quality(80).url() : '/family-sitting.jpg';
+const bgHeroUrl = settings?.bgHero ? urlFor(settings.bgHero).width(1200).format('webp').quality(75).url() : '/bg-homepage-high.png';
+const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format('webp').quality(75).url() : '/bg-team-home.png';
 ---
 
-<Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation.">
+<Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation." preloadImage={heroImgUrl}>
 
   <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
   <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
@@ -46,13 +47,16 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('f
         <div class="md:w-[55%] " data-aos="fade-left" data-aos-delay="200">
           <img
             src={heroImgUrl}
+            srcset={`${heroImgUrl} 600w, ${heroImgUrlLg} 900w`}
+            sizes="(max-width: 768px) 100vw, 55vw"
             alt="Happy family with Medicare and health insurance coverage in North Carolina"
-            width="800"
-            height="600"
+            width="600"
+            height="450"
             class="w-full h-auto hover-tilt"
             style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
             loading="eager"
             fetchpriority="high"
+            decoding="async"
           />
         </div>
       </div>
@@ -110,7 +114,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('f
       <div class="logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
           {sanityPartners.map((p: any) => (
-            <img src={p.logo ? urlFor(p.logo).height(65).auto('format').url() : ''} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" />
+            <img src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''} alt={p.name} height="50" class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" decoding="async" />
           ))}
         </div>
       </div>
@@ -133,7 +137,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1920).auto('f
         <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
           {sanityTeam.map((m: any) => (
             <div class="text-center">
-              <img src={m.headshot ? urlFor(m.headshot).width(300).height(300).fit('crop').auto('format').url() : ''} alt={m.name} class="w-full aspect-square object-cover object-top rounded-sm mb-2" style="max-width: 230px;" loading="lazy" />
+              <img src={m.headshot ? urlFor(m.headshot).width(230).height(230).fit('crop').format('webp').quality(80).url() : ''} alt={m.name} width="230" height="230" class="w-full aspect-square object-cover object-top rounded-sm mb-2" style="max-width: 230px;" loading="lazy" decoding="async" />
               <h3 style="font-family: 'Varela Round', sans-serif; font-size: 16px; font-weight: 600; color: #4632DA;">{m.name}</h3>
             </div>
           ))}
