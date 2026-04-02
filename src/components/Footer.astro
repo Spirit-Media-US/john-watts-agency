@@ -21,13 +21,13 @@ const navLinks = [
     <div class="max-w-[1250px] mx-auto px-4 py-10">
       <!-- Top row: logo + nav links -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-        <a href="/">
-          <img src={footerLogoUrl} alt="Johnny Watts Agency" class="h-20 w-auto" />
+        <a href="/" aria-label="Johnny Watts Agency — Home">
+          <img src={footerLogoUrl} alt="Johnny Watts Agency" width="200" height="83" class="h-20 w-auto" />
         </a>
         <ul class="flex flex-wrap justify-center gap-4 text-sm">
           {navLinks.map(link => (
             <li>
-              <a href={link.href} class="transition-colors" style="font-family: 'Varela Round', sans-serif; font-size: 15px; font-weight: 400; color: #353535;" onmouseover="this.style.color='#4632DA'" onmouseout="this.style.color='#353535'">
+              <a href={link.href} class="transition-colors inline-flex items-center min-h-[48px] px-2" style="font-family: 'Varela Round', sans-serif; font-size: 15px; font-weight: 400; color: #353535;" onmouseover="this.style.color='#4632DA'" onmouseout="this.style.color='#353535'">
                 {link.label}
               </a>
             </li>
