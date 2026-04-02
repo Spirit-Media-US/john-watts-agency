@@ -38,9 +38,8 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" />}
     <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/w8gdH283Tvk__Lua32TysjIfp8uP.woff2" crossorigin />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -81,14 +80,18 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     })} />
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL"></script>
+    <!-- Google Analytics (GA4) — deferred for performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-YRRF97BTZL');
       gtag('config', 'AW-11481493068');
+      setTimeout(function(){
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL';
+        document.head.appendChild(s);
+      }, 2000);
     </script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-dark">
@@ -98,14 +101,25 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     </main>
     <Footer />
     <script>
-      import AOS from 'aos';
-      import 'aos/dist/aos.css';
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 80,
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('aos-animate');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        const delay = el.getAttribute('data-aos-delay');
+        if (delay) el.style.transitionDelay = delay + 'ms';
+        observer.observe(el);
       });
     </script>
+    <style>
+      [data-aos].aos-animate { opacity: 1 !important; transform: translateY(0) !important; }
+    </style>
   </body>
 </html>
