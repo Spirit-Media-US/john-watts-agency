@@ -6,7 +6,25 @@ import CtaBanner from '../components/CtaBanner.astro';
 import MailtoLink from '../components/MailtoLink.astro';
 ---
 
-<Layout title="Contact Us — Johnny Watts Agency" description="Contact Johnny Watts Agency in Taylorsville, NC. Call (828) 635-4200 or fill out our contact form.">
+<Layout title="Contact Johnny Watts Agency | Taylorsville, NC" description="Get in touch with Johnny Watts Agency at 351 NC Hwy 16 S, Taylorsville, NC. Call (828) 635-4200 or submit our online form for Medicare, health, and life insurance questions." jsonld={{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Johnny Watts Agency",
+  "url": "https://johnnywattsagency.com/contact-us/",
+  "mainEntity": {
+    "@type": "InsuranceAgency",
+    "name": "Johnny Watts Agency",
+    "telephone": "+1-828-635-4200",
+    "email": "johnny@johnnywattsagency.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "351 NC Hwy 16 S",
+      "addressLocality": "Taylorsville",
+      "addressRegion": "NC",
+      "postalCode": "28681"
+    }
+  }
+}}>
 
   <PageHero title="Contact Us" subtitle="We Would Be Happy To Assist You" />
 

@@ -5,7 +5,15 @@ import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
-<Layout title="Medicare — Johnny Watts Agency" description="Learn about Medicare options with Johnny Watts Agency. Expert guidance for Original Medicare, Medicare Advantage, Supplement, and Part D plans in North Carolina.">
+<Layout title="Medicare Insurance Plans in North Carolina | Johnny Watts Agency" description="Compare Medicare Advantage, Supplement, and Part D plans with expert guidance from Johnny Watts Agency in Taylorsville, NC. Free consultations — call (828) 635-4200." jsonld={{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Medicare Insurance",
+  "provider": { "@type": "InsuranceAgency", "name": "Johnny Watts Agency" },
+  "areaServed": { "@type": "State", "name": "North Carolina" },
+  "description": "Expert Medicare guidance including Original Medicare, Medicare Advantage, Medicare Supplement, and Part D prescription drug plans.",
+  "url": "https://johnnywattsagency.com/medicare/"
+}}>
 
   <PageHero title="Medicare" subtitle="Navigating Your Medicare Options With Confidence" />
 
