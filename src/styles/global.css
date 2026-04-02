@@ -82,10 +82,13 @@ a {
 }
 
 /* Links inside body text must be distinguishable (not rely on color alone) */
-p a, li a, td a {
+p a, td a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+}
+nav a, footer a, .nav-link, .drawer-link, .drawer-sub-link {
+  text-decoration: none !important;
 }
 
 a:hover {
