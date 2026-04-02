@@ -13,7 +13,7 @@
   --color-primary: #4632DA;
   --color-primary-dark: #3526b0;
   --color-primary-light: #5a4de6;
-  --color-accent: #06D9FA;
+  --color-accent: #0AABCB;
   --color-secondary: #3D4459;
   --color-dark: #353535;
   --color-dark-light: #4a5058;
@@ -136,7 +136,7 @@ a:hover {
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: capitalize;
-  color: var(--color-accent);
+  color: var(--color-primary);
   margin-bottom: 0.25rem;
 }
 
