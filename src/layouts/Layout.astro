@@ -7,8 +7,9 @@ import 'aos/dist/aos.css';
 interface Props {
   title: string;
   description?: string;
+  jsonld?: Record<string, any>;
 }
-const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.' } = Astro.props;
+const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.', jsonld } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -76,6 +77,7 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
         "name": "Johnny Watts"
       }
     })} />
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
 
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL"></script>

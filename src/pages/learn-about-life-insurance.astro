@@ -4,7 +4,15 @@ import CtaBanner from '../components/CtaBanner.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
-<Layout title="Learn About Life Insurance — Johnny Watts Agency" description="Learn about life insurance options including term, whole life, universal life, and variable life. Johnny Watts Agency has over 40 years of experience.">
+<Layout title="Life Insurance Options — Term, Whole, Universal | Johnny Watts Agency" description="Learn about term life, whole life, universal life, and variable life insurance. Johnny Watts Agency has helped North Carolina families protect their future for over 40 years." jsonld={{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Life Insurance",
+  "provider": { "@type": "InsuranceAgency", "name": "Johnny Watts Agency" },
+  "areaServed": { "@type": "State", "name": "North Carolina" },
+  "description": "Life insurance guidance including term, whole life, universal, and variable life policies.",
+  "url": "https://johnnywattsagency.com/learn-about-life-insurance/"
+}}>
 
   <PageHero title="Learn About Life Insurance" />
 

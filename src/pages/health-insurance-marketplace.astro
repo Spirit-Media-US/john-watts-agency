@@ -5,7 +5,15 @@ import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
-<Layout title="Health Insurance Marketplace — Johnny Watts Agency" description="Navigate the Health Insurance Marketplace with a specialist. Johnny Watts Agency helps you find affordable ACA health coverage in North Carolina.">
+<Layout title="ACA Health Insurance Marketplace Plans | Johnny Watts Agency" description="Find affordable ACA health insurance plans through the Marketplace. Johnny Watts Agency helps North Carolina families compare options and enroll. Free quote — call (828) 635-4200." jsonld={{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Health Insurance Marketplace",
+  "provider": { "@type": "InsuranceAgency", "name": "Johnny Watts Agency" },
+  "areaServed": { "@type": "State", "name": "North Carolina" },
+  "description": "ACA Health Insurance Marketplace navigation — helping individuals and families find affordable health coverage plans.",
+  "url": "https://johnnywattsagency.com/health-insurance-marketplace/"
+}}>
 
   <PageHero title="Health Insurance Marketplace" subtitle="Finding The Right Health Coverage For You And Your Family" />
 
