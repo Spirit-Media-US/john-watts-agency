@@ -35,8 +35,9 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" />}
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />}
     <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.sanity.io" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/w8gdH283Tvk__Lua32TysjIfp8uP.woff2" crossorigin />
 
