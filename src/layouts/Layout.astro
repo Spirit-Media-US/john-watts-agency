@@ -80,18 +80,22 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     })} />
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
 
-    <!-- Google Analytics (GA4) — deferred for performance -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YRRF97BTZL');
-      gtag('config', 'AW-11481493068');
-      setTimeout(function(){
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL';
-        document.head.appendChild(s);
-      }, 2000);
+    <!-- Google Analytics (GA4) — loaded after first paint for performance -->
+    <script is:inline>
+      window.addEventListener('load', function() {
+        setTimeout(function(){
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-YRRF97BTZL');
+          gtag('config', 'AW-11481493068');
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YRRF97BTZL';
+          s.async = true;
+          document.head.appendChild(s);
+        }, 100);
+      });
     </script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-dark">

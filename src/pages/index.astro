@@ -87,6 +87,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
             class="w-full h-auto"
             style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
             loading="lazy"
+            decoding="async"
           />
         </div>
         <!-- Text -->
@@ -175,7 +176,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
                 <div class="testimonial-slide" data-index={i}>
                   <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-4">"{t.quote}"</p>
                   <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; color: #3D4459;">{t.name}</p>
-                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px; color: #6b7280;">{t.location}</p>
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px; color: #4b5563;">{t.location}</p>
                 </div>
               ))}
             </div>
