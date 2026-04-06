@@ -59,7 +59,7 @@ function renderBody(blocks: any[]): string {
     }
     if (block._type === 'image' && block.asset) {
       const src = urlFor(block).width(700).auto('format').url();
-      return `<img src="${src}" alt="${block.alt || ''}" width="700" height="400" loading="lazy" decoding="async" class="rounded-lg" />`;
+      return `<img src="${src}" alt="${block.alt || 'Blog post image'}" width="700" height="400" loading="lazy" decoding="async" class="rounded-lg" />`;
     }
     return '';
   }).join('\n');
