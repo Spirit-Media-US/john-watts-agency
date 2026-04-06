@@ -29,17 +29,17 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
 <Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation." preloadImage={heroImgUrl}>
 
   <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
-  <section class="relative overflow-hidden text-white" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); min-height: 580px;">
+  <section class="relative overflow-hidden text-white gradient-badge min-h-[580px]">
     <!-- Decorative background overlay (blob shapes) -->
-    <div class="absolute inset-0 pointer-events-none" style={`background-image: url('${bgHeroUrl}'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: 0.15;`}></div>
+    <div class="absolute inset-0 pointer-events-none bg-center bg-no-repeat bg-cover opacity-[0.15]" style={`background-image: url('${bgHeroUrl}');`}></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-[45%] shrink-0 ">
-          <h1 class="mb-4" style="font-family: 'Varela Round', sans-serif; font-size: clamp(28px, 5vw, 45px); font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">We Are Your Trusted Specialists</h1>
-          <p class="text-white/90 mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4;">
+          <h1 class="mb-4 font-heading font-light leading-[1.2] capitalize text-white" style="font-size: clamp(28px, 5vw, 45px);">We Are Your Trusted Specialists</h1>
+          <p class="text-white/90 mb-6 text-base font-light leading-[1.4]">
             We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
           </p>
-          <a href="#about" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #0AABCB; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+          <a href="#about" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             About Us
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
@@ -52,8 +52,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
             alt="Happy family with Medicare and health insurance coverage in North Carolina"
             width="600"
             height="450"
-            class="w-full h-auto hover-tilt"
-            style="border-radius: 300px 100px 100px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12); margin-bottom: -15%;"
+            class="w-full h-auto hover-tilt blob-shape-3 -mb-[15%]"
             loading="eager"
             fetchpriority="high"
             decoding="async"
@@ -62,7 +61,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       </div>
     </div>
     <!-- Wave bottom — exact WP Elementor technique -->
-    <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 1; direction: ltr;">
+    <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg) scaleX(-1); height: 100px;">
         <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
@@ -72,9 +71,9 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
   <!-- ═══ WHY CHOOSE — image LEFT, text RIGHT ═══ -->
   <section id="about" class="relative py-16 md:py-24 overflow-hidden">
     <!-- Decorative circles -->
-    <div class="absolute top-10 left-[5%] w-[120px] h-[120px] rounded-full opacity-10 pointer-events-none animate-pulse-soft" style="background: #06D9FA;"></div>
-    <div class="absolute bottom-20 left-[15%] w-[80px] h-[80px] rounded-full opacity-8 pointer-events-none animate-float" style="background: #4632DA;"></div>
-    <div class="absolute top-1/3 right-[3%] w-[60px] h-[60px] rounded-full opacity-10 pointer-events-none animate-pulse-soft" style="background: #06D9FA;"></div>
+    <div class="absolute top-10 left-[5%] w-[120px] h-[120px] rounded-full opacity-10 pointer-events-none animate-pulse-soft bg-[#06D9FA]"></div>
+    <div class="absolute bottom-20 left-[15%] w-[80px] h-[80px] rounded-full opacity-8 pointer-events-none animate-float bg-primary"></div>
+    <div class="absolute top-1/3 right-[3%] w-[60px] h-[60px] rounded-full opacity-10 pointer-events-none animate-pulse-soft bg-[#06D9FA]"></div>
     <div class="max-w-[1250px] mx-auto px-[2%]">
       <div class="flex flex-col md:flex-row gap-12 items-center">
         <!-- Image -->
@@ -84,20 +83,19 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
             alt="Family discussing insurance options with Johnny Watts Agency"
             width="800"
             height="600"
-            class="w-full h-auto"
-            style="border-radius: 100px 100px 300px 100px; box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);"
+            class="w-full h-auto blob-shape-2"
             loading="lazy"
             decoding="async"
           />
         </div>
         <!-- Text -->
         <div class="md:w-1/2 " data-aos="fade-up" data-aos-delay="200">
-          <p class="kicker" style="color: #000000;">Your Health, Your Future, Your Family, Your Peace Of Mind</p>
-          <h2 class="mb-4" style="font-family: 'Varela Round', sans-serif; color: #4632DA;">Why Choose Johnny Watts Agency?</h2>
-          <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-6">
+          <p class="kicker text-black">Your Health, Your Future, Your Family, Your Peace Of Mind</p>
+          <h2 class="mb-4 font-heading text-primary">Why Choose Johnny Watts Agency?</h2>
+          <p class="mb-6 font-light text-base leading-[1.4] text-dark">
             We specialize in providing Medicare, Health Insurance, and Life Insurance services. We know that decisions concerning these are not to be taken lightly and that's why we take the time to understand your needs and we're here to guide you through the process with expertise and dedication. You might ask, "How are you different?" Good question. As a recruiter, I help Medicare and insurance agents all across America find the best companies to recommend to their clients. As your local agent, I'll access over <a href="#our_partners">40 top insurance companies</a> and compare their rates for the plan that fits you best. In addition, my platform is a top-tier health insurance marketplace that offers services tailored to your needs.
           </p>
-          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #0AABCB; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             Learn More About Our Agency
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
@@ -109,9 +107,9 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
   <!-- ═══ COMPANY AFFILIATION / OUR PARTNERS ═══ -->
   <section id="our_partners" class="py-16 md:py-20">
     <div class="max-w-[1250px] mx-auto px-[2%] text-center">
-      <p class="kicker " data-aos="fade-up" style="color: #000000;">Company Affiliation</p>
-      <h2 class="mb-4 " data-aos="fade-up" data-aos-delay="100" style="font-family: 'Varela Round', sans-serif; color: #4632DA;">Our Partners</h2>
-      <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.4; color: #353535;" class="max-w-2xl mx-auto mb-10 " data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
+      <p class="kicker text-black" data-aos="fade-up">Company Affiliation</p>
+      <h2 class="mb-4 font-heading text-primary" data-aos="fade-up" data-aos-delay="100">Our Partners</h2>
+      <p class="max-w-2xl mx-auto mb-10 text-base font-light leading-[1.4] text-dark" data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
       <div class="logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
           {sanityPartners.map((p: any) => (
@@ -129,25 +127,25 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       style={`background-image: url('${bgTeamUrl}');`}>
     </div>
     <!-- Decorative circles -->
-    <div class="absolute top-16 right-[8%] w-[150px] h-[150px] rounded-full opacity-10 pointer-events-none animate-float" style="background: #06D9FA;"></div>
-    <div class="absolute bottom-24 left-[2%] w-[200px] h-[200px] rounded-full opacity-8 pointer-events-none animate-pulse-soft" style="background: #4632DA;"></div>
-    <div class="absolute top-1/2 right-[2%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float" style="background: #06D9FA;"></div>
+    <div class="absolute top-16 right-[8%] w-[150px] h-[150px] rounded-full opacity-10 pointer-events-none animate-float bg-[#06D9FA]"></div>
+    <div class="absolute bottom-24 left-[2%] w-[200px] h-[200px] rounded-full opacity-8 pointer-events-none animate-pulse-soft bg-primary"></div>
+    <div class="absolute top-1/2 right-[2%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float bg-[#06D9FA]"></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%]">
       <div class="flex flex-col lg:flex-row gap-10 items-center">
         <!-- Photos grid -->
         <div class="lg:w-[70%] grid grid-cols-2 md:grid-cols-4 gap-4">
           {sanityTeam.map((m: any) => (
             <div class="text-center">
-              <img src={m.headshot ? urlFor(m.headshot).width(230).height(230).fit('crop').format('webp').quality(80).url() : ''} alt={m.name} width="230" height="230" class="w-full aspect-square object-cover object-top rounded-sm mb-2" style="max-width: 230px;" loading="lazy" decoding="async" />
-              <h3 style="font-family: 'Varela Round', sans-serif; font-size: 16px; font-weight: 600; color: #4632DA;">{m.name}</h3>
+              <img src={m.headshot ? urlFor(m.headshot).width(230).height(230).fit('crop').format('webp').quality(80).url() : ''} alt={m.name} width="230" height="230" class="w-full max-w-[230px] aspect-square object-cover object-top rounded-sm mb-2" loading="lazy" decoding="async" />
+              <h3 class="font-heading text-base font-semibold text-primary">{m.name}</h3>
             </div>
           ))}
         </div>
         <!-- Text -->
         <div class="lg:w-[30%]">
-          <p class="kicker" style="color: #000000;">our work inspires smiles</p>
-          <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2; color: #4632DA;">The Faces Behind Our Success</h2>
-          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium" style="background-color: #0AABCB; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+          <p class="kicker text-black">our work inspires smiles</p>
+          <h2 class="mb-6 font-heading text-[2.5rem] leading-[1.2] text-primary">The Faces Behind Our Success</h2>
+          <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             About Us
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
@@ -159,14 +157,14 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
   <!-- ═══ TESTIMONIALS — heading LEFT, carousel RIGHT, two-column ═══ -->
   <section class="relative py-16 md:py-24 overflow-hidden">
     <!-- Decorative circles -->
-    <div class="absolute top-10 right-[5%] w-[140px] h-[140px] rounded-full opacity-8 pointer-events-none animate-drift" style="background: #06D9FA;"></div>
-    <div class="absolute bottom-16 left-[8%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float" style="background: #4632DA;"></div>
+    <div class="absolute top-10 right-[5%] w-[140px] h-[140px] rounded-full opacity-8 pointer-events-none animate-drift bg-[#06D9FA]"></div>
+    <div class="absolute bottom-16 left-[8%] w-[100px] h-[100px] rounded-full opacity-6 pointer-events-none animate-float bg-primary"></div>
     <div class="max-w-[1250px] mx-auto px-[2%]">
       <div class="flex flex-col lg:flex-row gap-10 items-start">
         <!-- Left heading -->
         <div class="lg:w-1/3 " data-aos="fade-up">
-          <p class="kicker" style="color: #000000;">We Love Them</p>
-          <h2 style="font-family: 'Varela Round', sans-serif; font-size: 2.5rem; line-height: 1.2; color: #4632DA;">Client Testimonials</h2>
+          <p class="kicker text-black">We Love Them</p>
+          <h2 class="font-heading text-[2.5rem] leading-[1.2] text-primary">Client Testimonials</h2>
         </div>
         <!-- Right carousel -->
         <div class="lg:w-2/3">
@@ -174,9 +172,9 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
             <div class="testimonial-track" id="testimonial-track">
               {testimonials.map((t, i) => (
                 <div class="testimonial-slide" data-index={i}>
-                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.4; color: #353535;" class="mb-4">"{t.quote}"</p>
-                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; color: #3D4459;">{t.name}</p>
-                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 14px; color: #4b5563;">{t.location}</p>
+                  <p class="mb-4 font-light text-base leading-[1.4] text-dark">"{t.quote}"</p>
+                  <p class="font-medium text-secondary">{t.name}</p>
+                  <p class="font-light text-sm text-gray">{t.location}</p>
                 </div>
               ))}
             </div>
@@ -188,19 +186,19 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
   </section>
 
   <!-- ═══ GET A QUOTE — gradient CTA section ═══ -->
-  <section class="relative py-16 md:py-24 text-white overflow-hidden" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%);">
+  <section class="relative py-16 md:py-24 text-white overflow-hidden gradient-badge">
     <!-- Wave top -->
-    <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 1; direction: ltr;">
+    <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) scaleX(-1); height: 100px;">
         <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
     </div>
     <!-- Decorative background circles -->
-    <div class="absolute top-[-40px] left-[-40px] w-[250px] h-[250px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.1);"></div>
-    <div class="absolute bottom-[-60px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none" style="background: rgba(255,255,255,0.1);"></div>
-    <div class="relative max-w-[1250px] mx-auto px-[2%] text-left" style="z-index: 2; padding-top: 30px; padding-bottom: 30px;">
-      <h2 class="mb-6" style="font-family: 'Varela Round', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 300; color: #ffffff;">Get A Quote</h2>
-      <a href="/life-quote/" class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg" style="background-color: #ffffff; color: #0AABCB; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 30px;">
+    <div class="absolute top-[-40px] left-[-40px] w-[250px] h-[250px] rounded-full pointer-events-none bg-white/10"></div>
+    <div class="absolute bottom-[-60px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none bg-white/10"></div>
+    <div class="relative max-w-[1250px] mx-auto px-[2%] text-left z-[2] pt-[30px] pb-[30px]">
+      <h2 class="mb-6 font-heading font-light text-white" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">Get A Quote</h2>
+      <a href="/life-quote/" class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg bg-white text-accent text-base font-medium rounded-full">
         Life Quote
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
       </a>

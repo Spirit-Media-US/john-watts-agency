@@ -9,20 +9,20 @@ const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
 
 <section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: clamp(80px, 10vw, 100px); padding-bottom: clamp(60px, 8vw, 100px);">
   <!-- Decorative blob shapes — one left, one right -->
-  <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" style="z-index: 0;">
+  <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
     <!-- Left blob -->
     <path d="M-50,-50 C100,-30 250,80 280,200 C310,320 200,420 80,440 C-40,460 -120,380 -150,250 C-180,120 -100,-70 -50,-50 Z" fill="rgba(255,255,255,0.07)" />
     <!-- Right blob -->
     <path d="M1200,-50 C1350,0 1480,120 1500,280 C1520,440 1450,550 1320,520 C1190,490 1100,350 1100,200 C1100,50 1150,-50 1200,-50 Z" fill="rgba(255,255,255,0.08)" />
   </svg>
 
-  <div class="relative max-w-[1250px] mx-auto px-[2%]" style="z-index: 2; padding-top: 30px; padding-bottom: 30px;">
-    <h1 style="font-family: 'Varela Round', sans-serif; font-size: clamp(28px, 5vw, 55px); font-weight: 300; line-height: 1.2; text-transform: capitalize; color: #ffffff;">{title}</h1>
-    {subtitle && <p class="mt-4" style="font-family: 'Montserrat', sans-serif; font-size: clamp(15px, 2vw, 19px); font-weight: 300; color: rgba(255,255,255,0.9);">{subtitle}</p>}
+  <div class="relative z-[2] max-w-[1250px] mx-auto px-[2%] pt-[30px] pb-[30px]">
+    <h1 class="font-heading font-light leading-[1.2] capitalize text-white" style="font-size: clamp(28px, 5vw, 55px);">{title}</h1>
+    {subtitle && <p class="mt-4 font-light text-white/90" style="font-size: clamp(15px, 2vw, 19px);">{subtitle}</p>}
   </div>
 
   <!-- Wave bottom (exact WP Elementor technique: slightly wider SVG, centered, rotated) -->
-  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none" style="z-index: 3; direction: ltr;">
+  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[3]" style="direction: ltr;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg) scaleX(-1); height: 100px;">
       <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill={waveFill}/>
     </svg>

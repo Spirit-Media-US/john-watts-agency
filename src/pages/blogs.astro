@@ -32,12 +32,12 @@ const posts = sanityPosts.map((p: any) => ({
             <div class="p-5">
               <p class="text-xs text-gray mb-2">{post.date}</p>
               <h3 class="text-lg mb-2">
-                <a href={post.slug} style="color: #353535; text-decoration: none;" class="hover:text-primary transition-colors">
+                <a href={post.slug} class="text-dark no-underline hover:text-primary transition-colors">
                   {post.title}
                 </a>
               </h3>
               <p class="text-sm text-gray mb-3">{post.excerpt}</p>
-              <a href={post.slug} class="text-sm font-semibold" style="color: #4632DA;">
+              <a href={post.slug} class="text-sm font-semibold text-primary">
                 Read More →
               </a>
             </div>
@@ -46,11 +46,11 @@ const posts = sanityPosts.map((p: any) => ({
       </div>
       <!-- Pagination -->
       <div class="flex justify-center items-center gap-3 mt-12" id="blog-pagination">
-        <button id="prev-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px]" style="background: #f3f4f6; color: #4b5563; cursor: pointer; border: none;" disabled>
+        <button id="prev-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px] bg-gray-light text-gray cursor-pointer border-none" disabled>
           ← Previous
         </button>
-        <span id="page-info" style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: #4b5563;">Page 1 of {Math.ceil(posts.length / 6)}</span>
-        <button id="next-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px]" style="background: #4632DA; color: #ffffff; cursor: pointer; border: none;">
+        <span id="page-info" class="text-sm text-gray">Page 1 of {Math.ceil(posts.length / 6)}</span>
+        <button id="next-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px] bg-primary text-white cursor-pointer border-none">
           Next →
         </button>
       </div>

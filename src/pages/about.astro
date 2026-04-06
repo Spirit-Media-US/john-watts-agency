@@ -48,8 +48,7 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
               <img
                 src={member.img}
                 alt={member.name}
-                class="relative w-[180px] h-[180px] md:w-[250px] md:h-[250px] object-cover object-top bg-white"
-                style="border-radius: 150px 50px 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"
+                class="relative w-[180px] h-[180px] md:w-[250px] md:h-[250px] object-cover object-top bg-white blob-shape-1"
                 loading={i === 0 ? 'eager' : 'lazy'}
                 decoding="async"
                 width="250"
@@ -58,20 +57,20 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
             </div>
             <!-- Bio content -->
             <div class="flex-1">
-              <h2 style="font-family: 'Varela Round', sans-serif; font-size: 2rem; font-weight: 300; color: #4632DA; margin-bottom: 4px;">{member.name}</h2>
-              <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400; color: #4b5563; margin-bottom: 1.25rem;">{member.role}</p>
+              <h2 class="font-heading text-[2rem] font-light text-primary mb-1">{member.name}</h2>
+              <p class="text-[15px] font-normal text-gray mb-5">{member.role}</p>
               {member.bio.map(paragraph => (
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.6; color: #353535; margin-bottom: 0.75rem;">{paragraph}</p>
+                <p class="text-[15px] font-light leading-[1.6] text-dark mb-3">{paragraph}</p>
               ))}
               {member.emailUser && member.emailDomain && (
-                <MailtoLink user={member.emailUser} domain={member.emailDomain} label={`Email ${member.name}`} class="hero-btn inline-flex items-center gap-2 px-7 py-3 mt-4" style="background-color: #4632DA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+                <MailtoLink user={member.emailUser} domain={member.emailDomain} label={`Email ${member.name}`} class="hero-btn inline-flex items-center gap-2 px-7 py-3 mt-4 bg-primary text-white text-[15px] font-medium capitalize no-underline rounded-full">
                   Email {member.name}
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
                 </MailtoLink>
               )}
             </div>
             <!-- Decorative circle on right (faint) -->
-            <div class="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full pointer-events-none" style="background: rgba(6,217,250,0.06);"></div>
+            <div class="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 w-[160px] h-[160px] rounded-full pointer-events-none bg-[rgba(6,217,250,0.06)]"></div>
           </div>
         ))}
       </div>
@@ -79,14 +78,14 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
   </section>
 
   <!-- Support Team Grid -->
-  <section class="py-16 md:py-20" style="background: #f9f9f9;">
+  <section class="py-16 md:py-20 bg-[#f9f9f9]">
     <div class="max-w-[1100px] mx-auto px-4">
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {supportTeam.map(person => (
           <div class="text-center " data-aos="zoom-in">
-            <img src={person.img} alt={person.name} class="w-[150px] h-[150px] mx-auto mb-3 rounded-full object-cover object-top bg-white hover-tilt" style="box-shadow: 0 10px 30px rgba(0,0,0,0.15);" loading="lazy" decoding="async" width="150" height="150" />
-            <h3 style="font-family: 'Varela Round', sans-serif; font-size: 1rem; font-weight: 400; color: #353535;">{person.name}</h3>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; color: #4b5563;">{person.role}</p>
+            <img src={person.img} alt={person.name} class="w-[150px] h-[150px] mx-auto mb-3 rounded-full object-cover object-top bg-white hover-tilt shadow-[0_10px_30px_rgba(0,0,0,0.15)]" loading="lazy" decoding="async" width="150" height="150" />
+            <h3 class="font-heading text-base font-normal text-dark">{person.name}</h3>
+            <p class="text-sm font-normal text-gray">{person.role}</p>
           </div>
         ))}
       </div>
@@ -129,9 +128,9 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
   </script>
 
   <!-- CTA — Get A Life Insurance Quote -->
-  <section class="py-16 text-center" style="background: #f9f9f9;">
+  <section class="py-16 text-center bg-[#f9f9f9]">
     <div class="max-w-3xl mx-auto px-4">
-      <a href="/life-quote/" class="hero-btn inline-flex items-center gap-2 px-8 py-4" style="background-color: #4632DA; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 500; text-transform: capitalize; text-decoration: none; border-radius: 30px;">
+      <a href="/life-quote/" class="hero-btn inline-flex items-center gap-2 px-8 py-4 bg-primary text-white text-base font-medium capitalize no-underline rounded-full">
         Get A Life Insurance Quote
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
       </a>
