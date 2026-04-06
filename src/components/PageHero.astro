@@ -7,7 +7,7 @@ interface Props {
 const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
 ---
 
-<section class="relative overflow-hidden text-white text-center" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%); padding-top: clamp(80px, 10vw, 100px); padding-bottom: clamp(60px, 8vw, 100px);">
+<section class="relative overflow-hidden text-white text-center bg-gradient-hero padding-hero">
   <!-- Decorative blob shapes — one left, one right -->
   <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
     <!-- Left blob -->
@@ -17,13 +17,13 @@ const { title, subtitle, waveFill = '#ffffff' } = Astro.props;
   </svg>
 
   <div class="relative z-[2] max-w-[1250px] mx-auto px-[2%] pt-[30px] pb-[30px]">
-    <h1 class="font-heading font-light leading-[1.2] capitalize text-white" style="font-size: clamp(28px, 5vw, 55px);">{title}</h1>
-    {subtitle && <p class="mt-4 font-light text-white/90" style="font-size: clamp(15px, 2vw, 19px);">{subtitle}</p>}
+    <h1 class="font-heading font-light leading-[1.2] capitalize text-white text-clamp-hero">{title}</h1>
+    {subtitle && <p class="mt-4 font-light text-white/90 text-clamp-subtitle">{subtitle}</p>}
   </div>
 
   <!-- Wave bottom (exact WP Elementor technique: slightly wider SVG, centered, rotated) -->
-  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[3]" style="direction: ltr;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg) scaleX(-1); height: 100px;">
+  <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[3] dir-ltr">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg">
       <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill={waveFill}/>
     </svg>
   </div>

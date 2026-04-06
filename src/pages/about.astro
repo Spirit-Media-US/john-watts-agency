@@ -96,7 +96,7 @@ const partners = (await sanityClient.fetch(`*[_type == "partner"] | order(name a
   <section class="py-16 md:py-20">
     <div class="max-w-[1100px] mx-auto px-4">
       <SectionHeading kicker="we work with them" title="Company Affiliation" subtitle="The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs." />
-      <div class="about-logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+      <div class="about-logo-slider overflow-hidden relative mask-fade-x">
         <div class="about-logo-track flex items-center gap-6 md:gap-16" id="about-logo-track">
           {partners.map(p => (
             <img src={p.url} alt={p.name} class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" decoding="async" width="120" height="64" />

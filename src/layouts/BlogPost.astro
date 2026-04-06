@@ -26,7 +26,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 <Layout title={`${title} — Johnny Watts Agency`} description={description}>
   <article>
     <!-- Hero -->
-    <header class="relative overflow-hidden text-white text-center pt-[120px] pb-[160px]" style="background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%)">
+    <header class="relative overflow-hidden text-white text-center pt-[120px] pb-[160px] bg-gradient-hero">
       <!-- Decorative blobs -->
       <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
         <path d="M-50,-50 C100,-30 250,80 280,200 C310,320 200,420 80,440 C-40,460 -120,380 -150,250 C-180,120 -100,-70 -50,-50 Z" fill="rgba(255,255,255,0.07)" />
@@ -41,8 +41,8 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
         </p>
       </div>
       <!-- Wave bottom -->
-      <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[3]" style="direction: ltr;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg); height: 100px;">
+      <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[3] dir-ltr">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg-narrow">
           <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
         </svg>
       </div>
@@ -50,7 +50,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 
     <!-- Featured Image (overlapping hero) -->
     {img && (
-      <div class="relative max-w-3xl mx-auto px-4 z-[4]" style="margin-top: clamp(-60px, -8vw, -100px);">
+      <div class="relative max-w-3xl mx-auto px-4 z-[4] mt-clamp-overlap">
         <img src={img} alt={title} class="w-full rounded-lg shadow-lg aspect-video object-cover" width="768" height="432" decoding="async" />
       </div>
     )}
@@ -85,7 +85,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 
     <!-- Newsletter -->
     <div class="max-w-2xl mx-auto px-4 mb-16">
-      <div class="rounded-xl shadow-lg overflow-hidden" style="border-bottom: 4px solid transparent; border-image: linear-gradient(90deg, #4632DA, #06D9FA) 1;">
+      <div class="rounded-xl shadow-lg overflow-hidden border-gradient-bottom">
         <div class="p-5 md:p-8 text-center">
           <h3 class="mb-2 font-heading text-[24px] font-light text-secondary">Subscribe To Our Newsletter</h3>
           <p class="mb-6 text-sm font-light text-gray">Get updates and learn from the best</p>
@@ -149,10 +149,10 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
 
   <!-- CTA Section — curved top, flat bottom -->
   <div class="relative m-0 p-0">
-    <div class="relative overflow-clip pt-[120px] pb-[60px] overflow-x-clip overflow-y-visible" style="background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%);">
+    <div class="relative overflow-clip pt-[120px] pb-[60px] overflow-x-clip overflow-y-visible bg-gradient-cta">
       <!-- Curved top edge -->
       <div class="absolute left-0 w-full overflow-hidden leading-none top-[-1px] z-[2]">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" style="display: block; width: calc(100% + 1.3px); position: relative; left: 50%; transform: translateX(-50%); height: 100px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none" class="wave-svg-narrow-flat">
           <path d="M0,100 C480,100 960,0 1440,0 L1440,0 L0,0 Z" fill="#ffffff"/>
         </svg>
       </div>
@@ -176,7 +176,7 @@ const relatedPosts = posts.filter((_, i) => i !== currentIndex).slice(0, 2);
           </a>
         </div>
         <!-- Image — floating above the gradient (shape baked into PNG) -->
-        <div class="md:w-[55%] flex justify-center md:justify-end" style="margin-top: clamp(-40px, -6vw, -80px);">
+        <div class="md:w-[55%] flex justify-center md:justify-end mt-clamp-overlap-sm">
           <img
             src={ctaImgUrl}
             alt="Business team meeting"

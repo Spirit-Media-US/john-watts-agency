@@ -242,6 +242,93 @@ a:hover {
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 
+/* ─── Responsive clamp font sizes ──────────────────────────── */
+.text-clamp-hero { font-size: clamp(28px, 5vw, 55px); }
+.text-clamp-hero-sm { font-size: clamp(28px, 5vw, 45px); }
+.text-clamp-subtitle { font-size: clamp(15px, 2vw, 19px); }
+.text-clamp-section { font-size: clamp(24px, 4vw, 36px); }
+.text-clamp-section-sm { font-size: clamp(22px, 4vw, 32px); }
+.text-clamp-section-lg { font-size: clamp(28px, 5vw, 42px); }
+.text-clamp-cta { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+
+/* ─── Gradient backgrounds ─────────────────────────────────── */
+.bg-gradient-hero {
+  background: linear-gradient(130deg, #4632DA 0%, #06D9FA 89%);
+}
+.bg-gradient-cta {
+  background: linear-gradient(100deg, #4632DA 0%, #2a7de8 40%, #06D9FA 100%);
+}
+.bg-gradient-animate {
+  background: linear-gradient(130deg, #4632DA 0%, #2a7de8 33%, #06D9FA 66%, #4632DA 100%);
+  background-size: 200% 200%;
+}
+.bg-gradient-drawer {
+  background: linear-gradient(180deg, #4632DA 0%, #2a7de8 50%, #06D9FA 100%);
+}
+
+/* ─── Wave SVG positioning ─────────────────────────────────── */
+.wave-svg {
+  display: block;
+  width: calc(250% + 100.3px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg) scaleX(-1);
+  height: 100px;
+}
+.wave-svg-simple {
+  display: block;
+  width: calc(250% + 100.3px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) scaleX(-1);
+  height: 100px;
+}
+.wave-svg-cta {
+  display: block;
+  width: calc(250% + 100.3px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) scaleX(-1);
+  height: 60px;
+}
+.wave-svg-narrow {
+  display: block;
+  width: calc(100% + 1.3px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  height: 100px;
+}
+.wave-svg-narrow-flat {
+  display: block;
+  width: calc(100% + 1.3px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
+}
+
+/* ─── Misc layout utilities ────────────────────────────────── */
+.dir-ltr { direction: ltr; }
+.mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.border-gradient-bottom {
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(90deg, #4632DA, #06D9FA) 1;
+}
+.mt-clamp-overlap { margin-top: clamp(-60px, -8vw, -100px); }
+.mt-clamp-overlap-sm { margin-top: clamp(-40px, -6vw, -80px); }
+.padding-hero {
+  padding-top: clamp(80px, 10vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+}
+.drawer-hidden {
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* ─── Section wave decorations ───────────────────────────────── */
 .wave-top,
 .wave-bottom {
