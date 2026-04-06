@@ -98,26 +98,35 @@ Then run: `git checkout dev && git pull origin dev`
 - Mobile/tablet responsive verified
 - AOS scroll animations + premium hover effects
 
-### Phase 3 — Design & Content (85%)
+### Phase 3 — Design & Content (90%)
 - All WP content migrated (zero wp-content URLs remaining)
 - All media in Sanity (43 images) + local public/ for BG patterns
 - SEO meta on all pages + JSON-LD InsuranceAgency schema
 - Google Analytics + Google Ads tracking
 - Design cloned from WP Elementor (waves, blobs, gradients, cards)
-- **Pending:** Forms → GHL integration
-- **Pending:** Medicare + Health Marketplace pages need more content
+- Site audit fixes applied (contrast, touch targets, image attrs, GA defer, console errors)
+- OG image converted to WebP (620KB → 37KB)
+- **Pending:** Forms → GHL integration (need GHL webhook URL from Kevin)
+- **Pending:** Medicare + Health Marketplace pages need more content (from Johnny)
 
-### Phase 4 — Sanity CMS Wiring (40%)
+### Phase 4 — Sanity CMS Wiring (95%)
 - Schemas defined: siteSettings, teamMember, partner, post, testimonial
-- All content uploaded to Sanity
-- **Pending:** Wire Astro pages to fetch from Sanity
-- **Pending:** Sanity → Netlify deploy webhook
+- All content uploaded to Sanity (83 docs, 43 images)
+- All pages wired to Sanity: index, about, blogs, blog/[slug], contact-us, Footer
+- Service pages (medicare, marketplace, life insurance) remain static — content is informational, not CMS-editable
+- **Pending:** Sanity → Netlify deploy webhook (dashboard config only)
 
-### Still Pending (Phase 5+)
-- Audit Gate scans
-- Custom domain connection (Cloudflare)
-- UptimeRobot monitoring
-- Sanity → Netlify webhook
+### Phase 5 — Monitoring & Infrastructure
+- Google Search Console: verified, sitemap submitted (Apr 2026)
+- UptimeRobot: active, 5-min checks (monitor ID: 802779313)
+- Domain: Namecheap DNS → Netlify (not on Cloudflare — works fine as-is)
+- **Pending:** Sanity → Netlify webhook (create build hook in Netlify, add to Sanity)
+- **Pending:** Forms → GHL integration
+
+### Still Pending
+- Forms → GHL (need webhook URL from Kevin)
+- Medicare + Marketplace page content (from Johnny)
+- Sanity → Netlify webhook (dashboard config)
 
 ## Rules
 

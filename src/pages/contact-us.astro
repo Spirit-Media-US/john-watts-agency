@@ -4,6 +4,15 @@ import QuoteForm from '../components/QuoteForm.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import MailtoLink from '../components/MailtoLink.astro';
+import { sanityClient } from '../lib/sanity';
+
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ phone, email, address, hours }`);
+const phone = settings?.phone || '(828) 635-4200';
+const email = settings?.email || 'johnny@johnnywattsagency.com';
+const address = settings?.address || '351 NC Hwy 16 S. Taylorsville, NC 28681';
+const hours = settings?.hours || 'Monday - Friday: 9 AM - 5 PM';
+const phoneTel = phone.replace(/[^0-9]/g, '');
+const [emailUser, emailDomain] = email.split('@');
 ---
 
 <Layout title="Contact Johnny Watts Agency | Taylorsville, NC" description="Get in touch with Johnny Watts Agency at 351 NC Hwy 16 S, Taylorsville, NC. Call (828) 635-4200 or submit our online form for Medicare, health, and life insurance questions." jsonld={{
@@ -40,7 +49,7 @@ import MailtoLink from '../components/MailtoLink.astro';
       <h2 class="mb-6 " data-aos="fade-up" data-aos-delay="100" style="font-family: 'Varela Round', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 300; color: #3D4459;">Get Life Insurance Expertise To Secure Your Future.</h2>
       <div class="" data-aos="fade-up" data-aos-delay="200" style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400; color: #4b5563;">
         <p>Saturday & Sunday: Closed</p>
-        <p>Monday - Friday: 9 AM - 5 PM</p>
+        <p>{hours}</p>
       </div>
 
       <!-- Contact Form Card -->
@@ -77,7 +86,7 @@ import MailtoLink from '../components/MailtoLink.astro';
             </svg>
           </div>
           <h3 style="font-family: 'Varela Round', sans-serif; font-size: 22px; font-weight: 300; color: #3D4459; margin-bottom: 16px;">Give Us A Call</h3>
-          <a href="tel:8286354200" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; color: #4b5563; text-decoration: none;">828-635-4200</a>
+          <a href={`tel:${phoneTel}`} style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; color: #4b5563; text-decoration: none;">{phone}</a>
         </div>
 
         <!-- We're On The Map -->
@@ -90,7 +99,7 @@ import MailtoLink from '../components/MailtoLink.astro';
             </svg>
           </div>
           <h3 style="font-family: 'Varela Round', sans-serif; font-size: 22px; font-weight: 300; color: #3D4459; margin-bottom: 16px;">We're On The Map</h3>
-          <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; color: #4b5563; text-align: center;">351 NC Hwy 16 S. Taylorsville, NC 28681</p>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; color: #4b5563; text-align: center;">{address}</p>
         </div>
 
         <!-- Write Us -->
@@ -102,7 +111,7 @@ import MailtoLink from '../components/MailtoLink.astro';
             </svg>
           </div>
           <h3 style="font-family: 'Varela Round', sans-serif; font-size: 22px; font-weight: 300; color: #3D4459; margin-bottom: 16px;">Write Us</h3>
-          <MailtoLink user="johnny" domain="johnnywattsagency.com" label="Email Me Now!" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #0AABCB; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 30px;" />
+          <MailtoLink user={emailUser} domain={emailDomain} label="Email Me Now!" class="hero-btn inline-flex items-center gap-2 px-7 py-3" style="background-color: #0AABCB; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 30px;" />
         </div>
       </div>
     </div>
