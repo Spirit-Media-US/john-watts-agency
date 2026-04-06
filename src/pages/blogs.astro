@@ -28,16 +28,16 @@ const posts = sanityPosts.map((p: any) => ({
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-grid">
         {posts.map((post, i) => (
           <article class:list={['blog-card bg-gray-light rounded-lg overflow-hidden hover-lift hover-zoom " data-aos="fade-up', { hidden: i >= 6 }]}>
-            <img src={post.img} alt={post.title} class="w-full h-48 object-cover" loading="lazy" />
+            <img src={post.img} alt={post.title} class="w-full h-48 object-cover" loading="lazy" decoding="async" width="600" height="192" />
             <div class="p-5">
               <p class="text-xs text-gray mb-2">{post.date}</p>
               <h3 class="text-lg mb-2">
-                <a href={post.slug} style="color: #353535; text-decoration: none;" class="hover:text-primary transition-colors">
+                <a href={post.slug} class="text-dark no-underline hover:text-primary transition-colors">
                   {post.title}
                 </a>
               </h3>
               <p class="text-sm text-gray mb-3">{post.excerpt}</p>
-              <a href={post.slug} class="text-sm font-semibold" style="color: #4632DA;">
+              <a href={post.slug} class="text-sm font-semibold text-primary">
                 Read More →
               </a>
             </div>
@@ -46,11 +46,11 @@ const posts = sanityPosts.map((p: any) => ({
       </div>
       <!-- Pagination -->
       <div class="flex justify-center items-center gap-3 mt-12" id="blog-pagination">
-        <button id="prev-page" class="px-4 py-2 rounded-md text-sm font-medium" style="background: #f3f4f6; color: #6b7280; cursor: pointer; border: none;" disabled>
+        <button id="prev-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px] bg-gray-light text-gray cursor-pointer border-none" disabled>
           ← Previous
         </button>
-        <span id="page-info" style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: #6b7280;">Page 1 of {Math.ceil(posts.length / 6)}</span>
-        <button id="next-page" class="px-4 py-2 rounded-md text-sm font-medium" style="background: #4632DA; color: #ffffff; cursor: pointer; border: none;">
+        <span id="page-info" class="text-sm text-gray">Page 1 of {Math.ceil(posts.length / 6)}</span>
+        <button id="next-page" class="px-5 py-3 rounded-md text-sm font-medium min-h-[44px] bg-primary text-white cursor-pointer border-none">
           Next →
         </button>
       </div>
@@ -63,11 +63,12 @@ const posts = sanityPosts.map((p: any) => ({
     const totalPages = Math.ceil(cards.length / perPage);
     let currentPage = 1;
 
-    const prevBtn = document.getElementById('prev-page') as HTMLButtonElement;
-    const nextBtn = document.getElementById('next-page') as HTMLButtonElement;
-    const pageInfo = document.getElementById('page-info')!;
+    const prevBtn = document.getElementById('prev-page') as HTMLButtonElement | null;
+    const nextBtn = document.getElementById('next-page') as HTMLButtonElement | null;
+    const pageInfo = document.getElementById('page-info');
 
     function showPage(page: number) {
+      if (!prevBtn || !nextBtn || !pageInfo) return;
       currentPage = page;
       const start = (page - 1) * perPage;
       const end = start + perPage;
@@ -77,15 +78,16 @@ const posts = sanityPosts.map((p: any) => ({
       pageInfo.textContent = `Page ${page} of ${totalPages}`;
       prevBtn.disabled = page === 1;
       prevBtn.style.background = page === 1 ? '#f3f4f6' : '#4632DA';
-      prevBtn.style.color = page === 1 ? '#6b7280' : '#ffffff';
+      prevBtn.style.color = page === 1 ? '#4b5563' : '#ffffff';
       nextBtn.disabled = page === totalPages;
       nextBtn.style.background = page === totalPages ? '#f3f4f6' : '#4632DA';
-      nextBtn.style.color = page === totalPages ? '#6b7280' : '#ffffff';
-      window.scrollTo({ top: document.getElementById('blog-grid')!.offsetTop - 120, behavior: 'smooth' });
+      nextBtn.style.color = page === totalPages ? '#4b5563' : '#ffffff';
+      const grid = document.getElementById('blog-grid');
+      if (grid) window.scrollTo({ top: grid.offsetTop - 120, behavior: 'smooth' });
     }
 
-    prevBtn.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
-    nextBtn.addEventListener('click', () => { if (currentPage < totalPages) showPage(currentPage + 1); });
+    prevBtn?.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
+    nextBtn?.addEventListener('click', () => { if (currentPage < totalPages) showPage(currentPage + 1); });
   </script>
 
   <CtaBanner />

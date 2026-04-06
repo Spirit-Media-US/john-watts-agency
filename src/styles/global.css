@@ -18,7 +18,7 @@
   --color-secondary: #3D4459;
   --color-dark: #353535;
   --color-dark-light: #4a5058;
-  --color-gray: #6b7280;
+  --color-gray: #4b5563;
   --color-gray-light: #f3f4f6;
   --color-white: #ffffff;
   --color-light-bg: #F9F9F9;
@@ -149,6 +149,97 @@ a:hover {
   text-transform: capitalize;
   color: var(--color-primary);
   margin-bottom: 0.25rem;
+}
+
+/* ─── Content typography utilities ──────────────────────────── */
+.body-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--color-gray);
+  line-height: 1.7;
+}
+
+.body-text-lg {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-dark);
+  line-height: 1.8;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--color-secondary);
+  margin-bottom: 12px;
+}
+
+.card-title-sm {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-secondary);
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  color: var(--color-primary);
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-gray);
+}
+
+.meta-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+.meta-text-sm {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-gray);
+}
+
+.gradient-badge {
+  background: linear-gradient(130deg, var(--color-primary), #06D9FA);
+}
+
+.card-shadow {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.card-shadow-md {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.blob-shape-1 {
+  border-radius: 150px 50px 50px 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.blob-shape-2 {
+  border-radius: 100px 100px 300px 100px;
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);
+}
+
+.blob-shape-3 {
+  border-radius: 300px 100px 100px 100px;
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);
+}
+
+.blob-shape-card {
+  border-radius: 20px 20px 20px 100px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 
 /* ─── Section wave decorations ───────────────────────────────── */
