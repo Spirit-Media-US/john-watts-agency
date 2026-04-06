@@ -35,7 +35,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-[45%] shrink-0 ">
-          <h1 class="mb-4 font-heading font-light leading-[1.2] capitalize text-white" style="font-size: clamp(28px, 5vw, 45px);">We Are Your Trusted Specialists</h1>
+          <h1 class="mb-4 font-heading font-light leading-[1.2] capitalize text-white text-clamp-hero-sm">We Are Your Trusted Specialists</h1>
           <p class="text-white/90 mb-6 text-base font-light leading-[1.4]">
             We are your Medicare, Health Insurance Marketplace, and Life Insurance specialists. Our decades of combined experience are at your service to ensure that you will get the best options for your needs.
           </p>
@@ -62,7 +62,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     </div>
     <!-- Wave bottom — exact WP Elementor technique -->
     <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) rotate(180deg) scaleX(-1); height: 100px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg">
         <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
     </div>
@@ -110,7 +110,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       <p class="kicker text-black" data-aos="fade-up">Company Affiliation</p>
       <h2 class="mb-4 font-heading text-primary" data-aos="fade-up" data-aos-delay="100">Our Partners</h2>
       <p class="max-w-2xl mx-auto mb-10 text-base font-light leading-[1.4] text-dark" data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
-      <div class="logo-slider overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+      <div class="logo-slider overflow-hidden relative mask-fade-x">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
           {sanityPartners.map((p: any) => (
             <img src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''} alt={p.name} height="50" class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" decoding="async" />
@@ -189,7 +189,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
   <section class="relative py-16 md:py-24 text-white overflow-hidden gradient-badge">
     <!-- Wave top -->
     <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="display: block; width: calc(250% + 100.3px); position: relative; left: 50%; transform: translateX(-50%) scaleX(-1); height: 100px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg-simple">
         <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
       </svg>
     </div>
@@ -197,7 +197,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     <div class="absolute top-[-40px] left-[-40px] w-[250px] h-[250px] rounded-full pointer-events-none bg-white/10"></div>
     <div class="absolute bottom-[-60px] right-[-60px] w-[300px] h-[300px] rounded-full pointer-events-none bg-white/10"></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%] text-left z-[2] pt-[30px] pb-[30px]">
-      <h2 class="mb-6 font-heading font-light text-white" style="font-size: clamp(1.75rem, 4vw, 2.5rem);">Get A Quote</h2>
+      <h2 class="mb-6 font-heading font-light text-white text-clamp-cta">Get A Quote</h2>
       <a href="/life-quote/" class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg bg-white text-accent text-base font-medium rounded-full">
         Life Quote
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
