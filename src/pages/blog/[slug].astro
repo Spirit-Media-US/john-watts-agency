@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import ShareBar from '../../components/ShareBar.astro';
 import { sanityClient, urlFor } from '../../lib/sanity';
 
 export async function getStaticPaths() {
@@ -12,7 +14,7 @@ const { slug } = Astro.params;
 const post = await sanityClient.fetch(`*[_type == "post" && slug.current == $slug][0]{
   _id, title, excerpt, publishDate, author, tags, heroImage,
   "slug": slug.current,
-  body
+  body, seoTitle, seoDescription
 }`, { slug });
 
 if (!post) return Astro.redirect('/404');
@@ -66,9 +68,33 @@ function renderBody(blocks: any[]): string {
 }
 
 const bodyHtml = renderBody(post.body);
+const author = post.author || 'Johnny Watts Agency';
+const tags = post.tags || [];
+const canonicalUrl = `https://johnnywattsagency.com/blog/${post.slug}/`;
 ---
 
-<Layout title={`${post.title} — Johnny Watts Agency`} description={post.excerpt}>
+<Layout
+  title={post.seoTitle || `${post.title} | Johnny Watts Agency Blog`}
+  description={post.seoDescription || post.excerpt || `Read ${post.title} on the Johnny Watts Agency blog.`}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content={author} />
+    <meta property="article:published_time" content={post.publishDate} />
+    {tags.length > 0 && <meta property="article:section" content={tags[0]} />}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt || post.title,
+      "image": heroUrl,
+      "author": { "@type": "Person", "name": author },
+      "publisher": { "@type": "Organization", "name": "Johnny Watts Agency", "url": "https://johnnywattsagency.com" },
+      "url": canonicalUrl,
+      "datePublished": post.publishDate
+    })}></script>
+  </Fragment>
   <article>
     <!-- Hero -->
     <header class="relative overflow-hidden text-white text-center pt-[120px] pb-[160px] bg-gradient-hero">
@@ -96,6 +122,19 @@ const bodyHtml = renderBody(post.body);
       <div class="relative max-w-3xl mx-auto px-4 z-[4] mt-clamp-overlap">
         <img src={heroUrl} alt={post.title} class="w-full rounded-lg shadow-lg aspect-video object-cover" width="768" height="432" decoding="async" />
       </div>
+    )}
+
+    <!-- Tags -->
+    {tags.length > 0 && (
+      <section class="max-w-3xl mx-auto px-4 pt-6 pb-2">
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag: string) => (
+            <a href={`/blogs/?tag=${encodeURIComponent(tag)}`} class="text-xs font-semibold text-gray bg-gray-light hover:bg-primary hover:text-white rounded-full px-3 py-1 transition-colors no-underline">
+              {tag}
+            </a>
+          ))}
+        </div>
+      </section>
     )}
 
     <!-- Share Bar -->
@@ -159,29 +198,11 @@ const bodyHtml = renderBody(post.body);
       </div>
     </div>
 
-    <!-- More To Explore -->
-    <section class="max-w-4xl mx-auto px-4 mb-16">
-      <h2 class="text-center mb-8 font-heading text-[28px] font-light text-secondary">More To Explore</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {relatedPosts.map((rp: any) => (
-          <a href={`/blog/${rp.slug}/`} class="block bg-white rounded-lg overflow-hidden hover-lift hover-zoom no-underline card-shadow-md" data-aos="fade-up">
-            <div class="relative">
-              {rp.heroImage && <img src={urlFor(rp.heroImage).width(500).auto('format').url()} alt={rp.title} class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="192" />}
-              <span class="absolute top-3 left-3 px-3 py-1 text-white text-xs font-medium rounded-full bg-primary">Insurance Expert</span>
-            </div>
-            <div class="p-5">
-              <h3 class="font-heading text-lg font-light text-secondary leading-tight mb-2">{rp.title}</h3>
-              <p class="text-[13px] font-light text-gray leading-[1.6] mb-3">{rp.excerpt}</p>
-              <div class="flex items-center gap-2 text-xs text-gray">
-                <span>kevin</span>
-                <span>·</span>
-                <span>{new Date(rp.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
+    <!-- Share Bar (protocol component) -->
+    <ShareBar title={post.title} url={canonicalUrl} />
+
+    <!-- Related Posts (protocol component — scores by shared tags) -->
+    <RelatedPosts currentSlug={`/blog/${post.slug}`} currentTags={tags} />
   </article>
 
   <!-- CTA -->
