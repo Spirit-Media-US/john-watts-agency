@@ -114,6 +114,18 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+      description: 'For search engine results (optimal length: 50-60 characters)',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'string',
+      description: 'For search engine results (optimal length: 150-160 characters)',
+    }),
   ],
   orderings: [
     {

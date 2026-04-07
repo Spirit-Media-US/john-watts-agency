@@ -4,7 +4,17 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://johnnywattsagency.com',
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    serialize(item) {
+      if (item.url.includes('/blog/') && !item.url.endsWith('/blogs/')) {
+        return { ...item, changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() };
+      }
+      if (item.url.endsWith('/blogs/')) {
+        return { ...item, changefreq: 'weekly', priority: 0.8, lastmod: new Date().toISOString() };
+      }
+      return { ...item, changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() };
+    },
+  })],
   server: {
     port: 4331,
     host: true,
