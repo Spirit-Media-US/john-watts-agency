@@ -4,6 +4,10 @@
 
 This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-agency | Domain: johnnywattsagency.com | Sanity ID: ssbenczy
 
+**Migration protocol:** /home/deploy/bin/tools-api/pipelines/migration/CLAUDE.md
+**Sanity Studio:** Embedded at johnnywattsagency.com/studio/ (static build)
+**Infrastructure:** Deploy webhook wired, CORS origins configured, studio deployed
+
 ## Business Info
 
 - **Type:** Insurance agency (Medicare, Health Insurance Marketplace, Life Insurance)
@@ -80,7 +84,7 @@ Then run: `git checkout dev && git pull origin dev`
 | testimonial | 49 | All client testimonials |
 | Image assets | 43 | Headshots, logos, blog, hero, backgrounds |
 
-## Status — as of 2026-03-30
+## Status — as of 2026-04-08
 
 ### Phase 1 — Infrastructure (Done)
 - GitHub repo: Spirit-Media-US/john-watts-agency
@@ -109,24 +113,22 @@ Then run: `git checkout dev && git pull origin dev`
 - **Pending:** Forms → GHL integration (need GHL webhook URL from Kevin)
 - **Pending:** Medicare + Health Marketplace pages need more content (from Johnny)
 
-### Phase 4 — Sanity CMS Wiring (95%)
+### Phase 4 — Sanity CMS Wiring (Done)
 - Schemas defined: siteSettings, teamMember, partner, post, testimonial
 - All content uploaded to Sanity (83 docs, 43 images)
 - All pages wired to Sanity: index, about, blogs, blog/[slug], contact-us, Footer
 - Service pages (medicare, marketplace, life insurance) remain static — content is informational, not CMS-editable
-- **Pending:** Sanity → Netlify deploy webhook (dashboard config only)
+- Sanity Studio embedded at /studio with deploy webhook and CORS configured
 
 ### Phase 5 — Monitoring & Infrastructure
 - Google Search Console: verified, sitemap submitted (Apr 2026)
 - UptimeRobot: active, 5-min checks (monitor ID: 802779313)
 - Domain: Namecheap DNS → Netlify (not on Cloudflare — works fine as-is)
-- **Pending:** Sanity → Netlify webhook (create build hook in Netlify, add to Sanity)
 - **Pending:** Forms → GHL integration
 
 ### Still Pending
 - Forms → GHL (need webhook URL from Kevin)
 - Medicare + Marketplace page content (from Johnny)
-- Sanity → Netlify webhook (dashboard config)
 
 ## Rules
 
