@@ -28,7 +28,7 @@ This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-age
 ## Mandatory — Before Starting Work
 Always start Claude sessions from inside this directory:
 ```
-cd ~/Sites/john-watts-agency && claude
+cd /srv/sites/john-watts-agency && claude
 ```
 Running Claude from ~/ or ~/Sites/ bypasses this project's CLAUDE.md. A pre-edit hook enforces this, but following the workflow prevents warnings and ensures all project rules are loaded.
 
