@@ -79,7 +79,7 @@ a {
 }
 
 /* Links inside body text must be distinguishable (not rely on color alone) */
-p a, td a, li a {
+p a, td a, main li a {
   color: var(--color-primary);
   text-decoration: underline;
   text-decoration-thickness: 1px;
