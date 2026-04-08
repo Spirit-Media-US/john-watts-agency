@@ -9,6 +9,7 @@ export default defineConfig({
   title: 'Johnny Watts Agency',
   projectId: 'ssbenczy',
   dataset: 'production',
+  basePath: '/studio',
   plugins: [structureTool(), visionTool(), media()],
   schema: {
     types: schemaTypes,
