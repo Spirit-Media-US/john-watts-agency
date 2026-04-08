@@ -115,6 +115,7 @@ const SANITY_POSTS_JSON = JSON.stringify(sanityPostsFormatted);
 </Layout>
 
 <script>
+declare global { interface Window { goToPage: (page: number) => void; clearSearch: () => void; } }
 const SANITY_POSTS = JSON.parse(document.getElementById('sanity-posts-data')?.textContent || '[]');
 const POSTS_PER_PAGE = 6;
 const POSTS = [...SANITY_POSTS];
@@ -130,7 +131,7 @@ function applyFilters() {
     const q = activeSearch.toLowerCase();
     const matchesSearch = !q || p.title.toLowerCase().includes(q) ||
       (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
-      (p.tags && p.tags.some((t: string) => t.toLowerCase().includes(q))) ||
+      (p.tags && p.tags.some((t) => t.toLowerCase().includes(q))) ||
       (p.author && p.author.toLowerCase().includes(q));
     return matchesTag && matchesSearch;
   });
@@ -163,7 +164,7 @@ function renderPosts() {
         </div>
         <div class="p-6">
           <div class="flex flex-wrap gap-1.5 mb-3">
-            ${(post.tags || []).slice(0, 2).map((t: string) => `<span class="text-xs font-semibold text-gray bg-gray-light rounded-full px-2.5 py-0.5">${t}</span>`).join('')}
+            ${(post.tags || []).slice(0, 2).map((t) => `<span class="text-xs font-semibold text-gray bg-gray-light rounded-full px-2.5 py-0.5">${t}</span>`).join('')}
           </div>
           <h3 class="font-heading text-xl font-normal text-primary mb-2 leading-snug">${post.title}</h3>
           <p class="text-sm text-gray mb-4 leading-relaxed">${post.excerpt || ''}</p>
@@ -197,15 +198,16 @@ function renderPagination() {
   pagination.innerHTML = html;
 }
 
-(window as any).goToPage = function goToPage(page: number) {
+function goToPage(page: number) {
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
   if (page < 1 || page > totalPages) return;
   currentPage = page;
   renderPosts();
   document.getElementById('posts-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+window.goToPage = goToPage;
 
-(window as any).clearSearch = function clearSearch() {
+function clearSearch() {
   const searchInput = document.getElementById('blog-search') as HTMLInputElement | null;
   if (searchInput) searchInput.value = '';
   activeSearch = '';
@@ -221,6 +223,7 @@ function renderPagination() {
   }
   applyFilters();
 }
+window.clearSearch = clearSearch;
 
 // Search
 document.getElementById('blog-search')?.addEventListener('input', (e) => {
