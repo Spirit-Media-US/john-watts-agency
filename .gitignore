@@ -4,7 +4,8 @@ dist/
 .astro/
 
 # Sanity studio build artifacts
-.sanity/runtime/
+.sanity/
+.netlify/
 
 # Environment
 .env
