@@ -1,0 +1,33 @@
+---
+interface Props {
+  formId: string;
+  formName: string;
+  height?: number;
+  heading?: string;
+  description?: string;
+}
+const { formId, formName, height = 841, heading, description } = Astro.props;
+const src = `https://mail.spiritmediaone.com/widget/form/${formId}`;
+---
+
+{heading && <h1 class="text-center mb-4 text-secondary">{heading}</h1>}
+{description && <p class="text-center text-gray mb-8">{description}</p>}
+
+<iframe
+  src={src}
+  style={`width:100%;height:${height}px;border:none;border-radius:0px`}
+  id={`inline-${formId}`}
+  data-layout="{'id':'INLINE'}"
+  data-trigger-type="alwaysShow"
+  data-trigger-value=""
+  data-activation-type="alwaysActivated"
+  data-activation-value=""
+  data-deactivation-type="neverDeactivate"
+  data-deactivation-value=""
+  data-form-name={formName}
+  data-height={String(height)}
+  data-layout-iframe-id={`inline-${formId}`}
+  data-form-id={formId}
+  title={formName}
+></iframe>
+<script src="https://mail.spiritmediaone.com/js/form_embed.js"></script>
