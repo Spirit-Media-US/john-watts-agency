@@ -39,7 +39,7 @@ Then run: `git checkout dev && git pull origin dev`
 - Astro 5 + Tailwind CSS v4 (@tailwindcss/vite)
 - Sanity CMS (projectId: ssbenczy, dataset: production)
 - Sanity Studio embedded in repo (`sanity.config.ts` + `studio/`)
-- Netlify hosting (auto-deploy on push to main)
+- Cloudflare Pages hosting (auto-deploy on push to main)
 - Cloudflare DNS/CDN
 - AOS (Animate On Scroll) for scroll animations
 - Biome + Lefthook for linting/pre-commit
@@ -88,7 +88,7 @@ Then run: `git checkout dev && git pull origin dev`
 
 ### Phase 1 — Infrastructure (Done)
 - GitHub repo: Spirit-Media-US/john-watts-agency
-- Netlify site: connected, auto-deploy on main
+- Cloudflare Pages: connected, auto-deploy on main
 - Sanity project: ssbenczy (5 schemas, 83 docs, 43 images)
 - CLAUDE.md in repo root
 - Cloudflare domain: **pending**
@@ -123,7 +123,7 @@ Then run: `git checkout dev && git pull origin dev`
 ### Phase 5 — Monitoring & Infrastructure
 - Google Search Console: verified, sitemap submitted (Apr 2026)
 - UptimeRobot: active, 5-min checks (monitor ID: 802779313)
-- Domain: Namecheap DNS → Netlify (not on Cloudflare — works fine as-is)
+- Domain: Cloudflare Pages (DNS managed in Cloudflare)
 - **Pending:** Forms → GHL integration
 
 ### Still Pending
