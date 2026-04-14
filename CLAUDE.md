@@ -28,7 +28,7 @@ This site: Johnny Watts Agency | Repo: github.com/Spirit-Media-US/john-watts-age
 ## Mandatory — Before Starting Work
 Always start Claude sessions from inside this directory:
 ```
-cd ~/Sites/john-watts-agency && claude
+cd /srv/sites/john-watts-agency && claude
 ```
 Running Claude from ~/ or ~/Sites/ bypasses this project's CLAUDE.md. A pre-edit hook enforces this, but following the workflow prevents warnings and ensures all project rules are loaded.
 
@@ -39,7 +39,7 @@ Then run: `git checkout dev && git pull origin dev`
 - Astro 5 + Tailwind CSS v4 (@tailwindcss/vite)
 - Sanity CMS (projectId: ssbenczy, dataset: production)
 - Sanity Studio embedded in repo (`sanity.config.ts` + `studio/`)
-- Netlify hosting (auto-deploy on push to main)
+- Cloudflare Pages hosting (auto-deploy on push to main)
 - Cloudflare DNS/CDN
 - AOS (Animate On Scroll) for scroll animations
 - Biome + Lefthook for linting/pre-commit
@@ -88,7 +88,7 @@ Then run: `git checkout dev && git pull origin dev`
 
 ### Phase 1 — Infrastructure (Done)
 - GitHub repo: Spirit-Media-US/john-watts-agency
-- Netlify site: connected, auto-deploy on main
+- Cloudflare Pages: connected, auto-deploy on main
 - Sanity project: ssbenczy (5 schemas, 83 docs, 43 images)
 - CLAUDE.md in repo root
 - Cloudflare domain: **pending**
@@ -110,7 +110,7 @@ Then run: `git checkout dev && git pull origin dev`
 - Design cloned from WP Elementor (waves, blobs, gradients, cards)
 - Site audit fixes applied (contrast, touch targets, image attrs, GA defer, console errors)
 - OG image converted to WebP (620KB → 37KB)
-- **Pending:** Forms → GHL integration (need GHL webhook URL from Kevin)
+- **Pending:** Forms → GHL integration (use GHL MCP to get webhook URL)
 - **Pending:** Medicare + Health Marketplace pages need more content (from Johnny)
 
 ### Phase 4 — Sanity CMS Wiring (Done)
@@ -123,11 +123,11 @@ Then run: `git checkout dev && git pull origin dev`
 ### Phase 5 — Monitoring & Infrastructure
 - Google Search Console: verified, sitemap submitted (Apr 2026)
 - UptimeRobot: active, 5-min checks (monitor ID: 802779313)
-- Domain: Namecheap DNS → Netlify (not on Cloudflare — works fine as-is)
+- Domain: Cloudflare Pages (DNS managed in Cloudflare)
 - **Pending:** Forms → GHL integration
 
 ### Still Pending
-- Forms → GHL (need webhook URL from Kevin)
+- Forms → GHL integration (use GHL MCP to configure webhook)
 - Medicare + Marketplace page content (from Johnny)
 
 ## Rules
@@ -142,7 +142,7 @@ Then run: `git checkout dev && git pull origin dev`
 
 Google Stitch 2.0 is an MCP server available in this project for AI-powered design work. It generates full page designs and auto-creates design systems (colors, typography, component rules). The MCP config is already symlinked into this repo (`.mcp.json`).
 
-**When to use:** When Kevin asks for design work, new page layouts, or visual redesigns. Use Stitch first to get 80–90% of the design done visually, then implement in Astro/Tailwind.
+**When to use:** For design work, new page layouts, or visual redesigns. Use Stitch first to get 80–90% of the design done visually, then implement in Astro/Tailwind.
 
 **Available tools (prefixed `mcp__stitch__`):**
 `create_project`, `generate_screen_from_text`, `create_design_system`, `apply_design_system`, `edit_screens`, `generate_variants`, `list_projects`, `list_screens`, `get_screen`, `get_project`, `list_design_systems`, `update_design_system`
