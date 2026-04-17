@@ -15,7 +15,8 @@ const src = `https://mail.spiritmediaone.com/widget/form/${formId}`;
 
 <iframe
   src={src}
-  style={`width:100%;height:${height}px;border:none;border-radius:0px`}
+  style={`width:100%;min-height:${height}px;border:none;border-radius:0px`}
+  scrolling="no"
   id={`inline-${formId}`}
   data-layout="{'id':'INLINE'}"
   data-trigger-type="alwaysShow"
