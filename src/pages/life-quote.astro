@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-import GhlForm from '../components/GhlForm.astro';
 import PageHero from '../components/PageHero.astro';
 ---
 
@@ -9,9 +8,24 @@ import PageHero from '../components/PageHero.astro';
   <PageHero title="Life Quote" waveFill="#f3f4f6" />
   <section class="pt-4 pb-16">
     <div class="max-w-xl mx-auto px-4">
-      <div class="bg-gray-light rounded-xl p-6 md:p-8">
-        <GhlForm formId="LKUbJs0j6QIUE9dJwVLD" formName="Life Quote" height={888} heading="Get a Life Insurance Quote" description="Please complete the form below and one of our agents will be in touch shortly." />
-      </div>
+      <iframe
+        src="https://mail.spiritmediaone.com/widget/form/LKUbJs0j6QIUE9dJwVLD"
+        style="width:100%;height:100%;border:none;border-radius:0px"
+        id="inline-LKUbJs0j6QIUE9dJwVLD"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Life Quote"
+        data-height="947"
+        data-layout-iframe-id="inline-LKUbJs0j6QIUE9dJwVLD"
+        data-form-id="LKUbJs0j6QIUE9dJwVLD"
+        title="Life Quote"
+      ></iframe>
+      <script is:inline src="https://mail.spiritmediaone.com/js/form_embed.js"></script>
     </div>
   </section>
   <CtaBanner waveFill="#f3f4f6" />
