@@ -180,13 +180,15 @@ import PageHero from '../components/PageHero.astro';
   </section>
 
   <!-- Contact Form -->
-  <section class="pt-16 pb-16 bg-gray-light">
+  <section class="pt-16 pb-16">
     <div class="max-w-xl mx-auto px-4">
       <div class="text-center mb-8" data-aos="fade-up">
         <h2 class="font-heading font-light text-secondary text-clamp-section">Let's Have A Chat</h2>
       </div>
       <div data-aos="fade-up" data-aos-delay="100">
-        <GhlForm formId="8pfUmznsvnCLzJLuUw7p" formName="Health Insurance Marketing Services Quote" height={887} />
+        <div class="bg-gray-light rounded-xl p-6 md:p-8">
+          <GhlForm formId="8pfUmznsvnCLzJLuUw7p" formName="Health Insurance Marketing Services Quote" height={887} />
+        </div>
       </div>
     </div>
   </section>
