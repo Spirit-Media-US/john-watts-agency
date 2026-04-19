@@ -14,8 +14,21 @@ const testimonials = sanityTestimonials.map((t: any) => ({
 // Fetch team members from Sanity (first 4 for homepage)
 const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) [0...4] { name, role, headshot }`);
 
-// Fetch partners from Sanity
-const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`);
+// Fetch partners from Sanity with asset metadata for aspect-ratio.
+// Image dimensions come from _ref parsing since logo.asset->metadata is not
+// expanded here; we compute width/height at render time.
+const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo, "assetId": logo.asset._ref }`);
+
+// Parse Sanity asset ref format "image-HASH-WIDTHxHEIGHT-FORMAT"
+function aspectFromRef(ref: string | null | undefined): { w: number; h: number } {
+  if (!ref) return { w: 120, h: 50 };
+  const m = ref.match(/-(\d+)x(\d+)-/);
+  if (!m) return { w: 120, h: 50 };
+  const srcW = parseInt(m[1], 10);
+  const srcH = parseInt(m[2], 10);
+  // Rendered height is 50 (from urlFor.height(50)); width scales proportionally
+  return { w: Math.round((srcW / srcH) * 50), h: 50 };
+}
 
 // Fetch site settings for below-fold images.
 // Hero + hero bg overlay are R2-only (see 100 Club commitments in CLAUDE.md).
@@ -126,9 +139,20 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       <p class="max-w-2xl mx-auto mb-10 text-base font-light leading-[1.4] text-dark" data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
       <div class="logo-slider overflow-hidden relative mask-fade-x">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
-          {sanityPartners.map((p: any) => (
-            <img src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''} alt={p.name} height="50" class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" decoding="async" />
-          ))}
+          {sanityPartners.map((p: any) => {
+            const { w, h } = aspectFromRef(p.assetId);
+            return (
+              <img
+                src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''}
+                alt={p.name}
+                width={w}
+                height={h}
+                class="h-12 md:h-16 w-auto object-contain shrink-0"
+                loading="lazy"
+                decoding="async"
+              />
+            );
+          })}
         </div>
       </div>
     </div>
