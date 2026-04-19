@@ -84,6 +84,26 @@ Then run: `git checkout dev && git pull origin dev`
 | testimonial | 49 | All client testimonials |
 | Image assets | 43 | Headshots, logos, blog, hero, backgrounds |
 
+## Status — as of 2026-04-19
+
+### Phase 6 — Performance (100 Club, 2026-04-19)
+- PSI: **mobile 98, desktop 100** — stable across 3 consecutive runs
+- Beasties (@playform/inline) integrated in astro.config.mjs with
+  `pruneSource: false` + `preload: false` (stylesheets ship synchronous;
+  critical CSS inlined; external CSS loads render-blocking but tiny)
+- Font strategy: Varela Round + Montserrat self-hosted; LCP weights
+  (Varela 400, Montserrat 300/500) in src/styles/fonts.css with
+  `font-display: optional` + metric-matched "Fallback" @font-face
+  declarations (Arial-based) prevent CLS on font swap. Remaining
+  weights (Montserrat 400/600/700) in public/deferred.css.
+- Only Varela Round preloaded (used by above-fold H1). Montserrat no
+  longer preloaded so hero image wins bandwidth race.
+- Critical responsive rules (md:w-1/2, min-h-[580px], min-h-[420px], etc)
+  inlined via Layout `<style is:inline>` as Beasties missed these
+  slash/bracket escaped class names.
+- Hero image width/height corrected to 600x400 (Sanity 3:2 intrinsic);
+  fetchpriority=high on LCP image only.
+
 ## Status — as of 2026-04-08
 
 ### Phase 1 — Infrastructure (Done)
