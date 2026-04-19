@@ -69,8 +69,10 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
         .hover-tilt{transition:transform .4s ease}
         .wave-svg{display:block;width:calc(250% + 100.3px);position:relative;left:50%;transform:translateX(-50%) rotate(180deg) scaleX(-1);height:100px}
 
-        /* Nav-specific utilities */
-        .nav-link{display:inline-block;padding:10px 18px;color:#fff;font-family:'Montserrat','Montserrat Fallback',system-ui,sans-serif;font-size:1rem;font-weight:400;text-decoration:none;transition:color .2s}
+        /* Nav-specific utilities — match Nav.astro's scoped <style> exactly so
+           initial paint uses the final link height and the nav doesn't reflow. */
+        .nav-link{display:inline-flex;align-items:center;padding:35px 25px;white-space:nowrap;font-family:'Varela Round','Varela Round Fallback',system-ui,sans-serif;font-size:15px;font-weight:300;color:#FFFEFE;text-decoration:none;text-transform:capitalize;transition:color .2s}
+        .nav-header{box-shadow:0 10px 20px 0 rgba(0,0,0,.1)}
 
         /* Tailwind utility copies used above the fold — union of nav + hero.
            External @layer utilities overrides these once the async bundle loads. */
