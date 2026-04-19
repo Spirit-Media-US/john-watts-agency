@@ -1,7 +1,9 @@
 ---
 import { sanityClient, urlFor } from '../lib/sanity';
 const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ footerLogo, logo }`);
-const footerLogoUrl = settings?.footerLogo ? urlFor(settings.footerLogo).height(80).auto('format').url() : settings?.logo ? urlFor(settings.logo).height(80).auto('format').url() : '/jwatts2.jpg';
+// Fixed width+height on rendered logo so CLS doesn't shift when the image loads.
+// Footer logo source is 240x100 → at h-20 (80px) rendered width is ~192px.
+const footerLogoUrl = settings?.footerLogo ? urlFor(settings.footerLogo).width(192).height(80).auto('format').url() : settings?.logo ? urlFor(settings.logo).width(192).height(80).auto('format').url() : '/jwatts2.jpg';
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
@@ -22,7 +24,7 @@ const navLinks = [
       <!-- Top row: logo + nav links -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
         <a href="/" aria-label="Johnny Watts Agency — Home">
-          <img src={footerLogoUrl} alt="Johnny Watts Agency" width="200" height="83" class="h-20 w-auto" />
+          <img src={footerLogoUrl} alt="Johnny Watts Agency" width="192" height="80" class="h-20 w-auto" loading="lazy" decoding="async" />
         </a>
         <ul class="flex flex-wrap justify-center gap-4 text-sm">
           {navLinks.map(link => (
