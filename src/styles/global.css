@@ -14,7 +14,7 @@
   --color-primary: #4632DA;
   --color-primary-dark: #3526b0;
   --color-primary-light: #5a4de6;
-  --color-accent: #0AABCB;
+  --color-accent: #087A8E;
   --color-secondary: #3D4459;
   --color-dark: #353535;
   --color-dark-light: #4a5058;
@@ -388,10 +388,13 @@ a:hover {
 }
 
 .testimonial-dot {
-  width: 10px;
-  height: 10px;
+  /* 24x24 min target size (WCAG 2.5.8); visible dot sized via background-clip */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: #d1d5db;
+  background-clip: content-box;
+  padding: 7px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;

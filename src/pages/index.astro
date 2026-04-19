@@ -17,19 +17,22 @@ const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(or
 // Fetch partners from Sanity
 const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`);
 
-// Fetch site settings for below-fold and background images.
-// Hero is R2-only (see 100 Club commitments in CLAUDE.md) — not fetched here.
-const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ aboutImage, bgHero, bgTeam }`);
+// Fetch site settings for below-fold images.
+// Hero + hero bg overlay are R2-only (see 100 Club commitments in CLAUDE.md).
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ aboutImage, bgTeam }`);
 const HERO_R2_MOBILE = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-mobile.webp';
 const HERO_R2_TABLET = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-tablet.webp';
 const HERO_R2_DESKTOP = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-desktop.webp';
+const BG_HERO_R2 = 'https://assets.spiritmediapublishing.com/john-watts-agency/bg-hero-1200.webp';
 const aboutImgUrl = settings?.aboutImage ? urlFor(settings.aboutImage).width(600).format('webp').quality(80).url() : '/family-sitting.jpg';
-const bgHeroUrl = settings?.bgHero ? urlFor(settings.bgHero).width(1200).format('webp').quality(75).url() : '/bg-homepage-high.png';
 const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format('webp').quality(75).url() : '/bg-team-home.png';
 ---
 
 <Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation.">
   <Fragment slot="head-early">
+    <!-- Hero bg overlay is the LCP element on mobile (largest painted pixels).
+         Preload + fetchpriority high so it starts loading immediately. -->
+    <link rel="preload" as="image" href={BG_HERO_R2} fetchpriority="high" />
     <link
       rel="preload"
       as="image"
@@ -41,8 +44,8 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
 
   <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
   <section class="relative overflow-hidden text-white gradient-badge min-h-[580px]">
-    <!-- Decorative background overlay (blob shapes) -->
-    <div class="absolute inset-0 pointer-events-none bg-center bg-no-repeat bg-cover opacity-[0.15]" style={`background-image: url('${bgHeroUrl}');`}></div>
+    <!-- Decorative background overlay (blob shapes) — R2-hosted WebP -->
+    <div class="absolute inset-0 pointer-events-none bg-center bg-no-repeat bg-cover opacity-[0.15]" style={`background-image: url('${BG_HERO_R2}');`}></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-[45%] shrink-0 ">
