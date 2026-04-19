@@ -17,11 +17,12 @@ export default defineConfig({
         return { ...item, changefreq: 'monthly', priority: 0.6, lastmod: new Date().toISOString() };
       },
     }),
-    // Beasties: extract above-fold critical CSS, inline it, async-load the rest.
-    // Keep pruneSource: false so media-query rules aren't dropped from the
-    // external stylesheet (fixes CLS when responsive `md:` utilities only exist
-    // in the external CSS).
-    inline({ Beasties: { pruneSource: false } }),
+    // Beasties: extract above-fold critical CSS, inline it, keep stylesheets
+    // as plain synchronous <link rel="stylesheet"> so we never ship a layout
+    // that differs from the final (eliminates CLS from missed arbitrary-value
+    // Tailwind classes). pruneSource:false ensures Beasties does not strip
+    // rules from the external stylesheet.
+    inline({ Beasties: { pruneSource: false, preload: false } }),
   ],
   build: {
     // Let Beasties handle critical inlining; keep auto for the rest.
