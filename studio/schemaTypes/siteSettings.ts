@@ -46,14 +46,10 @@ export default defineType({
       group: 'identity',
       description: 'Square icon shown in browser tabs and bookmarks (180x180px recommended)',
     }),
-    defineField({
-      name: 'heroImage',
-      title: 'Homepage Hero Image',
-      type: 'image',
-      group: 'identity',
-      options: { hotspot: true },
-      description: 'Main hero image (happy family photo)',
-    }),
+    // heroImage field removed: homepage hero is served from R2 only.
+    // See CLAUDE.md → "100 Club commitments" for why. To replace the hero,
+    // upload new WebP variants to:
+    //   s3://smp/john-watts-agency/hero-{mobile,tablet,desktop}.webp
     defineField({
       name: 'aboutImage',
       title: 'Why Choose Section Image',
