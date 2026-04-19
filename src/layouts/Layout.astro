@@ -7,9 +7,8 @@ interface Props {
   title: string;
   description?: string;
   jsonld?: Record<string, any>;
-  preloadImage?: string;
 }
-const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.', jsonld, preloadImage } = Astro.props;
+const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.', jsonld } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -35,9 +34,8 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />}
     <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+    <link rel="preconnect" href="https://assets.spiritmediapublishing.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <!-- Preload only the Varela Round woff2 used by the H1 (LCP-critical) -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/w8gdH283Tvk__Lua32TysjIfp8uP.woff2" crossorigin />
