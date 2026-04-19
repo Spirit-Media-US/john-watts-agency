@@ -18,7 +18,10 @@ export default defineConfig({
       },
     }),
     // Beasties: extract above-fold critical CSS, inline it, async-load the rest.
-    inline(),
+    // Keep pruneSource: false so media-query rules aren't dropped from the
+    // external stylesheet (fixes CLS when responsive `md:` utilities only exist
+    // in the external CSS).
+    inline({ Beasties: { pruneSource: false } }),
   ],
   build: {
     // Let Beasties handle critical inlining; keep auto for the rest.

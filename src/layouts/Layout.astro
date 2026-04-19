@@ -43,6 +43,21 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
     <link rel="preload" as="font" type="font/woff2" href="/fonts/w8gdH283Tvk__Lua32TysjIfp8uP.woff2" crossorigin />
     <!-- Below-fold fonts (400/600/700) — shipped as plain stylesheet (non-blocking with font-display:swap) -->
     <link rel="stylesheet" href="/deferred.css" />
+    <!-- Critical above-fold responsive rules. Inlined in <head> to guarantee Beasties preserves them. -->
+    <style is:inline>
+      /* Prevent CLS on flex rows that use `md:w-1/2` before external CSS loads */
+      @media (min-width: 48rem) {
+        .md\:w-1\/2 { width: 50%; }
+        .md\:w-1\/3 { width: 33.333333%; }
+        .md\:w-2\/3 { width: 66.666667%; }
+      }
+      @media (min-width: 64rem) {
+        .lg\:w-1\/3 { width: 33.333333%; }
+        .lg\:w-2\/3 { width: 66.666667%; }
+        .lg\:w-\[30\%\] { width: 30%; }
+        .lg\:w-\[70\%\] { width: 70%; }
+      }
+    </style>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
