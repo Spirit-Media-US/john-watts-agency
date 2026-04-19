@@ -106,6 +106,18 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
         /* Skip link */
         .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+        /* Mobile drawer — must start off-screen BEFORE async CSS loads or
+           its content shifts the page. Covers #drawer + #drawer-overlay. */
+        .fixed{position:fixed}.h-full{height:100%}
+        .w-\[280px\]{width:280px}.z-\[60\]{z-index:60}.z-\[70\]{z-index:70}
+        .bg-gradient-drawer{background:linear-gradient(180deg,#4632DA 0%,#2a7de8 50%,#06D9FA 100%)}
+        .drawer-hidden{transform:translateX(-100%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+        /* Both #drawer and #drawer-overlay carry .lg:hidden; on mobile the
+           drawer is translate(-100%) offscreen and the overlay is .hidden
+           (display:none from base utility) */
+        .bg-black\/50{background-color:rgba(0,0,0,.5)}
+        .opacity-0{opacity:0}
+
         /* Responsive variants above fold */
         @media(min-width:768px){
           .md\:flex-row{flex-direction:row}
