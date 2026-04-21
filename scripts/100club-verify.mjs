@@ -127,25 +127,44 @@ for (const [w, h, label] of [
   }
 
   // ---- Image h-N height assertions ----
+  // Enhancements vs shared reference:
+  //   - Respect responsive overrides (md:h-N, lg:h-N, etc.) when their
+  //     viewport applies — pick the highest-breakpoint h-N that fires.
+  //   - Skip elements hidden by any ancestor (rect.height===0 && rect.width===0).
   const imgFails = await page.evaluate(() => {
     const rootFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const vw = window.innerWidth;
+    const bps = [
+      ['2xl', 1536],
+      ['xl', 1280],
+      ['lg', 1024],
+      ['md', 768],
+      ['sm', 640],
+    ];
     const r = [];
     for (const img of document.querySelectorAll('img[class*="h-"]')) {
-      // Only numeric h-N (skip h-auto, h-full, h-screen, arbitrary values)
-      const m = img.className.match(/\bh-(\d+)\b/);
-      if (!m) continue;
-      // Skip elements hidden at this viewport (display:none, hidden ancestor, etc.)
-      // A hidden element has null offsetParent OR zero client rect width — both safe to skip
       const rect = img.getBoundingClientRect();
+      if (rect.height === 0 && rect.width === 0) continue;
       if (img.offsetParent === null && img !== document.body) continue;
-      if (rect.width === 0 && rect.height === 0) continue;
-      const n = parseInt(m[1], 10);
-      const expected = n * 0.25 * rootFs;
+
+      let effectiveN = null;
+      for (const [bp, minW] of bps) {
+        if (vw < minW) continue;
+        const mm = img.className.match(new RegExp('(^|\\s)' + bp + ':h-(\\d+)(?![\\d.])'));
+        if (mm) { effectiveN = parseInt(mm[2], 10); break; }
+      }
+      if (effectiveN == null) {
+        const m = img.className.match(/(^|\s)h-(\d+)(?![\d.])/);
+        if (!m) continue;
+        effectiveN = parseInt(m[2], 10);
+      }
+
+      const expected = effectiveN * 0.25 * rootFs;
       const actual = rect.height;
       if (Math.abs(actual - expected) > 3) {
         r.push({
           alt: (img.alt || '').slice(0, 40),
-          n,
+          n: effectiveN,
           expected: Math.round(expected),
           actual: Math.round(actual),
         });
