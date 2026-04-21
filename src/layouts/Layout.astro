@@ -121,15 +121,6 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
         .bg-black\/50{background-color:rgba(0,0,0,.5)}
         .opacity-0{opacity:0}
 
-        /* Global mobile padding for section > div / article > div — mirrors
-           src/styles/global.css so initial paint matches post-async layout. */
-        @media(max-width:767px){
-          section > div, article > div {
-            padding-left: max(var(--tw-px,0px), 20px);
-            padding-right: max(var(--tw-px,0px), 20px);
-          }
-        }
-
         /* Responsive variants above fold */
         @media(min-width:768px){
           .md\:flex-row{flex-direction:row}
@@ -153,6 +144,17 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
 
       /* @keyframes must live outside @layer (CSS spec) */
       @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+      /* UNLAYERED — must match the unlayered rule in src/styles/global.css.
+         Since it's unlayered it beats .px-[2%] (which Tailwind emits in
+         @layer utilities), so initial paint matches the post-async layout
+         and there's no 12px-per-side mobile padding shift. */
+      @media(max-width:767px){
+        section > div, article > div {
+          padding-left: max(var(--tw-px,0px), 20px);
+          padding-right: max(var(--tw-px,0px), 20px);
+        }
+      }
     </style>
 
     <!-- Primary SEO -->
