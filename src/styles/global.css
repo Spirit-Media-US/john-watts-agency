@@ -119,7 +119,19 @@ a:hover {
 }
 
 .hero-btn {
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Brand cyan CTA — overrides .bg-accent/.text-white when combined with
+   .hero-btn. Unlayered so it beats Tailwind v4 @layer utilities. Dark text
+   on cyan clears WCAG AA (11.35:1); hover flips to brand purple + white. */
+.hero-btn.bg-accent {
+  background-color: #06D9FA;
+  color: #353535;
+}
+.hero-btn.bg-accent:hover {
+  background-color: #4632DA !important;
+  color: #fff !important;
 }
 
 .hero-btn:hover {
