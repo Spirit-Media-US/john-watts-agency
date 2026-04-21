@@ -41,10 +41,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Global mobile padding for all sections */
+/* Global mobile padding for all sections — skips absolutely-positioned
+   decorative elements (waves, bg overlays, blob circles). */
 @media (max-width: 767px) {
-  section > div,
-  article > div {
+  section > div:not(.absolute),
+  article > div:not(.absolute) {
     padding-left: max(var(--tw-px, 0px), 20px);
     padding-right: max(var(--tw-px, 0px), 20px);
   }
