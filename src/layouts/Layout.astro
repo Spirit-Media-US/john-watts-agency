@@ -92,6 +92,7 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
         .mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.-mb-\[15\%\]{margin-bottom:-15%}.-mb-\[60px\]{margin-bottom:-60px}
         .px-\[2\%\]{padding-left:2%;padding-right:2%}.px-6{padding-inline:1.5rem}.px-7{padding-inline:1.75rem}.px-8{padding-inline:2rem}
         .py-3{padding-block:.75rem}.py-3\.5{padding-block:.875rem}.pt-\[80px\]{padding-top:80px}.pb-\[30px\]{padding-bottom:30px}
+        .p-2{padding:.5rem}.p-3{padding:.75rem}.p-5{padding:1.25rem}
         .rounded-full{border-radius:9999px}.rounded-md{border-radius:.375rem}
         .bg-white{background-color:#fff}.bg-accent{background-color:#087A8E}.bg-primary{background-color:#4632DA}
         .text-white{color:#fff}.text-white\/90{color:rgba(255,255,255,.9)}.text-accent{color:#087A8E}.text-primary{color:#4632DA}.text-dark{color:#353535}.text-black{color:#000}
@@ -119,6 +120,15 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
            (display:none from base utility) */
         .bg-black\/50{background-color:rgba(0,0,0,.5)}
         .opacity-0{opacity:0}
+
+        /* Global mobile padding for section > div / article > div — mirrors
+           src/styles/global.css so initial paint matches post-async layout. */
+        @media(max-width:767px){
+          section > div, article > div {
+            padding-left: max(var(--tw-px,0px), 20px);
+            padding-right: max(var(--tw-px,0px), 20px);
+          }
+        }
 
         /* Responsive variants above fold */
         @media(min-width:768px){
