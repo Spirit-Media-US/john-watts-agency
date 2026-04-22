@@ -221,7 +221,7 @@ import PageHero from '../components/PageHero.astro';
       document.body.appendChild(s);
     }
   }
-  var evts = ['scroll','mousemove','touchstart','keydown','click'];
+  var evts = ['touchstart','keydown','click','pointerdown'];
   function t(){ evts.forEach(function(e){ window.removeEventListener(e,t); }); loadGhl(); }
   evts.forEach(function(e){ window.addEventListener(e,t,{passive:true,once:true}); });
   setTimeout(loadGhl, 60000);
