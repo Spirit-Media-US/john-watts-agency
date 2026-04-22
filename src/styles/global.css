@@ -124,11 +124,12 @@ a:hover {
 }
 
 /* Brand cyan CTA — overrides .bg-accent/.text-white when combined with
-   .hero-btn. Unlayered so it beats Tailwind v4 @layer utilities. Dark text
-   on cyan clears WCAG AA (11.35:1); hover flips to brand purple + white. */
+   .hero-btn. Unlayered so it beats Tailwind v4 @layer utilities. Purple text
+   on cyan clears WCAG AA (5.3:1) and matches brand primary so the arrow
+   reads as brand accent, not a dark "border" shape. Hover flips to purple + white. */
 .hero-btn.bg-accent {
   background-color: #06D9FA;
-  color: #353535;
+  color: #4632DA;
 }
 .hero-btn.bg-accent:hover {
   background-color: #4632DA !important;
