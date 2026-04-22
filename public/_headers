@@ -3,4 +3,9 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.googletagmanager.com www.google-analytics.com www.googleadservices.com mail.spiritmediaone.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: cdn.sanity.io www.google-analytics.com www.googletagmanager.com; font-src 'self' fonts.gstatic.com; connect-src 'self' ssbenczy.api.sanity.io www.google-analytics.com www.googletagmanager.com; frame-src www.google.com mail.spiritmediaone.com; base-uri 'self'; form-action 'self'
+  X-Robots-Tag: index, follow
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://static.cloudflareinsights.com https://mail.spiritmediaone.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.sanity.io https://assets.spiritmediapublishing.com https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com https://assets.spiritmediapublishing.com; connect-src 'self' https://ssbenczy.api.sanity.io https://*.google-analytics.com https://*.googletagmanager.com https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-src https://www.google.com https://mail.spiritmediaone.com; base-uri 'self'; form-action 'self'
+  Link: </fonts/w8gdH283Tvk__Lua32TysjIfp8uP.woff2>; rel=preload; as=font; type=font/woff2; crossorigin, </fonts/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
+
+/
+  Link: <https://assets.spiritmediapublishing.com/john-watts-agency/hero-desktop.webp>; rel=preload; as=image

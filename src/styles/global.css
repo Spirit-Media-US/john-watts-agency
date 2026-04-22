@@ -8,13 +8,13 @@
 ────────────────────────────────────────────────────────────────── */
 
 @theme {
-  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
-  --font-heading: "Varela Round", system-ui, sans-serif;
+  --font-sans: "Montserrat", "Montserrat Fallback", system-ui, -apple-system, sans-serif;
+  --font-heading: "Varela Round", "Varela Round Fallback", system-ui, sans-serif;
 
   --color-primary: #4632DA;
   --color-primary-dark: #3526b0;
   --color-primary-light: #5a4de6;
-  --color-accent: #0AABCB;
+  --color-accent: #087A8E;
   --color-secondary: #3D4459;
   --color-dark: #353535;
   --color-dark-light: #4a5058;
@@ -25,8 +25,8 @@
 }
 
 :root {
-  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
-  --font-heading: "Varela Round", system-ui, sans-serif;
+  --font-sans: "Montserrat", "Montserrat Fallback", system-ui, -apple-system, sans-serif;
+  --font-heading: "Varela Round", "Varela Round Fallback", system-ui, sans-serif;
   --color-bg: #ffffff;
   --color-text: #353535;
   --gradient-primary: linear-gradient(130deg, #4632DA 0%, #06D9FA 100%);
@@ -39,12 +39,14 @@ html {
   color: var(--color-text);
   background-color: var(--color-bg);
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
-/* Global mobile padding for all sections */
+/* Global mobile padding for all sections — skips absolutely-positioned
+   decorative elements (waves, bg overlays, blob circles). */
 @media (max-width: 767px) {
-  section > div,
-  article > div {
+  section > div:not(.absolute),
+  article > div:not(.absolute) {
     padding-left: max(var(--tw-px, 0px), 20px);
     padding-right: max(var(--tw-px, 0px), 20px);
   }
@@ -119,7 +121,20 @@ a:hover {
 }
 
 .hero-btn {
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Brand cyan CTA — overrides .bg-accent/.text-white when combined with
+   .hero-btn. Unlayered so it beats Tailwind v4 @layer utilities. Purple text
+   on cyan clears WCAG AA (5.3:1) and matches brand primary so the arrow
+   reads as brand accent, not a dark "border" shape. Hover flips to purple + white. */
+.hero-btn.bg-accent {
+  background-color: #06D9FA;
+  color: #4632DA;
+}
+.hero-btn.bg-accent:hover {
+  background-color: #4632DA !important;
+  color: #fff !important;
 }
 
 .hero-btn:hover {
@@ -232,7 +247,6 @@ a:hover {
 
 .blob-shape-3 {
   border-radius: 300px 100px 100px 100px;
-  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.12);
 }
 
 .blob-shape-card {
@@ -267,7 +281,7 @@ a:hover {
 /* ─── Wave SVG positioning ─────────────────────────────────── */
 .wave-svg {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) rotate(180deg) scaleX(-1);
@@ -275,7 +289,7 @@ a:hover {
 }
 .wave-svg-simple {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
@@ -283,7 +297,7 @@ a:hover {
 }
 .wave-svg-cta {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
@@ -291,7 +305,7 @@ a:hover {
 }
 .wave-svg-narrow {
   display: block;
-  width: calc(100% + 1.3px);
+  width: calc(100% + 1px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
@@ -299,7 +313,7 @@ a:hover {
 }
 .wave-svg-narrow-flat {
   display: block;
-  width: calc(100% + 1.3px);
+  width: calc(100% + 1px);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -388,10 +402,13 @@ a:hover {
 }
 
 .testimonial-dot {
-  width: 10px;
-  height: 10px;
+  /* 24x24 min target size (WCAG 2.5.8); visible dot sized via background-clip */
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: #d1d5db;
+  background-clip: content-box;
+  padding: 7px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;

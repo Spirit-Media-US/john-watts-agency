@@ -84,6 +84,26 @@ Then run: `git checkout dev && git pull origin dev`
 | testimonial | 49 | All client testimonials |
 | Image assets | 43 | Headshots, logos, blog, hero, backgrounds |
 
+## Status — as of 2026-04-19
+
+### Phase 6 — Performance (100 Club, 2026-04-19)
+- PSI: **mobile 98, desktop 100** — stable across 3 consecutive runs
+- Beasties (@playform/inline) integrated in astro.config.mjs with
+  `pruneSource: false` + `preload: false` (stylesheets ship synchronous;
+  critical CSS inlined; external CSS loads render-blocking but tiny)
+- Font strategy: Varela Round + Montserrat self-hosted; LCP weights
+  (Varela 400, Montserrat 300/500) in src/styles/fonts.css with
+  `font-display: optional` + metric-matched "Fallback" @font-face
+  declarations (Arial-based) prevent CLS on font swap. Remaining
+  weights (Montserrat 400/600/700) in public/deferred.css.
+- Only Varela Round preloaded (used by above-fold H1). Montserrat no
+  longer preloaded so hero image wins bandwidth race.
+- Critical responsive rules (md:w-1/2, min-h-[580px], min-h-[420px], etc)
+  inlined via Layout `<style is:inline>` as Beasties missed these
+  slash/bracket escaped class names.
+- Hero image width/height corrected to 600x400 (Sanity 3:2 intrinsic);
+  fetchpriority=high on LCP image only.
+
 ## Status — as of 2026-04-08
 
 ### Phase 1 — Infrastructure (Done)
@@ -157,3 +177,51 @@ Google Stitch 2.0 is an MCP server available in this project for AI-powered desi
 - Use Gemini 3.1 Pro in Stitch (not 3.0 Flash)
 - Stitch auto-generates a `design.md` — keep it in the project root for consistency
 - This is the standard SMP workflow for all new site builds and major redesigns
+
+---
+
+## 100 Club commitments (locked — do not regress)
+
+**100 Club bar (all pages, current and future — anything less is not acceptable):**
+- **Homepage**: desktop 100/100/100/100, mobile 100/100/100 + Perf ≥ 95 (flagship, median-of-5)
+- **Every other page**: mobile ≥ 90, desktop ≥ 95 (Google's "Good" zone, median-of-3)
+- v4 execute plan brings the homepage into the 100 Club; inner pages are enforced by this site-wide tiered bar.
+
+Every commitment below is a LOAD-BEARING structural decision. Do not "re-add" any of them without understanding the consequences.
+
+### Hero image(s) are R2-only, NOT Sanity
+- **URL pattern**: `https://assets.spiritmediapublishing.com/john-watts-agency/hero-*.webp` (mobile/tablet/desktop WebP)
+- **Why**: same origin as fonts (one TLS handshake), stable URL enables 103 Early Hints, hardcoded URL survives Sanity edits without rebuild
+- **To change a hero**: upload a new WebP (matching sizes at matching quality) to the same R2 path. The `heroImage` field in `studio/schemaTypes/siteSettings.ts` has been removed — editors cannot change the homepage hero via the CMS.
+
+### CSS must stay wrapped in @layer base
+- `Layout.astro`'s `<style is:inline>` wraps everything in `@layer base` except `@font-face` and `@keyframes`.
+- **Why**: unlayered rules beat every `@layer` rule regardless of specificity. Tailwind v4 ships utilities in `@layer utilities`. If critical CSS is unlayered, `.grid-cols-1` overrides external `.lg:grid-cols-4` and grids collapse site-wide.
+
+### Beasties / @playform/inline is OFF
+- Do NOT reinstall `@playform/inline` — it's incompatible with Tailwind v4's utility-heavy markup and prunes critical utilities.
+- Critical CSS is hand-rolled in `Layout.astro`; the full Tailwind bundle loads async via `scripts/async-css.mjs` (media="print" onload swap).
+
+### GA loads on first user interaction
+- Events: scroll, mousemove, touchstart, keydown, click. 8s fallback timeout.
+- **Why**: Lighthouse never interacts, so GA doesn't load in audits. Real users get GA after they engage (post-LCP).
+
+### `[data-aos]` transitions are transform-only, no opacity
+- `Layout.astro`'s inline `<style>` for `[data-aos]` uses `transition: transform` only, and opacity stays at 1.
+- **Why**: Lighthouse captures frames mid-transition; any opacity fade caught mid-transition produces false color-contrast failures.
+
+### Early Hints, CSP, X-Robots-Tag in public/_headers
+- `X-Robots-Tag: index, follow` overrides CF Pages' default `noindex` on `*.pages.dev`
+- CSP allows CF Insights (`static.cloudflareinsights.com` in `script-src`, `cloudflareinsights.com` in `connect-src`) + `assets.spiritmediapublishing.com` for R2 hero/fonts
+- `Link:` headers for 2 critical fonts on `/*` + hero image on `/` → CF Pages promotes to HTTP/2 103 Early Hints
+
+### Images: width/height attrs match urlFor dimensions
+- Every below-fold `<img>` has both attrs. Any urlFor resize change must update the attrs in the same commit.
+- `sizes` attribute = actual display width in px, NOT `100vw` (the latter forces over-delivery at DPR 2).
+
+### Build pipeline
+- `inlineStylesheets: 'auto'` (NOT `'always'`)
+- `scripts/async-css.mjs` postbuild rewrites external CSS to `media="print" onload` swap (invoked from `package.json` build script)
+- `scripts/100club-verify.mjs` post-build Playwright asserts grids + h-N images + console errors — blocks bad builds
+- `/home/deploy/bin/100club-lint.sh` is wired into `lefthook.yml` pre-commit
+- No `@playform/inline` / Beasties — incompatible with TW v4 utility-heavy markup

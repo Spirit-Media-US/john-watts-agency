@@ -54,8 +54,8 @@ const [emailUser, emailDomain] = email.split('@');
       <!-- Contact Form Card -->
       <div class="mt-10 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="300">
         <iframe
-          src="https://mail.spiritmediaone.com/widget/form/qPgo3eSxgQtP5Ba2OgSq"
-          style="width:100%;height:100%;border:none;border-radius:3px"
+          data-lazy-src="https://mail.spiritmediaone.com/widget/form/qPgo3eSxgQtP5Ba2OgSq"
+          style="display:block;width:100%;height:500px;border:none;border-radius:3px"
           id="inline-qPgo3eSxgQtP5Ba2OgSq"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
@@ -70,8 +70,7 @@ const [emailUser, emailDomain] = email.split('@');
           data-form-id="qPgo3eSxgQtP5Ba2OgSq"
           title="Contact form"
         ></iframe>
-        <script is:inline src="https://mail.spiritmediaone.com/js/form_embed.js"></script>
-      </div>
+</div>
     </div>
   </section>
 
@@ -134,12 +133,11 @@ const [emailUser, emailDomain] = email.split('@');
   <!-- Google Map -->
   <section class="py-0">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.5!2d-81.1766!3d35.9218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8850e8d3b1c6f6a1%3A0x4a0e4f0e8e8e8e8e!2s351%20NC%20Hwy%2016%20S%2C%20Taylorsville%2C%20NC%2028681!5e0!3m2!1sen!2sus!4v1"
+      data-lazy-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.5!2d-81.1766!3d35.9218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8850e8d3b1c6f6a1%3A0x4a0e4f0e8e8e8e8e!2s351%20NC%20Hwy%2016%20S%2C%20Taylorsville%2C%20NC%2028681!5e0!3m2!1sen!2sus!4v1"
       width="100%"
       height="350"
       class="border-0 block"
       allowfullscreen=""
-      loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       title="Johnny Watts Agency location"
     ></iframe>
@@ -147,4 +145,24 @@ const [emailUser, emailDomain] = email.split('@');
 
   <CtaBanner />
 
+<script is:inline>
+(function(){
+  var loaded = false;
+  function loadGhl(){
+    if (loaded) return; loaded = true;
+    var iframes = document.querySelectorAll('iframe[data-lazy-src]');
+    iframes.forEach(function(f){ f.src = f.dataset.lazySrc; });
+    if (iframes.length) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://mail.spiritmediaone.com/js/form_embed.js';
+      document.body.appendChild(s);
+    }
+  }
+  var evts = ['touchstart','keydown','click','pointerdown'];
+  function t(){ evts.forEach(function(e){ window.removeEventListener(e,t); }); loadGhl(); }
+  evts.forEach(function(e){ window.addEventListener(e,t,{passive:true,once:true}); });
+  setTimeout(loadGhl, 60000);
+})();
+</script>
 </Layout>

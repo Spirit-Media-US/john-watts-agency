@@ -14,24 +14,51 @@ const testimonials = sanityTestimonials.map((t: any) => ({
 // Fetch team members from Sanity (first 4 for homepage)
 const sanityTeam = await sanityClient.fetch(`*[_type == "teamMember"] | order(order asc) [0...4] { name, role, headshot }`);
 
-// Fetch partners from Sanity
-const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo }`);
+// Fetch partners from Sanity with asset metadata for aspect-ratio.
+// Image dimensions come from _ref parsing since logo.asset->metadata is not
+// expanded here; we compute width/height at render time.
+const sanityPartners = await sanityClient.fetch(`*[_type == "partner"] | order(name asc) { name, logo, "assetId": logo.asset._ref }`);
 
-// Fetch site settings for images
-const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ heroImage, aboutImage, bgHero, bgTeam }`);
-const heroImgUrl = settings?.heroImage ? urlFor(settings.heroImage).width(600).format('webp').quality(80).url() : '/happy-family.jpg';
-const heroImgUrlLg = settings?.heroImage ? urlFor(settings.heroImage).width(900).format('webp').quality(80).url() : '/happy-family.jpg';
+// Parse Sanity asset ref format "image-HASH-WIDTHxHEIGHT-FORMAT"
+function aspectFromRef(ref: string | null | undefined): { w: number; h: number } {
+  if (!ref) return { w: 120, h: 50 };
+  const m = ref.match(/-(\d+)x(\d+)-/);
+  if (!m) return { w: 120, h: 50 };
+  const srcW = parseInt(m[1], 10);
+  const srcH = parseInt(m[2], 10);
+  // Rendered height is 50 (from urlFor.height(50)); width scales proportionally
+  return { w: Math.round((srcW / srcH) * 50), h: 50 };
+}
+
+// Fetch site settings for below-fold images.
+// Hero + hero bg overlay are R2-only (see 100 Club commitments in CLAUDE.md).
+const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ aboutImage, bgTeam }`);
+const HERO_R2_MOBILE = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-mobile.webp';
+const HERO_R2_TABLET = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-tablet.webp';
+const HERO_R2_DESKTOP = 'https://assets.spiritmediapublishing.com/john-watts-agency/hero-desktop.webp';
+const BG_HERO_R2 = 'https://assets.spiritmediapublishing.com/john-watts-agency/bg-hero-1200.webp';
 const aboutImgUrl = settings?.aboutImage ? urlFor(settings.aboutImage).width(600).format('webp').quality(80).url() : '/family-sitting.jpg';
-const bgHeroUrl = settings?.bgHero ? urlFor(settings.bgHero).width(1200).format('webp').quality(75).url() : '/bg-homepage-high.png';
 const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format('webp').quality(75).url() : '/bg-team-home.png';
 ---
 
-<Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation." preloadImage={heroImgUrl}>
+<Layout title="Trusted Insurance Specialist in Taylorsville, NC | Johnny Watts Agency" description="Johnny Watts Agency has been helping families in North Carolina find the right Medicare, Health Insurance Marketplace, and Life Insurance plans for over 40 years. Call (828) 635-4200 for a free consultation.">
+  <Fragment slot="head-early">
+    <!-- Hero bg overlay is the LCP element on mobile (largest painted pixels).
+         Preload + fetchpriority high so it starts loading immediately. -->
+    <link rel="preload" as="image" href={BG_HERO_R2} fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset={`${HERO_R2_MOBILE} 640w, ${HERO_R2_TABLET} 800w, ${HERO_R2_DESKTOP} 1200w`}
+      imagesizes="(max-width: 767px) 640px, (max-width: 1023px) 800px, 688px"
+      fetchpriority="high"
+    />
+  </Fragment>
 
   <!-- ═══ HERO — gradient bg with decorative overlay, text LEFT, image RIGHT ═══ -->
   <section class="relative overflow-hidden text-white gradient-badge min-h-[580px]">
-    <!-- Decorative background overlay (blob shapes) -->
-    <div class="absolute inset-0 pointer-events-none bg-center bg-no-repeat bg-cover opacity-[0.15]" style={`background-image: url('${bgHeroUrl}');`}></div>
+    <!-- Decorative background overlay (blob shapes) — R2-hosted WebP -->
+    <div class="absolute inset-0 pointer-events-none bg-center bg-no-repeat bg-cover opacity-[0.15]" style={`background-image: url('${BG_HERO_R2}');`}></div>
     <div class="relative max-w-[1250px] mx-auto px-[2%] pt-[80px] pb-[30px] md:py-28">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-[45%] shrink-0 ">
@@ -41,17 +68,17 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
           </p>
           <a href="#about" class="hero-btn btn-shine inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             About Us
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 44 448 424"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
         </div>
         <div class="md:w-[55%] ">
           <img
-            src={heroImgUrl}
-            srcset={`${heroImgUrl} 600w, ${heroImgUrlLg} 900w`}
-            sizes="(max-width: 768px) 100vw, 55vw"
+            src={HERO_R2_DESKTOP}
+            srcset={`${HERO_R2_MOBILE} 640w, ${HERO_R2_TABLET} 800w, ${HERO_R2_DESKTOP} 1200w`}
+            sizes="(max-width: 767px) 640px, (max-width: 1023px) 800px, 688px"
             alt="Happy family with Medicare and health insurance coverage in North Carolina"
-            width="600"
-            height="450"
+            width="1200"
+            height="800"
             class="w-full h-auto hover-tilt blob-shape-3 -mb-[15%]"
             loading="eager"
             fetchpriority="high"
@@ -63,7 +90,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     <!-- Wave bottom — exact WP Elementor technique -->
     <div class="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg">
-        <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
+        <path d="M0,40 C167,80 333,0 500,40 C667,80 833,0 1000,40 L1000,0 L0,0 Z" fill="#ffffff"/>
       </svg>
     </div>
   </section>
@@ -77,14 +104,14 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     <div class="max-w-[1250px] mx-auto px-[2%]">
       <div class="flex flex-col md:flex-row gap-12 items-center">
         <!-- Image -->
-        <div class="md:w-1/2 " data-aos="fade-right">
+        <div class="md:w-1/2 " data-aos="fade-right" style="aspect-ratio:3/2">
           <img
             src={aboutImgUrl}
             alt="Family discussing insurance options with Johnny Watts Agency"
-            width="800"
-            height="600"
+            width="600"
+            height="400"
             class="w-full h-auto blob-shape-2"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         </div>
@@ -97,7 +124,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
           </p>
           <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             Learn More About Our Agency
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 44 448 424"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
         </div>
       </div>
@@ -112,9 +139,20 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       <p class="max-w-2xl mx-auto mb-10 text-base font-light leading-[1.4] text-dark" data-aos="fade-up" data-aos-delay="200">The following are just a few of the over 40 top insurance companies we access to compare their rates to find the best plan to fit your needs.</p>
       <div class="logo-slider overflow-hidden relative mask-fade-x">
         <div class="logo-track flex items-center gap-6 md:gap-16" id="logo-track">
-          {sanityPartners.map((p: any) => (
-            <img src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''} alt={p.name} height="50" class="h-12 md:h-16 w-auto object-contain shrink-0" loading="lazy" decoding="async" />
-          ))}
+          {sanityPartners.map((p: any) => {
+            const { w, h } = aspectFromRef(p.assetId);
+            return (
+              <img
+                src={p.logo ? urlFor(p.logo).height(50).format('webp').quality(80).url() : ''}
+                alt={p.name}
+                width={w}
+                height={h}
+                class="h-12 md:h-16 w-auto object-contain shrink-0"
+                loading="lazy"
+                decoding="async"
+              />
+            );
+          })}
         </div>
       </div>
     </div>
@@ -147,7 +185,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
           <h2 class="mb-6 font-heading text-[2.5rem] leading-[1.2] text-primary">The Faces Behind Our Success</h2>
           <a href="/about/" class="hero-btn inline-flex items-center gap-2 px-7 py-3 font-medium bg-accent text-white text-base capitalize rounded-full">
             About Us
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 44 448 424"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
           </a>
         </div>
       </div>
@@ -190,7 +228,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
     <!-- Wave top -->
     <div class="absolute top-[-1px] left-0 w-full overflow-hidden leading-none z-[1]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="wave-svg-simple">
-        <path d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" fill="#ffffff"/>
+        <path d="M0,40 C167,80 333,0 500,40 C667,80 833,0 1000,40 L1000,0 L0,0 Z" fill="#ffffff"/>
       </svg>
     </div>
     <!-- Decorative background circles -->
@@ -200,7 +238,7 @@ const bgTeamUrl = settings?.bgTeam ? urlFor(settings.bgTeam).width(1200).format(
       <h2 class="mb-6 font-heading font-light text-white text-clamp-cta">Get A Quote</h2>
       <a href="/life-quote/" class="inline-flex items-center gap-2 px-8 py-3.5 transition-all hover:shadow-lg bg-white text-accent text-base font-medium rounded-full">
         Life Quote
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 44 448 424"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>
       </a>
     </div>
   </section>
