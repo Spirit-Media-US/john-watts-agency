@@ -46,7 +46,7 @@ import PageHero from '../components/PageHero.astro';
   var evts = ['scroll','mousemove','touchstart','keydown','click'];
   function t(){ evts.forEach(function(e){ window.removeEventListener(e,t); }); loadGhl(); }
   evts.forEach(function(e){ window.addEventListener(e,t,{passive:true,once:true}); });
-  setTimeout(loadGhl, 15000);
+  setTimeout(loadGhl, 60000);
 })();
 </script>
 </Layout>
