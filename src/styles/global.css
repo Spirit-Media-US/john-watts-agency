@@ -280,7 +280,7 @@ a:hover {
 /* ─── Wave SVG positioning ─────────────────────────────────── */
 .wave-svg {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) rotate(180deg) scaleX(-1);
@@ -288,7 +288,7 @@ a:hover {
 }
 .wave-svg-simple {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
@@ -296,7 +296,7 @@ a:hover {
 }
 .wave-svg-cta {
   display: block;
-  width: calc(250% + 100.3px);
+  width: calc(250% + 100px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
@@ -304,7 +304,7 @@ a:hover {
 }
 .wave-svg-narrow {
   display: block;
-  width: calc(100% + 1.3px);
+  width: calc(100% + 1px);
   position: relative;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
@@ -312,7 +312,7 @@ a:hover {
 }
 .wave-svg-narrow-flat {
   display: block;
-  width: calc(100% + 1.3px);
+  width: calc(100% + 1px);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
