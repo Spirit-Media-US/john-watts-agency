@@ -54,7 +54,7 @@ const [emailUser, emailDomain] = email.split('@');
       <!-- Contact Form Card -->
       <div class="mt-10 max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="300">
         <iframe
-          src="https://mail.spiritmediaone.com/widget/form/qPgo3eSxgQtP5Ba2OgSq"
+          data-lazy-src="https://mail.spiritmediaone.com/widget/form/qPgo3eSxgQtP5Ba2OgSq"
           style="display:block;width:100%;height:500px;border:none;border-radius:3px"
           id="inline-qPgo3eSxgQtP5Ba2OgSq"
           data-layout="{'id':'INLINE'}"
@@ -70,8 +70,7 @@ const [emailUser, emailDomain] = email.split('@');
           data-form-id="qPgo3eSxgQtP5Ba2OgSq"
           title="Contact form"
         ></iframe>
-        <script is:inline src="https://mail.spiritmediaone.com/js/form_embed.js"></script>
-      </div>
+</div>
     </div>
   </section>
 
@@ -139,7 +138,6 @@ const [emailUser, emailDomain] = email.split('@');
       height="350"
       class="border-0 block"
       allowfullscreen=""
-      loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
       title="Johnny Watts Agency location"
     ></iframe>
@@ -147,4 +145,24 @@ const [emailUser, emailDomain] = email.split('@');
 
   <CtaBanner />
 
+<script is:inline>
+(function(){
+  var loaded = false;
+  function loadGhl(){
+    if (loaded) return; loaded = true;
+    var iframes = document.querySelectorAll('iframe[data-lazy-src]');
+    iframes.forEach(function(f){ f.src = f.dataset.lazySrc; });
+    if (iframes.length) {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://mail.spiritmediaone.com/js/form_embed.js';
+      document.body.appendChild(s);
+    }
+  }
+  var evts = ['scroll','mousemove','touchstart','keydown','click'];
+  function t(){ evts.forEach(function(e){ window.removeEventListener(e,t); }); loadGhl(); }
+  evts.forEach(function(e){ window.addEventListener(e,t,{passive:true,once:true}); });
+  setTimeout(loadGhl, 15000);
+})();
+</script>
 </Layout>
