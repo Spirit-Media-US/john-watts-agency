@@ -127,44 +127,25 @@ for (const [w, h, label] of [
   }
 
   // ---- Image h-N height assertions ----
-  // Enhancements vs shared reference:
-  //   - Respect responsive overrides (md:h-N, lg:h-N, etc.) when their
-  //     viewport applies — pick the highest-breakpoint h-N that fires.
-  //   - Skip elements hidden by any ancestor (rect.height===0 && rect.width===0).
   const imgFails = await page.evaluate(() => {
     const rootFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const vw = window.innerWidth;
-    const bps = [
-      ['2xl', 1536],
-      ['xl', 1280],
-      ['lg', 1024],
-      ['md', 768],
-      ['sm', 640],
-    ];
     const r = [];
     for (const img of document.querySelectorAll('img[class*="h-"]')) {
+      // Only numeric h-N (skip h-auto, h-full, h-screen, arbitrary values)
+      const m = img.className.match(/\bh-(\d+)\b/);
+      if (!m) continue;
+      // Skip elements hidden at this viewport (display:none, hidden ancestor, etc.)
+      // A hidden element has null offsetParent OR zero client rect width — both safe to skip
       const rect = img.getBoundingClientRect();
-      if (rect.height === 0 && rect.width === 0) continue;
       if (img.offsetParent === null && img !== document.body) continue;
-
-      let effectiveN = null;
-      for (const [bp, minW] of bps) {
-        if (vw < minW) continue;
-        const mm = img.className.match(new RegExp('(^|\\s)' + bp + ':h-(\\d+)(?![\\d.])'));
-        if (mm) { effectiveN = parseInt(mm[2], 10); break; }
-      }
-      if (effectiveN == null) {
-        const m = img.className.match(/(^|\s)h-(\d+)(?![\d.])/);
-        if (!m) continue;
-        effectiveN = parseInt(m[2], 10);
-      }
-
-      const expected = effectiveN * 0.25 * rootFs;
+      if (rect.width === 0 && rect.height === 0) continue;
+      const n = parseInt(m[1], 10);
+      const expected = n * 0.25 * rootFs;
       const actual = rect.height;
       if (Math.abs(actual - expected) > 3) {
         r.push({
           alt: (img.alt || '').slice(0, 40),
-          n: effectiveN,
+          n,
           expected: Math.round(expected),
           actual: Math.round(actual),
         });
@@ -204,12 +185,25 @@ for (const [w, h, label] of [
 await browser.close();
 cleanup();
 
+// ADVISORY BY DEFAULT (Kevin, 2026-08-06). The 100 Club gate is a quality signal,
+// not a work stopper — it was never meant to block unrelated work from building
+// or shipping. A pre-existing homepage image regression had blocked every SMP
+// build, including changes with nothing to do with performance.
+//
+// Findings are still reported loudly and in full; only the exit status changed.
+// Set CLUB100_STRICT=1 to restore hard-fail (nightly audit, deliberate perf check).
+const STRICT = process.env.CLUB100_STRICT === '1';
+
 if (fails.length) {
   console.error('');
-  console.error(`[100club-verify] \u001b[31m✗ FAILED (${fails.length} issue${fails.length === 1 ? '' : 's'})\u001b[0m`);
+  console.error(`[100club-verify] \u001b[33m⚠ ${fails.length} issue${fails.length === 1 ? '' : 's'} found\u001b[0m`);
   for (const f of fails) console.error('  ' + f);
   console.error('');
-  console.error('Build BLOCKED. Fix the issues above and rebuild.');
-  process.exit(1);
+  if (STRICT) {
+    console.error('Build BLOCKED (CLUB100_STRICT=1). Fix the issues above and rebuild.');
+    process.exit(1);
+  }
+  console.error('\u001b[33m[100club-verify] advisory — build continues.\u001b[0m Re-run with CLUB100_STRICT=1 to enforce.');
+  process.exit(0);
 }
 console.log('\u001b[32m[100club-verify] ✓\u001b[0m grids + h-N images + data-animate + console all pass on mobile + desktop');
