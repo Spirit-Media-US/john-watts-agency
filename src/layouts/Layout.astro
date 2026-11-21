@@ -1,14 +1,18 @@
 ---
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description?: string;
-  jsonld?: Record<string, any>;
+	title: string;
+	description?: string;
+	jsonld?: Record<string, any>;
 }
-const { title, description = 'Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.', jsonld } = Astro.props;
+const {
+	title,
+	description = "Johnny Watts Agency — Your trusted insurance specialists in Taylorsville, NC. Medicare, Health Insurance Marketplace, and Life Insurance.",
+	jsonld,
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -187,7 +191,6 @@ const { title, description = 'Johnny Watts Agency — Your trusted insurance spe
       "name": "Johnny Watts Agency",
       "url": "https://johnnywattsagency.com",
       "telephone": "+1-828-635-4200",
-      "email": "johnny@johnnywattsagency.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "351 NC Hwy 16 S",

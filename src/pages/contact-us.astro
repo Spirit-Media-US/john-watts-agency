@@ -1,17 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PageHero from '../components/PageHero.astro';
-import CtaBanner from '../components/CtaBanner.astro';
-import MailtoLink from '../components/MailtoLink.astro';
-import { sanityClient } from '../lib/sanity';
+import CtaBanner from "../components/CtaBanner.astro";
+import MailtoLink from "../components/MailtoLink.astro";
+import PageHero from "../components/PageHero.astro";
+import Layout from "../layouts/Layout.astro";
+import { sanityClient } from "../lib/sanity";
 
-const settings = await sanityClient.fetch(`*[_type == "siteSettings"][0]{ phone, email, address, hours }`);
-const phone = settings?.phone || '(828) 635-4200';
-const email = settings?.email || 'johnny@johnnywattsagency.com';
-const address = settings?.address || '351 NC Hwy 16 S. Taylorsville, NC 28681';
-const hours = settings?.hours || 'Monday - Friday: 9 AM - 5 PM';
-const phoneTel = phone.replace(/[^0-9]/g, '');
-const [emailUser, emailDomain] = email.split('@');
+const settings = await sanityClient.fetch(
+	`*[_type == "siteSettings"][0]{ phone, email, address, hours }`,
+);
+const phone = settings?.phone || "(828) 635-4200";
+const email = settings?.email || "johnny@johnnywattsagency.com";
+const address = settings?.address || "351 NC Hwy 16 S. Taylorsville, NC 28681";
+const hours = settings?.hours || "Monday - Friday: 9 AM - 5 PM";
+const phoneTel = phone.replace(/[^0-9]/g, "");
+const [emailUser, emailDomain] = email.split("@");
 ---
 
 <Layout title="Contact Johnny Watts Agency | Taylorsville, NC" description="Get in touch with Johnny Watts Agency at 351 NC Hwy 16 S, Taylorsville, NC. Call (828) 635-4200 or submit our online form for Medicare, health, and life insurance questions." jsonld={{
@@ -23,7 +25,6 @@ const [emailUser, emailDomain] = email.split('@');
     "@type": "InsuranceAgency",
     "name": "Johnny Watts Agency",
     "telephone": "+1-828-635-4200",
-    "email": "johnny@johnnywattsagency.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "351 NC Hwy 16 S",
